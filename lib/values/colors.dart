@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
 class FontColors {
-
   static const Color greyscale = Color(0xFF404E67);
 }
 
 class AppColors {
   AppColors._();
-
+  static const Color backgroundColor = Color(0xFFFEFEFE);
   static const Color green = Color(0xFF3BB77E);
   static const Color white = Color(0xFFFFFFFF);
   static const Color black = Color(0xFF000000);
@@ -17,6 +16,5 @@ class AppColors {
   static const Color gray = Color(0xFF4B4B4B);
   static const Color red = Color(0xFFF75555);
   static const Color pinPutBg = Color(0xFFEEEEEE);
-  static Color transactionCardColor =  const Color(0xFFD3D3D3).withOpacity(.26);
-
+  static Color transactionCardColor = const Color(0xFFD3D3D3).withOpacity(.26);
 }
