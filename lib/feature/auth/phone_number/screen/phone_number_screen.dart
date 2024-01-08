@@ -1,3 +1,4 @@
+import 'package:alibi_shop/feature/widget/textfield/auth_field.dart';
 import 'package:flutter/material.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
@@ -11,6 +12,13 @@ class PhoneNumberScreen extends StatefulWidget {
 class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const Scaffold(
+      body: Padding(
+        padding: EdgeInsets.symmetric(horizontal: 16),
+        child: Center(
+          child: AuthField(),
+        ),
+      ),
+    );
   }
 }

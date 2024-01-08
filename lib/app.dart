@@ -15,22 +15,17 @@ class _MyAppState extends State<MyApp> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-
-      ],
-      child: ScreenUtilInit(
-        minTextAdapt: true,
-        splitScreenMode: true,
-        designSize: const Size(430, 932),
-        builder: (context, child) {
-          return MaterialApp.router(
-            title: 'i8Speak',
-            routerConfig: router.router,
-            debugShowCheckedModeBanner: false,
-          );
-        },
-      ),
+    return ScreenUtilInit(
+      minTextAdapt: true,
+      splitScreenMode: true,
+      designSize: const Size(430, 932),
+      builder: (context, child) {
+        return MaterialApp.router(
+          title: 'i8Speak',
+          routerConfig: router.router,
+          debugShowCheckedModeBanner: false,
+        );
+      },
     );
   }
 }
