@@ -5,6 +5,7 @@ import 'package:alibi_shop/feature/widget/news/top_new.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
   static const String routeName = "/home_screen";
@@ -16,6 +17,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  final controller = PageController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,12 +82,27 @@ class _HomeScreenState extends State<HomeScreen> {
                     },
                   ),
                 ),
+                const SizedBox(height: 16),
+                Center(
+                  child: SmoothPageIndicator(
+                    controller: controller,
+                    count: 5,
+                    effect: const ExpandingDotsEffect(
+                      dotColor: Color(0xFFEAEBED),
+                      dotHeight: 6,
+                      dotWidth: 6,
+                      radius: 6,
+                      activeDotColor: Color(0xFF14181E),
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(vertical: 32),
                   child: SizedBox(
                     height: 180,
                     child: PageView.builder(
-                      itemCount: 3,
+                      controller: controller,
+                      itemCount: 5,
                       itemBuilder: (context, index) {
                         return const Center(child: NewProductPage());
                       },
