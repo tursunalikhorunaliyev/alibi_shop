@@ -1,3 +1,4 @@
+import 'package:alibi_shop/feature/auth/check_code/screen/check_code_screen.dart';
 import 'package:alibi_shop/feature/widget/button/auth_button.dart';
 import 'package:alibi_shop/feature/widget/textfield/auth_field.dart';
 import 'package:alibi_shop/generated/assets.dart';
@@ -6,6 +7,7 @@ import 'package:alibi_shop/values/masks.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class PhoneNumberScreen extends StatefulWidget {
   static const String routeName = "/phone_number_screen";
@@ -88,7 +90,9 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
               ),
               SizedBox(height: 28.h),
               AuthButton(
-                onTap: () {},
+                onTap: () {
+                  context.push(CheckCodeScreen.routeName);
+                },
                 title: "Continue",
               )
             ],

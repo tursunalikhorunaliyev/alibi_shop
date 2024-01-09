@@ -2,9 +2,20 @@
 class Assets {
   Assets._();
 
+  static const String assetsIconsAlibi = 'assets/icons/alibi.svg';
+  static const String iconsAlibi = 'assets/icons/alibi.png';
+  static const String iconsArrowRight = 'assets/icons/arrowRight.svg';
+  static const String iconsBag = 'assets/icons/bag.svg';
   static const String iconsCall = 'assets/icons/call.svg';
+  static const String iconsFilter = 'assets/icons/Filter.svg';
+  static const String iconsHeart = 'assets/icons/heart.svg';
   static const String iconsHide = 'assets/icons/Hide.svg';
+  static const String iconsNoti = 'assets/icons/noti.svg';
   static const String iconsShow = 'assets/icons/Show.svg';
+  static const String pictureClothes = 'assets/picture/clothes.jpg';
+  static const String congrats = 'assets/picture/congrats.png';
+  static const String pictureNewcloth = 'assets/picture/newcloth.jpg';
+  static const String pictureTopnew = 'assets/picture/topnew.jpg';
   static const String pjsPlusJakartaSansBold =
       'assets/fonts/pjs/PlusJakartaSans-Bold.ttf';
   static const String pjsPlusJakartaSansBoldItalic =
