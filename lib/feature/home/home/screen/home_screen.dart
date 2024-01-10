@@ -2,6 +2,7 @@ import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/feature/widget/news/new_product_page.dart';
 import 'package:alibi_shop/feature/widget/news/top_new.dart';
+import 'package:alibi_shop/generated/assets.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -23,28 +24,16 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Colors.transparent,
+        color: Colors.black,
+        height: 60,
+        buttonBackgroundColor: const Color(0xFF614FE0),
+        animationDuration: const Duration(milliseconds: 300),
         items: [
-          Container(
-            width: 50,
-            height: 50,
-            color: Colors.white,
-          ),
-          Container(
-            width: 50,
-            height: 50,
-            color: Colors.white,
-          ),
-          Container(
-            width: 50,
-            height: 50,
-            color: Colors.white,
-          ),
-          Container(
-            width: 50,
-            height: 50,
-            color: Colors.white,
-          )
+          SvgPicture.asset(Assets.iconsSetting1),
+          SvgPicture.asset(Assets.iconsSetting),
+          SvgPicture.asset(Assets.iconsSetting2),
+          SvgPicture.asset(Assets.iconsSetting1),
+          SvgPicture.asset(Assets.iconsUser),
         ],
       ),
       body: SingleChildScrollView(

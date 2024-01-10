@@ -1,6 +1,7 @@
 import 'package:alibi_shop/feature/category/widget/category_card.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryScreen extends StatelessWidget {
   static const String routeName = "/category_screen";
@@ -12,7 +13,7 @@ class CategoryScreen extends StatelessWidget {
     return Scaffold(
       body: SafeArea(
         child: Stack(
-          clipBehavior: Clip.hardEdge,
+          clipBehavior: Clip.none,
           children: [
             Container(
               width: double.infinity,
@@ -28,8 +29,9 @@ class CategoryScreen extends StatelessWidget {
             SingleChildScrollView(
               child: Column(
                 children: [
+                  SizedBox(height: 20.h),
                   const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
+                    padding: EdgeInsets.only(left: 32),
                     child: TopSearchWidget(),
                   ),
                   const SizedBox(height: 22),
@@ -37,20 +39,17 @@ class CategoryScreen extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 318,
-                        child: ListView.builder(
-                          itemCount: 10,
-                          shrinkWrap: true,
-                          padding: const EdgeInsets.only(
-                            bottom: 10,
-                            top: 10,
-                            left: 54,
-                            right: 24,
-                          ),
-                          clipBehavior: Clip.antiAlias,
-                          scrollDirection: Axis.horizontal,
-                          itemBuilder: (context, index) => const Padding(
-                            padding: EdgeInsets.only(left: 20),
-                            child: CategoryCard(),
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 42.w),
+                          child: ListView.builder(
+                            itemCount: 10,
+                            shrinkWrap: true,
+                            clipBehavior: Clip.antiAlias,
+                            scrollDirection: Axis.horizontal,
+                            itemBuilder: (context, index) => const Padding(
+                              padding: EdgeInsets.only(left: 20),
+                              child: CategoryCard(),
+                            ),
                           ),
                         ),
                       ),

@@ -44,7 +44,7 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
               ),
               SizedBox(height: 28.h),
               AuthField(
-                leadingIcon: Assets.iconsCall,
+                leadingIcon: Assets.iconsPhone,
                 floatingText: "Phone Number",
                 hintText: "+998 (__) ___ - __-__",
                 maskTextInputFormatter: InputMasks.phoneInputMask,

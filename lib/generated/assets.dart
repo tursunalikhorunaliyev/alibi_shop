@@ -6,42 +6,38 @@ class Assets {
   static const String iconsAlibi = 'assets/icons/alibi.png';
   static const String iconsArrowRight = 'assets/icons/arrowRight.svg';
   static const String iconsBag = 'assets/icons/bag.svg';
-  static const String iconsCall = 'assets/icons/call.svg';
+  static const String iconsCall = 'assets/icons/home.svg';
   static const String iconsFilter = 'assets/icons/Filter.svg';
+  static const String iconsFilterr = 'assets/icons/filterr.svg';
   static const String iconsHeart = 'assets/icons/heart.svg';
   static const String iconsHide = 'assets/icons/Hide.svg';
   static const String iconsNoti = 'assets/icons/noti.svg';
+  static const String iconsPhone = 'assets/icons/phone.svg';
+  static const String iconsPlay = 'assets/icons/play.svg';
+  static const String iconsSearch = 'assets/icons/search.svg';
+  static const String iconsSetting = 'assets/icons/Setting.svg';
+  static const String iconsSetting1 = 'assets/icons/Setting-1.svg';
+  static const String iconsSetting2 = 'assets/icons/Setting-2.svg';
   static const String iconsShow = 'assets/icons/Show.svg';
+  static const String iconsUser = 'assets/icons/User.svg';
   static const String pictureClothes = 'assets/picture/clothes.jpg';
-  static const String congrats = 'assets/picture/congrats.png';
+  static const String pictureCongrats = 'assets/picture/congrats.png';
+  static const String pictureJacket = 'assets/picture/jacket.jpg';
   static const String pictureNewcloth = 'assets/picture/newcloth.jpg';
   static const String pictureTopnew = 'assets/picture/topnew.jpg';
-  static const String pjsPlusJakartaSansBold =
-      'assets/fonts/pjs/PlusJakartaSans-Bold.ttf';
-  static const String pjsPlusJakartaSansBoldItalic =
-      'assets/fonts/pjs/PlusJakartaSans-BoldItalic.ttf';
-  static const String pjsPlusJakartaSansExtraBold =
-      'assets/fonts/pjs/PlusJakartaSans-ExtraBold.ttf';
-  static const String pjsPlusJakartaSansExtraBoldItalic =
-      'assets/fonts/pjs/PlusJakartaSans-ExtraBoldItalic.ttf';
-  static const String pjsPlusJakartaSansExtraLight =
-      'assets/fonts/pjs/PlusJakartaSans-ExtraLight.ttf';
-  static const String pjsPlusJakartaSansExtraLightItalic =
-      'assets/fonts/pjs/PlusJakartaSans-ExtraLightItalic.ttf';
-  static const String pjsPlusJakartaSansItalic =
-      'assets/fonts/pjs/PlusJakartaSans-Italic.ttf';
-  static const String pjsPlusJakartaSansLight =
-      'assets/fonts/pjs/PlusJakartaSans-Light.ttf';
-  static const String pjsPlusJakartaSansLightItalic =
-      'assets/fonts/pjs/PlusJakartaSans-LightItalic.ttf';
-  static const String pjsPlusJakartaSansMedium =
-      'assets/fonts/pjs/PlusJakartaSans-Medium.ttf';
-  static const String pjsPlusJakartaSansMediumItalic =
-      'assets/fonts/pjs/PlusJakartaSans-MediumItalic.ttf';
-  static const String pjsPlusJakartaSansRegular =
-      'assets/fonts/pjs/PlusJakartaSans-Regular.ttf';
-  static const String pjsPlusJakartaSansSemiBold =
-      'assets/fonts/pjs/PlusJakartaSans-SemiBold.ttf';
-  static const String pjsPlusJakartaSansSemiBoldItalic =
-      'assets/fonts/pjs/PlusJakartaSans-SemiBoldItalic.ttf';
+  static const String pjsPlusJakartaSansBold = 'assets/fonts/pjs/PlusJakartaSans-Bold.ttf';
+  static const String pjsPlusJakartaSansBoldItalic = 'assets/fonts/pjs/PlusJakartaSans-BoldItalic.ttf';
+  static const String pjsPlusJakartaSansExtraBold = 'assets/fonts/pjs/PlusJakartaSans-ExtraBold.ttf';
+  static const String pjsPlusJakartaSansExtraBoldItalic = 'assets/fonts/pjs/PlusJakartaSans-ExtraBoldItalic.ttf';
+  static const String pjsPlusJakartaSansExtraLight = 'assets/fonts/pjs/PlusJakartaSans-ExtraLight.ttf';
+  static const String pjsPlusJakartaSansExtraLightItalic = 'assets/fonts/pjs/PlusJakartaSans-ExtraLightItalic.ttf';
+  static const String pjsPlusJakartaSansItalic = 'assets/fonts/pjs/PlusJakartaSans-Italic.ttf';
+  static const String pjsPlusJakartaSansLight = 'assets/fonts/pjs/PlusJakartaSans-Light.ttf';
+  static const String pjsPlusJakartaSansLightItalic = 'assets/fonts/pjs/PlusJakartaSans-LightItalic.ttf';
+  static const String pjsPlusJakartaSansMedium = 'assets/fonts/pjs/PlusJakartaSans-Medium.ttf';
+  static const String pjsPlusJakartaSansMediumItalic = 'assets/fonts/pjs/PlusJakartaSans-MediumItalic.ttf';
+  static const String pjsPlusJakartaSansRegular = 'assets/fonts/pjs/PlusJakartaSans-Regular.ttf';
+  static const String pjsPlusJakartaSansSemiBold = 'assets/fonts/pjs/PlusJakartaSans-SemiBold.ttf';
+  static const String pjsPlusJakartaSansSemiBoldItalic = 'assets/fonts/pjs/PlusJakartaSans-SemiBoldItalic.ttf';
+
 }

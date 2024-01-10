@@ -72,7 +72,7 @@ class _AuthFieldState extends State<AuthField> {
                       ? SizedBox(width: 16.h)
                       : const SizedBox(),
                   SizedBox(
-                    width: 300.w,
+                    width: 280.w,
                     child: TextField(
                       inputFormatters: widget.maskTextInputFormatter == null
                           ? []

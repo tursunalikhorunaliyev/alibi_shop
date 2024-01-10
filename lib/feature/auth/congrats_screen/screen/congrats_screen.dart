@@ -37,7 +37,7 @@ class CongratsScreen extends StatelessWidget {
             ),
             SizedBox(height: 28.h),
             Image.asset(
-              Assets.congrats,
+              Assets.pictureCongrats,
               width: 160,
               height: 90,
             ),
