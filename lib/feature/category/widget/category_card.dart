@@ -29,7 +29,7 @@ class _CategoryCardState extends State<CategoryCard> {
     return Stack(
       children: [
         SizedBox(
-          height: 318,
+          height: 320,
           child: Padding(
             padding: EdgeInsets.only(left: 42.w),
             child: ListView.builder(
@@ -37,79 +37,85 @@ class _CategoryCardState extends State<CategoryCard> {
               controller: pageController,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: 5,
+              itemCount: list.length,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Container(
-                  width: 220,
-                  margin: const EdgeInsets.only(left: 20),
-                  decoration: BoxDecoration(
-                    color: const Color(0xFFFEFEFE),
-                    borderRadius: BorderRadius.circular(20),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey.withOpacity(0.1),
-                        spreadRadius: 5,
-                        blurRadius: 7,
-                        offset: const Offset(0, 0),
-                      )
-                    ],
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      ClipRRect(
-                        borderRadius: const BorderRadius.only(
-                          topLeft: Radius.circular(20),
-                          topRight: Radius.circular(20),
-                        ),
-                        child: Image.asset(
-                          "assets/picture/jacket.jpg",
-                          width: double.infinity,
-                          height: 200,
-                          fit: BoxFit.cover,
-                        ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: 220,
+                      margin: const EdgeInsets.only(left: 20),
+                      decoration: BoxDecoration(
+                        color: const Color(0xFFFEFEFE),
+                        borderRadius: BorderRadius.circular(20),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.1),
+                            spreadRadius: 5,
+                            blurRadius: 7,
+                            offset: const Offset(0, 0),
+                          )
+                        ],
                       ),
-                      const Padding(
-                        padding:
-                            EdgeInsets.symmetric(horizontal: 24, vertical: 6),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Jacket super mega\npro plus note",
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 2,
-                              style: TextStyle(
-                                fontFamily: "Plus Jakarta Sans",
-                                fontSize: 22,
-                                height: 26 / 22,
-                                fontWeight: FontWeight.bold,
-                                color: Color(0xFF14181E),
-                              ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          ClipRRect(
+                            borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              topRight: Radius.circular(20),
                             ),
-                            SizedBox(height: 4),
-                            Text(
-                              "160,000 sum",
-                              style: TextStyle(
-                                fontFamily: "Plus Jakarta Sans",
-                                fontSize: 16,
-                                color: Color(0xFF59616C),
-                              ),
+                            child: Image.asset(
+                              "assets/picture/jacket.jpg",
+                              width: double.infinity,
+                              height: 200,
+                              fit: BoxFit.cover,
                             ),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 10),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  list[index],
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 2,
+                                  style: const TextStyle(
+                                    fontFamily: "Plus Jakarta Sans",
+                                    fontSize: 22,
+                                    height: 26 / 22,
+                                    fontWeight: FontWeight.bold,
+                                    color: Color(0xFF14181E),
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                const Text(
+                                  "160,000 sum",
+                                  style: TextStyle(
+                                    fontFamily: "Plus Jakarta Sans",
+                                    fontSize: 16,
+                                    color: Color(0xFF59616C),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    const Spacer(),
+                  ],
                 ),
               ),
             ),
           ),
         ),
         Positioned(
-          left: 22,
+          left: 18,
           top: 24,
+          right: 8,
           child: RotatedBox(
             quarterTurns: 3,
             child: Text(
@@ -126,3 +132,8 @@ class _CategoryCardState extends State<CategoryCard> {
     );
   }
 }
+
+List<String> list = [
+  "Sesavfbdg wavdwa vdtgawvd",
+  "wdawbvdyt",
+];

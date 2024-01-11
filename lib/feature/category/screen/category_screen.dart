@@ -1,4 +1,6 @@
 import 'package:alibi_shop/feature/category/widget/category_card.dart';
+import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
+import 'package:alibi_shop/feature/category/widget/search_result_link.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -26,23 +28,41 @@ class CategoryScreen extends StatelessWidget {
                 ),
               ),
             ),
-            SingleChildScrollView(
-              child: Column(
-                children: [
-                  SizedBox(height: 20.h),
-                  const Padding(
-                    padding: EdgeInsets.only(left: 32),
-                    child: TopSearchWidget(),
+            Column(
+              children: [
+                SizedBox(height: 20.h),
+                const Padding(
+                  padding: EdgeInsets.only(left: 32, right: 32),
+                  child: TopSearchWidget(),
+                ),
+                const CategoryCard(categoryName: "Jacket"),
+                Expanded(
+                  child: SingleChildScrollView(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Column(
+                        children: [
+                          const SearchResultLink(isProcessed: true),
+                          const SearchResultLink(),
+                          const SearchResultLink(),
+                          const SizedBox(height: 20),
+                          ListView.builder(
+                            itemCount: 5,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemBuilder: (context, index) {
+                              return const Padding(
+                                padding: EdgeInsets.only(bottom: 12),
+                                child: SearchResultCard(),
+                              );
+                            },
+                          ),
+                        ],
+                      ),
+                    ),
                   ),
-                  const SizedBox(height: 22),
-                  const CategoryCard(categoryName: "Jacket"),
-                  const SizedBox(height: 22),
-                  const CategoryCard(categoryName: "Cap"),
-                  const SizedBox(height: 22),
-                  const CategoryCard(categoryName: ""),
-                  const SizedBox(height: 22),
-                ],
-              ),
+                )
+              ],
             ),
           ],
         ),
