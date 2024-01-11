@@ -3,15 +3,17 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class MainProductCard extends StatelessWidget {
   final bool isLittle;
+  final bool isChanged;
   const MainProductCard({
     super.key,
-    required this.isLittle,
+    this.isLittle = false,
+    this.isChanged = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: isLittle ? 350 : 262,
+      height: isLittle ? 262 : 358,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -21,8 +23,8 @@ class MainProductCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
                   "assets/picture/clothes.jpg",
-                  width: isLittle ? 180 : 140,
-                  height: isLittle ? 220 : 140,
+                  width: isLittle ? 140 : 180,
+                  height: isLittle ? 140 : 220,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -45,7 +47,7 @@ class MainProductCard extends StatelessWidget {
             ],
           ),
           SizedBox(
-            width: isLittle ? 180 : 140,
+            width: isLittle ? 140 : 180,
             child: const Text(
               "VOLUMINOUS TOP LIMITED adwbww",
               maxLines: 2,
@@ -88,8 +90,8 @@ class MainProductCard extends StatelessWidget {
           InkWell(
             onTap: () {},
             child: Container(
-              width: isLittle ? 180 : 140,
-              height: isLittle ? 50 : 36,
+              width: isLittle ? 140 : 180,
+              height: isLittle ? 36 : 50,
               decoration: BoxDecoration(
                 color: const Color(0xFF14181E),
                 borderRadius: BorderRadius.circular(12),

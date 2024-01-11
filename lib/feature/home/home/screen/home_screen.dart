@@ -152,7 +152,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       isLittle: true,
                     );
                   },
-                )
+                ),
               ],
             ),
           ],

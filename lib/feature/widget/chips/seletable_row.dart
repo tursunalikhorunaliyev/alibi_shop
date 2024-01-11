@@ -19,7 +19,7 @@ class _SelectableRowState extends State<SelectableRow> {
         padding: const EdgeInsets.symmetric(horizontal: 24),
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 4),
+            padding: const EdgeInsets.only(right: 8),
             child: InkWell(
               onTap: () {
                 selectIndex = index;
@@ -63,6 +63,9 @@ class _SelectableRowState extends State<SelectableRow> {
     "All",
     "Clothing",
     "Jacket",
+    "Shirts",
+    "Shirts",
+    "Shirts",
     "Shirts",
   ];
 }

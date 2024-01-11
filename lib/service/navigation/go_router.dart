@@ -1,3 +1,4 @@
+import 'package:alibi_shop/feature/allproduct/screen/all_product_screen.dart';
 import 'package:alibi_shop/feature/auth/check_code/screen/check_code_screen.dart';
 import 'package:alibi_shop/feature/auth/congrats_screen/screen/congrats_screen.dart';
 import 'package:alibi_shop/feature/auth/phone_number/screen/phone_number_screen.dart';
@@ -11,7 +12,7 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: CategoryScreen.routeName,
+    initialLocation: AllProductScreen.routeName,
     routes: [
       ///main
       GoRoute(
@@ -54,6 +55,13 @@ class AppGoRouter {
         pageBuilder: (context, state) => slideTransitionRight(
           state,
           const ProfileScreen(),
+        ),
+      ),
+      GoRoute(
+        path: AllProductScreen.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const AllProductScreen(),
         ),
       ),
     ],

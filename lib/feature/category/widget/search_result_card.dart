@@ -1,6 +1,5 @@
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 
 class SearchResultCard extends StatelessWidget {
   const SearchResultCard({super.key});
