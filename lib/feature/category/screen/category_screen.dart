@@ -35,41 +35,12 @@ class CategoryScreen extends StatelessWidget {
                     child: TopSearchWidget(),
                   ),
                   const SizedBox(height: 22),
-                  Stack(
-                    children: [
-                      SizedBox(
-                        height: 318,
-                        child: Padding(
-                          padding: EdgeInsets.only(left: 42.w),
-                          child: ListView.builder(
-                            itemCount: 10,
-                            shrinkWrap: true,
-                            clipBehavior: Clip.antiAlias,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) => const Padding(
-                              padding: EdgeInsets.only(left: 20),
-                              child: CategoryCard(),
-                            ),
-                          ),
-                        ),
-                      ),
-                      const Positioned(
-                        left: 22,
-                        top: 24,
-                        child: RotatedBox(
-                          quarterTurns: 3,
-                          child: Text(
-                            "Jacket",
-                            style: TextStyle(
-                              color: Color(0xFF14181E),
-                              fontSize: 16,
-                              fontWeight: FontWeight.normal,
-                            ),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
+                  const CategoryCard(categoryName: "Jacket"),
+                  const SizedBox(height: 22),
+                  const CategoryCard(categoryName: "Cap"),
+                  const SizedBox(height: 22),
+                  const CategoryCard(categoryName: ""),
+                  const SizedBox(height: 22),
                 ],
               ),
             ),

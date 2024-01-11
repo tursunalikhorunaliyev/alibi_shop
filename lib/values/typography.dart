@@ -18,9 +18,23 @@ class AppFonts {
     color: Color(0xFF121212),
     fontFamily: AppFontFamilies.plusJakarta,
   );
+  static const hh3SemiBold = TextStyle(
+    fontSize: 18,
+    height: 23 / 18,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF121212),
+    fontFamily: AppFontFamilies.plusJakarta,
+  );
   static const headingH3 = TextStyle(
     fontSize: 24,
     height: 32 / 24,
+    fontWeight: FontWeight.w700,
+    color: Color(0xFF121212),
+    fontFamily: AppFontFamilies.plusJakarta,
+  );
+  static const heading1Bold = TextStyle(
+    fontSize: 32,
+    height: 38 / 32,
     fontWeight: FontWeight.w700,
     color: Color(0xFF121212),
     fontFamily: AppFontFamilies.plusJakarta,
@@ -43,6 +57,13 @@ class AppFonts {
     fontSize: 14,
     height: 22 / 14,
     fontWeight: FontWeight.w500,
+    color: Color(0xFF121212),
+    fontFamily: AppFontFamilies.plusJakarta,
+  );
+  static const bb2Regular = TextStyle(
+    fontSize: 14,
+    height: 15 / 14,
+    fontWeight: FontWeight.w400,
     color: Color(0xFF121212),
     fontFamily: AppFontFamilies.plusJakarta,
   );
