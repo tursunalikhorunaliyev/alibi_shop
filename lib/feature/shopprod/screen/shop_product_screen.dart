@@ -1,6 +1,6 @@
 import 'package:alibi_shop/feature/shopprod/widget/selectable_color.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
-import 'package:alibi_shop/feature/widget/cards/order_card.dart';
+import 'package:alibi_shop/feature/widget/cards/total_payment.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
@@ -322,10 +322,6 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   );
                 },
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.all(24),
-              child: OrderCard(),
             ),
           ],
         ),
