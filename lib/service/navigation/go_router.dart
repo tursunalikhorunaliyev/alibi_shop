@@ -3,6 +3,7 @@ import 'package:alibi_shop/feature/auth/check_code/screen/check_code_screen.dart
 import 'package:alibi_shop/feature/auth/congrats_screen/screen/congrats_screen.dart';
 import 'package:alibi_shop/feature/auth/phone_number/screen/phone_number_screen.dart';
 import 'package:alibi_shop/feature/category/screen/category_screen.dart';
+import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
 import 'package:alibi_shop/feature/home/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
 import 'package:alibi_shop/service/navigation/navigation_service.dart';
