@@ -14,7 +14,7 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: ShopProductScreen.routeName,
+    initialLocation: ConfirmOrderScreen.routeName,
     routes: [
       ///main
       GoRoute(

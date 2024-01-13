@@ -5,6 +5,8 @@ import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 class AppBottomSheet {
   static SlidingSheetDialog sheetDialog({required Widget content}) {
     return SlidingSheetDialog(
+      cornerRadiusOnFullscreen: 0,
+      cornerRadius: 32,
       duration: const Duration(milliseconds: 300),
       snapSpec: const SnapSpec(
         snap: true,
