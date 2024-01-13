@@ -58,7 +58,8 @@ class _AllProductScreenState extends State<AllProductScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: changed
                           ? ListView.builder(
-                              itemCount: 2,
+                              itemCount: 10,
+                              physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
                               itemBuilder: (context, index) => const Padding(
                                 padding: EdgeInsets.only(bottom: 20),
@@ -66,7 +67,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
                               ),
                             )
                           : GridView.builder(
-                              itemCount: 2,
+                              itemCount: 10,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:

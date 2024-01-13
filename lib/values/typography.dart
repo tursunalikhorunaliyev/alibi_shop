@@ -67,6 +67,13 @@ class AppFonts {
     color: Color(0xFF121212),
     fontFamily: AppFontFamilies.plusJakarta,
   );
+  static const bb2SemiBold = TextStyle(
+    fontSize: 14,
+    height: 18 / 14,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF121212),
+    fontFamily: AppFontFamilies.plusJakarta,
+  );
   static const bb1Semibold = TextStyle(
     fontSize: 16,
     height: 20 / 16,

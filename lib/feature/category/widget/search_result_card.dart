@@ -57,7 +57,7 @@ class SearchResultCard extends StatelessWidget {
                           .copyWith(color: const Color(0xFF614FE0)),
                     ),
                   ]),
-                )
+                ),
               ],
             ),
           ],

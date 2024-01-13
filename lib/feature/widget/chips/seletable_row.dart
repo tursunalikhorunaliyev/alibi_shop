@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 
 class SelectableRow extends StatefulWidget {
-  const SelectableRow({super.key});
+  final bool isSize;
+  const SelectableRow({super.key, this.isSize = false});
 
   @override
   State<SelectableRow> createState() => _SelectableRowState();
@@ -12,11 +13,12 @@ class _SelectableRowState extends State<SelectableRow> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 28,
+      height: widget.isSize ? 48 : 28,
       child: ListView.builder(
-        itemCount: list.length,
+        itemCount: widget.isSize ? listSize.length : list.length,
         scrollDirection: Axis.horizontal,
-        padding: const EdgeInsets.symmetric(horizontal: 24),
+        padding:
+            widget.isSize ? null : const EdgeInsets.symmetric(horizontal: 24),
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 8),
@@ -29,7 +31,9 @@ class _SelectableRowState extends State<SelectableRow> {
               child: Container(
                 alignment: Alignment.center,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(12),
+                  borderRadius:
+                      widget.isSize ? null : BorderRadius.circular(12),
+                  shape: widget.isSize ? BoxShape.circle : BoxShape.rectangle,
                   color: selectIndex == index
                       ? const Color(0xFF14181E)
                       : Colors.white,
@@ -43,7 +47,7 @@ class _SelectableRowState extends State<SelectableRow> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    list[index],
+                    widget.isSize ? listSize[index] : list[index],
                     style: TextStyle(
                       color: selectIndex == index
                           ? Colors.white
@@ -67,5 +71,11 @@ class _SelectableRowState extends State<SelectableRow> {
     "Shirts",
     "Shirts",
     "Shirts",
+  ];
+  List<String> listSize = [
+    "S",
+    "M",
+    "L",
+    "XL",
   ];
 }

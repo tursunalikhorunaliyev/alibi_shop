@@ -5,6 +5,7 @@ import 'package:alibi_shop/feature/auth/phone_number/screen/phone_number_screen.
 import 'package:alibi_shop/feature/category/screen/category_screen.dart';
 import 'package:alibi_shop/feature/home/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
+import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
 import 'package:alibi_shop/service/navigation/navigation_service.dart';
 import 'package:alibi_shop/service/transition/transitions.dart';
 import 'package:go_router/go_router.dart';
@@ -12,7 +13,7 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: AllProductScreen.routeName,
+    initialLocation: ShopProductScreen.routeName,
     routes: [
       ///main
       GoRoute(
@@ -41,6 +42,13 @@ class AppGoRouter {
         pageBuilder: (context, state) => slideTransitionRight(
           state,
           const HomeScreen(),
+        ),
+      ),
+      GoRoute(
+        path: ShopProductScreen.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const ShopProductScreen(),
         ),
       ),
       GoRoute(
