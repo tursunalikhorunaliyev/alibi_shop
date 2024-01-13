@@ -1,5 +1,6 @@
 import 'package:alibi_shop/feature/shopprod/widget/selectable_color.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
+import 'package:alibi_shop/feature/widget/cards/order_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
@@ -164,8 +165,62 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   const SelectableRow(isSize: true),
                   SizedBox(height: 8.h),
                   InkWell(
-                    onTap: () {},
-                    borderRadius: BorderRadius.circular(10),
+                    onTap: () {
+                      showModalBottomSheet<void>(
+                        context: context,
+                        builder: (BuildContext context) {
+                          return Container(
+                            height: 350,
+                            decoration: const BoxDecoration(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(32),
+                              ),
+                              color: Color(0xFFFEFEFE),
+                            ),
+                            child: Center(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  const SizedBox(height: 16),
+                                  Center(
+                                    child: InkWell(
+                                      child: Container(
+                                        width: 58,
+                                        height: 5,
+                                        decoration: BoxDecoration(
+                                          color: const Color(0xFFDEDEDE),
+                                          borderRadius:
+                                              BorderRadius.circular(5),
+                                        ),
+                                      ),
+                                      onTap: () => Navigator.pop(context),
+                                    ),
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 24),
+                                    child: Column(
+                                      children: [
+                                        const Text(
+                                          "Chose your size",
+                                          style: AppFonts.hh3SemiBold,
+                                        ),
+                                        const SizedBox(height: 16),
+                                        Image.asset(
+                                          "assets/picture/sizes.png",
+                                        ),
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              ),
+                            ),
+                          );
+                        },
+                      );
+                    },
+                    borderRadius: BorderRadius.circular(4),
                     child: const Text(
                       "Choose your size?",
                       style: TextStyle(
@@ -267,6 +322,10 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   );
                 },
               ),
+            ),
+            const Padding(
+              padding: EdgeInsets.all(24),
+              child: OrderCard(),
             ),
           ],
         ),
