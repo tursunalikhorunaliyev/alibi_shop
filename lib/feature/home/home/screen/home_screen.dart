@@ -2,6 +2,7 @@ import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/feature/widget/news/new_product_page.dart';
 import 'package:alibi_shop/feature/widget/news/top_new.dart';
+import 'package:alibi_shop/feature/widget/part_header.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -98,38 +99,12 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      const Text(
-                        "Special for you",
-                        style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.bold,
-                          color: Color(0xFF14181E),
-                        ),
-                      ),
-                      Row(
-                        children: [
-                          const Text(
-                            "See All",
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF614FE0),
-                            ),
-                          ),
-                          const SizedBox(width: 6),
-                          SvgPicture.asset(
-                            "assets/icons/arrowRight.svg",
-                            width: 16,
-                            height: 16,
-                          ),
-                        ],
-                      ),
-                    ],
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24),
+                  child: PartHeader(
+                    leftText: "Special for you",
+                    rightText: "See All",
+                    iconName: "arrowRight.svg",
                   ),
                 ),
                 const Padding(

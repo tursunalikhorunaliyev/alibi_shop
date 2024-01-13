@@ -4,16 +4,22 @@ import 'package:flutter_svg/flutter_svg.dart';
 class MainProductCard extends StatelessWidget {
   final bool isLittle;
   final bool isChanged;
+  final bool isSmall;
   const MainProductCard({
     super.key,
     this.isLittle = false,
     this.isChanged = false,
+    this.isSmall = false,
   });
 
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: isLittle ? 262 : 358,
+      height: isLittle
+          ? 262
+          : isSmall
+              ? 208
+              : 358,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -22,9 +28,17 @@ class MainProductCard extends StatelessWidget {
               ClipRRect(
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
-                  "assets/picture/clothes.jpg",
-                  width: isLittle ? 140 : 180,
-                  height: isLittle ? 140 : 220,
+                  "assets/picture/nike.png",
+                  width: isLittle
+                      ? 140
+                      : isSmall
+                          ? 140
+                          : 180,
+                  height: isLittle
+                      ? 140
+                      : isSmall
+                          ? 140
+                          : 220,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -40,19 +54,19 @@ class MainProductCard extends StatelessWidget {
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset("assets/icons/heart.svg"),
+                    child: SvgPicture.asset("assets/icons/heartwhite.svg"),
                   ),
                 ),
               )
             ],
           ),
           SizedBox(
-            width: isLittle ? 140 : 180,
-            child: const Text(
+            width: isSmall ? 140 : 180,
+            child: Text(
               "VOLUMINOUS TOP LIMITED adwbww",
-              maxLines: 2,
+              maxLines: isSmall ? 1 : 2,
               overflow: TextOverflow.ellipsis,
-              style: TextStyle(
+              style: const TextStyle(
                 color: Color(0xFF14181E),
                 fontFamily: "Plus Jakarta Sans",
                 fontSize: 16,
@@ -86,34 +100,36 @@ class MainProductCard extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          InkWell(
-            onTap: () {},
-            child: Container(
-              width: isLittle ? 140 : 180,
-              height: isLittle ? 36 : 50,
-              decoration: BoxDecoration(
-                color: const Color(0xFF14181E),
-                borderRadius: BorderRadius.circular(12),
-              ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  SvgPicture.asset("assets/icons/bag.svg"),
-                  const SizedBox(width: 10),
-                  const Text(
-                    "add to cart",
-                    style: TextStyle(
-                      fontFamily: "Plus Jakarta Sans",
-                      fontSize: 16,
-                      color: Color(0xFFFEFEFE),
-                      fontWeight: FontWeight.normal,
+          isSmall ? const SizedBox() : const SizedBox(height: 12),
+          isSmall
+              ? const SizedBox()
+              : InkWell(
+                  onTap: () {},
+                  child: Container(
+                    width: isLittle ? 140 : 180,
+                    height: isLittle ? 36 : 50,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF14181E),
+                      borderRadius: BorderRadius.circular(12),
                     ),
-                  )
-                ],
-              ),
-            ),
-          )
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bag.svg"),
+                        const SizedBox(width: 10),
+                        const Text(
+                          "add to cart",
+                          style: TextStyle(
+                            fontFamily: "Plus Jakarta Sans",
+                            fontSize: 16,
+                            color: Color(0xFFFEFEFE),
+                            fontWeight: FontWeight.normal,
+                          ),
+                        )
+                      ],
+                    ),
+                  ),
+                )
         ],
       ),
     );
