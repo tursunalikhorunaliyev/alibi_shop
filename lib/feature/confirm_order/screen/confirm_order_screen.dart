@@ -1,6 +1,13 @@
 import 'package:alibi_shop/feature/confirm_order/widget/order_card.dart';
 import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
+import 'package:alibi_shop/feature/widget/cards/order_require_card.dart';
+import 'package:alibi_shop/feature/widget/cards/total_payment.dart';
+import 'package:alibi_shop/feature/widget/news/top_bar.dart';
+import 'package:alibi_shop/feature/widget/part_header.dart';
+import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 
 class ConfirmOrderScreen extends StatefulWidget {
@@ -17,38 +24,124 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      floatingActionButton: FloatingActionButton(onPressed: () {
-        showSlidingBottomSheet(
-          context,
-          builder: (context) => AppBottomSheet.sheetDialog(
-            content: ListView.builder(
-              shrinkWrap: true,
-              primary: false,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: elements.length,
-              itemBuilder: (context, index) => OrderCard(
-                imageLink: elements[index].imageLink,
-                productName: elements[index].productName,
-                productColor: elements[index].productColor,
-                productSize: elements[index].productSize,
-                productPrice: elements[index].productPrice,
+      body: Stack(
+        children: [
+          Container(
+            width: double.infinity,
+            height: 380.h,
+            decoration: const BoxDecoration(
+              color: Color(0xFFEDEEEF),
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(32),
               ),
             ),
           ),
-        );
-      }),
-      body: const Padding(
-        padding: EdgeInsets.symmetric(horizontal: 24),
-        child: Center(
-          child: OrderCard(
-            imageLink:
-                "https://i.pinimg.com/736x/9f/43/2b/9f432b815a7a1ed11cf3f5c0e1a08a6a.jpg",
-            productColor: Colors.brown,
-            productName: "Roller Rabbit",
-            productPrice: 192.00,
-            productSize: "M",
+          SingleChildScrollView(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 35),
+              child: Column(
+                children: [
+                  const TopBar(
+                    backgoundColor: Color(0xFFFEFEFE),
+                  ),
+                  const SizedBox(height: 16),
+                  PartHeader(
+                    leftText: "Summary",
+                    rightText: "See details",
+                    iconName: "arrowRight2.svg",
+                    onPressed: () {
+                      showSlidingBottomSheet(
+                        context,
+                        builder: (context) => AppBottomSheet.sheetDialog(
+                          content: ListView.builder(
+                            shrinkWrap: true,
+                            primary: false,
+                            physics: const NeverScrollableScrollPhysics(),
+                            itemCount: elements.length,
+                            itemBuilder: (context, index) => OrderCard(
+                              imageLink: elements[index].imageLink,
+                              productName: elements[index].productName,
+                              productColor: elements[index].productColor,
+                              productSize: elements[index].productSize,
+                              productPrice: elements[index].productPrice,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                  SizedBox(height: 16.h),
+                  ListView.builder(
+                    itemCount: 2,
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 8),
+                        child: OrderCard(
+                          imageLink: elements[index].imageLink,
+                          productName: elements[index].productName,
+                          productColor: elements[index].productColor,
+                          productSize: elements[index].productSize,
+                          productPrice: elements[index].productPrice,
+                        ),
+                      );
+                    },
+                  ),
+                  const SizedBox(height: 32),
+                  const Row(
+                    children: [
+                      Text("Price", style: AppFonts.hh3SemiBold),
+                      Spacer(),
+                      Text("\$89.10", style: AppFonts.hh3SemiBold),
+                    ],
+                  ),
+                  const SizedBox(height: 32),
+                  const TotalPayment(),
+                  const SizedBox(height: 32),
+                  const OrderRequireCard(
+                    text: "Address",
+                    iconName: "location2.svg",
+                  ),
+                  SizedBox(height: 16.h),
+                  const OrderRequireCard(
+                    isSmall: true,
+                    text: "Date and time",
+                    iconName: "location2.svg",
+                  ),
+                  SizedBox(height: 16.h),
+                  const OrderRequireCard(
+                    isSmall: true,
+                    text: "Payment",
+                    iconName: "location2.svg",
+                  ),
+                  SizedBox(height: 32.h),
+                  Container(
+                    width: double.infinity,
+                    height: 50,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF14181E),
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset("assets/icons/bag.svg"),
+                        const SizedBox(width: 10),
+                        Text(
+                          "Add to Cart | \$100.99 -  \$190.99",
+                          style: AppFonts.bb1Semibold.copyWith(
+                            color: const Color(0xFFFFFFFF),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
-        ),
+        ],
       ),
     );
   }

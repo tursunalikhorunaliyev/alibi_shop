@@ -25,6 +25,7 @@ class OrderCard extends StatelessWidget {
       height: 140.h,
       padding: const EdgeInsets.all(10),
       decoration: ShapeDecoration(
+        color: const Color(0xFFFEFEFE),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

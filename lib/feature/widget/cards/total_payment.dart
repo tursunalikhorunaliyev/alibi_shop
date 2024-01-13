@@ -1,14 +1,15 @@
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 
-class OrderCard extends StatelessWidget {
-  const OrderCard({super.key});
+class TotalPayment extends StatelessWidget {
+  const TotalPayment({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
+        color: const Color(0xFFFEFEFE),
         border: Border.all(
           width: 1,
           color: const Color(0xFFEAEBED),
