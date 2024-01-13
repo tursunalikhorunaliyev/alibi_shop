@@ -25,6 +25,13 @@ class AppFonts {
     color: Color(0xFF14181E),
     fontFamily: AppFontFamilies.plusJakarta,
   );
+  static const hh3Bold = TextStyle(
+    fontSize: 18,
+    height: 23 / 18,
+    fontWeight: FontWeight.bold,
+    color: Color(0xFF121212),
+    fontFamily: AppFontFamilies.plusJakarta,
+  );
   static const headingH3 = TextStyle(
     fontSize: 24,
     height: 32 / 24,
@@ -93,6 +100,13 @@ class AppFonts {
     height: 24 / 18,
     fontWeight: FontWeight.w700,
     color: Color(0xFF14181E),
+    fontFamily: AppFontFamilies.plusJakarta,
+  );
+  static const captionRegular = TextStyle(
+    fontSize: 12,
+    height: 15 / 12,
+    fontWeight: FontWeight.w600,
+    color: Color(0xFF999A9D),
     fontFamily: AppFontFamilies.plusJakarta,
   );
 }
