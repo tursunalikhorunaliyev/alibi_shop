@@ -95,20 +95,6 @@ class AppFonts {
     color: Color(0xFF14181E),
     fontFamily: AppFontFamilies.plusJakarta,
   );
-  static const hh3Bold = TextStyle(
-    fontSize: 18,
-    height: 24 / 18,
-    fontWeight: FontWeight.w700,
-    color: Color(0xFF14181E),
-    fontFamily: AppFontFamilies.plusJakarta,
-  );
-  static const captionRegular = TextStyle(
-    fontSize: 12,
-    height: 15 / 12,
-    fontWeight: FontWeight.w600,
-    color: Color(0xFF999A9D),
-    fontFamily: AppFontFamilies.plusJakarta,
-  );
 }
 
 class AppFontFamilies {
