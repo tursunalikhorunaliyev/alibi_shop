@@ -139,7 +139,7 @@ class OrderCard extends StatelessWidget {
                                     Material(
                                       child: InkWell(
                                         child:
-                                        SvgPicture.asset(Assets.iconsMinus),
+                                            SvgPicture.asset(Assets.iconsMinus),
                                       ),
                                     ),
                                     const Text(
@@ -148,7 +148,8 @@ class OrderCard extends StatelessWidget {
                                     ),
                                     Material(
                                       child: InkWell(
-                                        child: SvgPicture.asset(Assets.iconsPlus),
+                                        child:
+                                            SvgPicture.asset(Assets.iconsPlus),
                                       ),
                                     )
                                   ],
