@@ -118,12 +118,21 @@ class OrderCard extends StatelessWidget {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceBetween,
                                 children: [
-                                  SvgPicture.asset(Assets.iconsMinus),
+                                  Material(
+                                    child: InkWell(
+                                      child:
+                                          SvgPicture.asset(Assets.iconsMinus),
+                                    ),
+                                  ),
                                   const Text(
                                     "1",
                                     style: AppFonts.bb1Medium,
                                   ),
-                                  SvgPicture.asset(Assets.iconsPlus)
+                                  Material(
+                                    child: InkWell(
+                                      child: SvgPicture.asset(Assets.iconsPlus),
+                                    ),
+                                  )
                                 ],
                               ),
                             ),
