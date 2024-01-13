@@ -12,7 +12,7 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: AllProductScreen.routeName,
+    initialLocation: ConfirmOrderScreen.routeName,
     routes: [
       ///main
       GoRoute(
@@ -62,6 +62,13 @@ class AppGoRouter {
         pageBuilder: (context, state) => slideTransitionRight(
           state,
           const AllProductScreen(),
+        ),
+      ),
+      GoRoute(
+        path: ConfirmOrderScreen.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const ConfirmOrderScreen(),
         ),
       ),
     ],
