@@ -1,5 +1,5 @@
+import 'package:alibi_shop/feature/widget/news/top_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class TopNews extends StatefulWidget {
@@ -65,25 +65,8 @@ class _TopNewsState extends State<TopNews> {
           ),
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 38),
-            child: Container(
-              width: double.infinity,
-              height: 72,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xFFFEFEFE).withOpacity(0.32),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset("assets/icons/Filter.svg"),
-                    Image.asset("assets/icons/alibi.png",
-                        width: 95, height: 32),
-                    SvgPicture.asset("assets/icons/noti.svg"),
-                  ],
-                ),
-              ),
+            child: TopBar(
+              backgoundColor: const Color(0xFFFEFEFE).withOpacity(0.32),
             ),
           ),
           Positioned(
