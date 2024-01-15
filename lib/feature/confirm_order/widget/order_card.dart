@@ -2,8 +2,8 @@ import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:flutter_svg/svg.dart';
 
 class OrderCard extends StatelessWidget {
   final String imageLink;
@@ -137,12 +137,26 @@ class OrderCard extends StatelessWidget {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: [
-                                    SvgPicture.asset(Assets.iconsMinus),
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child:
+                                            SvgPicture.asset(Assets.iconsMinus),
+                                      ),
+                                    ),
                                     const Text(
                                       "1",
                                       style: AppFonts.bb1Medium,
                                     ),
-                                    SvgPicture.asset(Assets.iconsPlus)
+                                    Material(
+                                      color: Colors.transparent,
+                                      child: InkWell(
+                                        borderRadius: BorderRadius.circular(10),
+                                        child:
+                                            SvgPicture.asset(Assets.iconsPlus),
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
