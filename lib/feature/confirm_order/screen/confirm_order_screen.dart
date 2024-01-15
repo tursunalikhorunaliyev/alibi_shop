@@ -1,11 +1,14 @@
+import 'package:alibi_shop/feature/confirm_order/widget/bottom_order_card.dart';
 import 'package:alibi_shop/feature/confirm_order/widget/order_card.dart';
 import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
 import 'package:alibi_shop/feature/widget/cards/order_require_card.dart';
 import 'package:alibi_shop/feature/widget/cards/total_payment.dart';
+import 'package:alibi_shop/feature/confirm_order/cubit/button_sheet_cubit.dart';
 import 'package:alibi_shop/feature/widget/news/top_bar.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
@@ -20,6 +23,7 @@ class ConfirmOrderScreen extends StatefulWidget {
 }
 
 class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
+  final cubitButton = ButtonSheetCubit();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,21 +103,71 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                   const SizedBox(height: 32),
                   const TotalPayment(),
                   const SizedBox(height: 32),
-                  const OrderRequireCard(
-                    text: "Address",
+                  OrderRequireCard(
+                    text: "Address | Date and time",
                     iconName: "location2.svg",
+                    onPerssed: () {},
                   ),
                   SizedBox(height: 16.h),
-                  const OrderRequireCard(
-                    isSmall: true,
-                    text: "Date and time",
-                    iconName: "location2.svg",
-                  ),
-                  SizedBox(height: 16.h),
-                  const OrderRequireCard(
+                  OrderRequireCard(
                     isSmall: true,
                     text: "Payment",
                     iconName: "location2.svg",
+                    onPerssed: () {
+                      showSlidingBottomSheet<void>(
+                        context,
+                        builder: (context) => AppBottomSheet.sheetDialog(
+                          content: Material(
+                            child: Column(
+                              mainAxisSize: MainAxisSize.min,
+                              verticalDirection: VerticalDirection.down,
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                SizedBox(height: 16.h),
+                                const Text(
+                                  "Your Payments",
+                                  style: AppFonts.hh3Bold,
+                                ),
+                                SizedBox(height: 16.h),
+                                BlocBuilder<ButtonSheetCubit, ButtonSheetState>(
+                                  bloc: cubitButton,
+                                  builder: (context, state) {
+                                    return Column(
+                                      children: [
+                                        BottomOrder(
+                                          ontap: () {
+                                            selectBtn = true;
+                                            cubitButton.changeState(selectBtn);
+                                          },
+                                          borderColor: state.isTapped == true
+                                              ? const Color(0xFF614FE0)
+                                              : const Color(0xFFEAEBED),
+                                          iconName: "convertcard.svg",
+                                          text: listbuttonsheet[0].text,
+                                        ),
+                                        const SizedBox(height: 12),
+                                        BottomOrder(
+                                          ontap: () {
+                                            selectBtn = false;
+                                            cubitButton.changeState(selectBtn);
+                                          },
+                                          borderColor: state.isTapped == false
+                                              ? const Color(0xFF614FE0)
+                                              : const Color(0xFFEAEBED),
+                                          iconName: "emptywallet.svg",
+                                          text: listbuttonsheet[1].text,
+                                        ),
+                                      ],
+                                    );
+                                  },
+                                ),
+                                const SizedBox(height: 12),
+                              ],
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   ),
                   SizedBox(height: 32.h),
                   Container(
@@ -146,6 +200,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
     );
   }
 
+  bool selectBtn = false;
   List<OutFitModel> elements = [
     OutFitModel(
         imageLink:
@@ -218,6 +273,27 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
         productSize: "L",
         productPrice: 312.58),
   ];
+}
+
+List<ButtonSheetModel> listbuttonsheet = [
+  ButtonSheetModel(
+    icon: " convertcard.svg ",
+    text: "Pay by card",
+  ),
+  ButtonSheetModel(
+    icon: "emptywallet.svg",
+    text: "Pay in cash",
+  )
+];
+
+class ButtonSheetModel {
+  final String icon;
+  final String text;
+
+  ButtonSheetModel({
+    required this.icon,
+    required this.text,
+  });
 }
 
 class OutFitModel {
