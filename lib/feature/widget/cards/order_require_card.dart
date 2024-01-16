@@ -1,3 +1,4 @@
+import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -108,6 +109,25 @@ class OrderRequireCard extends StatelessWidget {
                                 ),
                               ],
                             ),
+                          ),
+                        ),
+                      ],
+                    ),
+              isSmall
+                  ? const SizedBox()
+                  : Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        const SizedBox(height: 16),
+                        const Text(
+                          "Time",
+                          style: AppFonts.hh3Bold,
+                        ),
+                        const SizedBox(height: 4),
+                        Text(
+                          "Choose date and time ",
+                          style: AppFonts.bb2Medium.copyWith(
+                            color: const Color(0xFF999A9D),
                           ),
                         ),
                       ],

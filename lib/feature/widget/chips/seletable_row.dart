@@ -2,7 +2,16 @@ import 'package:flutter/material.dart';
 
 class SelectableRow extends StatefulWidget {
   final bool isSize;
-  const SelectableRow({super.key, this.isSize = false});
+  final Color onFocusContainerColor;
+  final Color onFocusTextColor;
+  final double paddingH;
+  const SelectableRow({
+    super.key,
+    this.isSize = false,
+    this.onFocusContainerColor = const Color(0xFF14181E),
+    this.onFocusTextColor = Colors.white,
+    this.paddingH = 24,
+  });
 
   @override
   State<SelectableRow> createState() => _SelectableRowState();
@@ -17,8 +26,9 @@ class _SelectableRowState extends State<SelectableRow> {
       child: ListView.builder(
         itemCount: widget.isSize ? listSize.length : list.length,
         scrollDirection: Axis.horizontal,
-        padding:
-            widget.isSize ? null : const EdgeInsets.symmetric(horizontal: 24),
+        padding: widget.isSize
+            ? null
+            : EdgeInsets.symmetric(horizontal: widget.paddingH),
         itemBuilder: (context, index) {
           return Padding(
             padding: const EdgeInsets.only(right: 8),
@@ -35,12 +45,12 @@ class _SelectableRowState extends State<SelectableRow> {
                       widget.isSize ? null : BorderRadius.circular(12),
                   shape: widget.isSize ? BoxShape.circle : BoxShape.rectangle,
                   color: selectIndex == index
-                      ? const Color(0xFF14181E)
+                      ? widget.onFocusContainerColor
                       : Colors.white,
                   border: Border.all(
                     width: 1,
                     color: selectIndex == index
-                        ? const Color(0xFF14181E)
+                        ? Colors.transparent
                         : const Color(0xFFF3F3F6),
                   ),
                 ),
@@ -50,7 +60,7 @@ class _SelectableRowState extends State<SelectableRow> {
                     widget.isSize ? listSize[index] : list[index],
                     style: TextStyle(
                       color: selectIndex == index
-                          ? Colors.white
+                          ? widget.onFocusTextColor
                           : const Color(0xFF14181E),
                     ),
                   ),
@@ -67,10 +77,6 @@ class _SelectableRowState extends State<SelectableRow> {
     "All",
     "Clothing",
     "Jacket",
-    "Shirts",
-    "Shirts",
-    "Shirts",
-    "Shirts",
   ];
   List<String> listSize = [
     "S",

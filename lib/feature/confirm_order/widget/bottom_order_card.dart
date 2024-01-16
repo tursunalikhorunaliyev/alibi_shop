@@ -19,7 +19,8 @@ class BottomOrder extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: ontap,
-      child: Container(
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 200),
         width: double.infinity,
         height: 60,
         decoration: BoxDecoration(
