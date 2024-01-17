@@ -8,6 +8,7 @@ import 'package:alibi_shop/feature/home/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
 import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
 import 'package:alibi_shop/feature/test_bottom.dart';
+import 'package:alibi_shop/goe_test.dart';
 import 'package:alibi_shop/service/navigation/navigation_service.dart';
 import 'package:alibi_shop/service/transition/transitions.dart';
 import 'package:go_router/go_router.dart';
@@ -15,7 +16,7 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: TestBottom.routeName,
+    initialLocation: GeoTest.routeName,
     routes: [
       ///main
       GoRoute(
@@ -86,6 +87,13 @@ class AppGoRouter {
         pageBuilder: (context, state) => slideTransitionRight(
           state,
           const ConfirmOrderScreen(),
+        ),
+      ),
+      GoRoute(
+        path: GeoTest.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const GeoTest(),
         ),
       ),
     ],
