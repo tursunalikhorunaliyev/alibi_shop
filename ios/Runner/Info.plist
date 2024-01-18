@@ -2,6 +2,14 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>UIBackgroundModes</key>
+	<string>location</string>
+<key>NSLocationWhenInUseUsageDescription</key>
+<string>We need to use location only app is open</string>
+<key>NSLocationAlwaysUsageDescription</key>
+<string>We need to use location only app is running</string>
+<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+<string>We need to use location when app is running and working on background</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>$(DEVELOPMENT_LANGUAGE)</string>
 	<key>CFBundleDisplayName</key>
