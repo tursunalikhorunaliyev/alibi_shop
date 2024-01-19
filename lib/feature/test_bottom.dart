@@ -4,7 +4,7 @@ import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
 import 'package:go_router/go_router.dart';
 
 class TestBottom extends StatelessWidget {
-  static const String routeName = "/confirm_order_screen";
+  static const String routeName = "/test_bottom";
   const TestBottom({super.key});
 
   @override

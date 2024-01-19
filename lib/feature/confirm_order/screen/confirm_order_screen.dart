@@ -6,11 +6,13 @@ import 'package:alibi_shop/feature/widget/cards/total_payment.dart';
 import 'package:alibi_shop/feature/confirm_order/cubit/button_sheet_cubit.dart';
 import 'package:alibi_shop/feature/widget/news/top_bar.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
+import 'package:alibi_shop/location_screen.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 
 class ConfirmOrderScreen extends StatefulWidget {
@@ -24,6 +26,7 @@ class ConfirmOrderScreen extends StatefulWidget {
 
 class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
   final cubitButton = ButtonSheetCubit();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,15 +44,17 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
             ),
           ),
           SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 35),
               child: Column(
                 children: [
+                  SizedBox(height: 12.h),
                   const TopBar(
                     backgoundColor: Color(0xFFFEFEFE),
                     notifCount: 0,
                   ),
-                  const SizedBox(height: 16),
+                  SizedBox(height: 32.h),
                   PartHeader(
                     leftText: "Summary",
                     rightText: "See details",
@@ -78,12 +83,13 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                   ),
                   SizedBox(height: 16.h),
                   ListView.builder(
-                    itemCount: 2,
+                    itemCount: 3,
                     shrinkWrap: true,
+                    padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: const EdgeInsets.only(bottom: 8),
+                        padding: EdgeInsets.only(bottom: 8.h),
                         child: OrderCard(
                           imageLink: elements[index].imageLink,
                           productName: elements[index].productName,
@@ -94,21 +100,23 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                       );
                     },
                   ),
-                  const SizedBox(height: 32),
+                  SizedBox(height: 16.h),
                   const Row(
                     children: [
-                      Text("Price", style: AppFonts.hh3SemiBold),
+                      Text("Total payment", style: AppFonts.hh3SemiBold),
                       Spacer(),
                       Text("\$89.10", style: AppFonts.hh3SemiBold),
                     ],
                   ),
-                  const SizedBox(height: 32),
+                  SizedBox(height: 32.h),
                   const TotalPayment(),
-                  const SizedBox(height: 32),
+                  SizedBox(height: 32.h),
                   OrderRequireCard(
                     text: "Address | Date and time",
                     iconName: "location2.svg",
-                    onPerssed: () {},
+                    onPerssed: () {
+                      context.push(LocationScreen.routeName);
+                    },
                   ),
                   SizedBox(height: 16.h),
                   OrderRequireCard(
@@ -121,6 +129,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         builder: (context) => AppBottomSheet.sheetDialog(
                           snappings: [0.4, 0.7, 1.0],
                           content: Material(
+                            color: const Color(0xFFFEFEFE),
                             child: Column(
                               mainAxisSize: MainAxisSize.min,
                               verticalDirection: VerticalDirection.down,

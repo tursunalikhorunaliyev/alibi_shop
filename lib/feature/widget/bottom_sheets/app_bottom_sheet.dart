@@ -6,6 +6,7 @@ class AppBottomSheet {
   static SlidingSheetDialog sheetDialog(
       {required Widget content, required List<double> snappings}) {
     return SlidingSheetDialog(
+      color: Colors.white,
       cornerRadiusOnFullscreen: 0,
       cornerRadius: 32,
       duration: const Duration(milliseconds: 300),
@@ -14,6 +15,7 @@ class AppBottomSheet {
         snappings: snappings,
       ),
       builder: (context, state) => Material(
+        color: Colors.white,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24),
           child: content,
