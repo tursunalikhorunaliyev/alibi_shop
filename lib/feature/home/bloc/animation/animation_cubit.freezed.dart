@@ -16,43 +16,42 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$AnimationState {
+  AnimatedData get animatedData => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() data,
+    required TResult Function(AnimatedData animatedData) animating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? data,
+    TResult? Function(AnimatedData animatedData)? animating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? data,
+    TResult Function(AnimatedData animatedData)? animating,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Data value) data,
+    required TResult Function(_Animating value) animating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Data value)? data,
+    TResult? Function(_Animating value)? animating,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Data value)? data,
+    TResult Function(_Animating value)? animating,
     required TResult orElse(),
   }) =>
+      throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $AnimationStateCopyWith<AnimationState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +60,10 @@ abstract class $AnimationStateCopyWith<$Res> {
   factory $AnimationStateCopyWith(
           AnimationState value, $Res Function(AnimationState) then) =
       _$AnimationStateCopyWithImpl<$Res, AnimationState>;
+  @useResult
+  $Res call({AnimatedData animatedData});
+
+  $AnimatedDataCopyWith<$Res> get animatedData;
 }
 
 /// @nodoc
@@ -72,70 +75,120 @@ class _$AnimationStateCopyWithImpl<$Res, $Val extends AnimationState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? animatedData = null,
+  }) {
+    return _then(_value.copyWith(
+      animatedData: null == animatedData
+          ? _value.animatedData
+          : animatedData // ignore: cast_nullable_to_non_nullable
+              as AnimatedData,
+    ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $AnimatedDataCopyWith<$Res> get animatedData {
+    return $AnimatedDataCopyWith<$Res>(_value.animatedData, (value) {
+      return _then(_value.copyWith(animatedData: value) as $Val);
+    });
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
+abstract class _$$AnimatingImplCopyWith<$Res>
+    implements $AnimationStateCopyWith<$Res> {
+  factory _$$AnimatingImplCopyWith(
+          _$AnimatingImpl value, $Res Function(_$AnimatingImpl) then) =
+      __$$AnimatingImplCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({AnimatedData animatedData});
+
+  @override
+  $AnimatedDataCopyWith<$Res> get animatedData;
 }
 
 /// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$AnimationStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
+class __$$AnimatingImplCopyWithImpl<$Res>
+    extends _$AnimationStateCopyWithImpl<$Res, _$AnimatingImpl>
+    implements _$$AnimatingImplCopyWith<$Res> {
+  __$$AnimatingImplCopyWithImpl(
+      _$AnimatingImpl _value, $Res Function(_$AnimatingImpl) _then)
       : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? animatedData = null,
+  }) {
+    return _then(_$AnimatingImpl(
+      null == animatedData
+          ? _value.animatedData
+          : animatedData // ignore: cast_nullable_to_non_nullable
+              as AnimatedData,
+    ));
+  }
 }
 
 /// @nodoc
 
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
+class _$AnimatingImpl implements _Animating {
+  const _$AnimatingImpl(this.animatedData);
+
+  @override
+  final AnimatedData animatedData;
 
   @override
   String toString() {
-    return 'AnimationState.initial()';
+    return 'AnimationState.animating(animatedData: $animatedData)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
+        (other.runtimeType == runtimeType &&
+            other is _$AnimatingImpl &&
+            (identical(other.animatedData, animatedData) ||
+                other.animatedData == animatedData));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode => Object.hash(runtimeType, animatedData);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$AnimatingImplCopyWith<_$AnimatingImpl> get copyWith =>
+      __$$AnimatingImplCopyWithImpl<_$AnimatingImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() data,
+    required TResult Function(AnimatedData animatedData) animating,
   }) {
-    return initial();
+    return animating(animatedData);
   }
 
   @override
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? data,
+    TResult? Function(AnimatedData animatedData)? animating,
   }) {
-    return initial?.call();
+    return animating?.call(animatedData);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? data,
+    TResult Function(AnimatedData animatedData)? animating,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial();
+    if (animating != null) {
+      return animating(animatedData);
     }
     return orElse();
   }
@@ -143,136 +196,39 @@ class _$InitialImpl implements _Initial {
   @override
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Data value) data,
+    required TResult Function(_Animating value) animating,
   }) {
-    return initial(this);
+    return animating(this);
   }
 
   @override
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Data value)? data,
+    TResult? Function(_Animating value)? animating,
   }) {
-    return initial?.call(this);
+    return animating?.call(this);
   }
 
   @override
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Data value)? data,
+    TResult Function(_Animating value)? animating,
     required TResult orElse(),
   }) {
-    if (initial != null) {
-      return initial(this);
+    if (animating != null) {
+      return animating(this);
     }
     return orElse();
   }
 }
 
-abstract class _Initial implements AnimationState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$DataImplCopyWith<$Res> {
-  factory _$$DataImplCopyWith(
-          _$DataImpl value, $Res Function(_$DataImpl) then) =
-      __$$DataImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$DataImplCopyWithImpl<$Res>
-    extends _$AnimationStateCopyWithImpl<$Res, _$DataImpl>
-    implements _$$DataImplCopyWith<$Res> {
-  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$DataImpl implements _Data {
-  const _$DataImpl();
+abstract class _Animating implements AnimationState {
+  const factory _Animating(final AnimatedData animatedData) = _$AnimatingImpl;
 
   @override
-  String toString() {
-    return 'AnimationState.data()';
-  }
-
+  AnimatedData get animatedData;
   @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$DataImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function() data,
-  }) {
-    return data();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function()? data,
-  }) {
-    return data?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function()? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Data value) data,
-  }) {
-    return data(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Data value)? data,
-  }) {
-    return data?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Data value)? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Data implements AnimationState {
-  const factory _Data() = _$DataImpl;
+  @JsonKey(ignore: true)
+  _$$AnimatingImplCopyWith<_$AnimatingImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

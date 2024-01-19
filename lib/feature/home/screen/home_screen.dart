@@ -1,9 +1,11 @@
+import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/feature/widget/news/new_product_page.dart';
 import 'package:alibi_shop/feature/widget/news/top_new.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
@@ -20,6 +22,12 @@ class _HomeScreenState extends State<HomeScreen> {
   final controller = PageController();
 
   @override
+  void initState() {
+    context.read<AnimationCubit>().startAnimation();
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: ScrollConfiguration(
@@ -30,33 +38,55 @@ class _HomeScreenState extends State<HomeScreen> {
             children: [
               const TopNews(),
               SizedBox(height: 32.h),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: 24),
-                child: Text(
-                  "Top Products",
-                  style: TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.bold,
-                    color: Color(0xFF14181E),
-                  ),
-                ),
-              ),
+              Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: BlocBuilder<AnimationCubit, AnimationState>(
+                    builder: (context, state) {
+                      return AnimatedOpacity(
+                        opacity: state.maybeWhen(
+                          orElse: () => 1,
+                          animating: (data) => data.textOpacity,
+                        ),
+                        duration: const Duration(milliseconds: 500),
+                        child: const Text(
+                          "Top Products",
+                          style: TextStyle(
+                            fontSize: 18,
+                            fontWeight: FontWeight.bold,
+                            color: Color(0xFF14181E),
+                          ),
+                        ),
+                      );
+                    },
+                  )),
               const SizedBox(height: 16),
               SizedBox(
-                height: 274.h,
-                child: ListView.builder(
-                  itemCount: 5,
-                  padding: EdgeInsets.symmetric(horizontal: 24.h),
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index) {
-                    return Padding(
-                      padding: EdgeInsets.only(right: 20.w),
-                      child: const MainProductCard(isLittle: true),
-                    );
-                  },
-                ),
-              ),
+                  height: 274.h,
+                  child: BlocBuilder<AnimationCubit, AnimationState>(
+                    builder: (context, state) {
+                      return AnimatedPadding(
+                        curve: Curves.fastLinearToSlowEaseIn,
+                        padding: EdgeInsets.only(
+                            left: state.maybeWhen(
+                          orElse: () => 0,
+                          animating: (data) => data.listPad,
+                        )),
+                        duration: const Duration(milliseconds: 1000),
+                        child: ListView.builder(
+                          itemCount: 5,
+                          padding: EdgeInsets.only(left: 24.h),
+                          shrinkWrap: true,
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return Padding(
+                              padding: EdgeInsets.only(right: 20.w),
+                              child: const MainProductCard(isLittle: true),
+                            );
+                          },
+                        ),
+                      );
+                    },
+                  )),
               const SizedBox(height: 16),
               Center(
                 child: SmoothPageIndicator(
