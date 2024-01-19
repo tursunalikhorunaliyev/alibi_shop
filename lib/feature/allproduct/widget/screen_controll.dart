@@ -3,8 +3,10 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class ScreenControll extends StatefulWidget {
   final Function(bool boolean) onChanged;
+  final String text;
 
-  const ScreenControll({super.key, required this.onChanged});
+  const ScreenControll(
+      {super.key, required this.onChanged, this.text = "Special for you"});
 
   @override
   State<ScreenControll> createState() => _ScreenControllState();
@@ -17,9 +19,9 @@ class _ScreenControllState extends State<ScreenControll> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        const Text(
-          "Special for you",
-          style: TextStyle(
+        Text(
+          widget.text,
+          style: const TextStyle(
             fontSize: 18,
             fontWeight: FontWeight.bold,
             color: Color(0xFF14181E),

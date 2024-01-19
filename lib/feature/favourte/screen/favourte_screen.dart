@@ -6,16 +6,16 @@ import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:flutter/material.dart';
 
-class AllProductScreen extends StatefulWidget {
-  static const String routeName = "/all_product_screen";
+class FavouriteScreen extends StatefulWidget {
+  static const String routeName = "/favourte_screen";
 
-  const AllProductScreen({super.key});
+  const FavouriteScreen({super.key});
 
   @override
-  State<AllProductScreen> createState() => _AllProductScreenState();
+  State<FavouriteScreen> createState() => FavouriteScreenState();
 }
 
-class _AllProductScreenState extends State<AllProductScreen> {
+class FavouriteScreenState extends State<FavouriteScreen> {
   bool changed = false;
   double containerHeight = 0;
   void _containerTimer() {
