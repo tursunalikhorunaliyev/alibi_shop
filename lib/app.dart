@@ -21,7 +21,6 @@ class _MyAppState extends State<MyApp> {
       designSize: const Size(430, 932),
       builder: (context, child) {
         return MaterialApp.router(
-          title: 'i8Speak',
           routerConfig: router.router,
           debugShowCheckedModeBanner: false,
           theme: ThemeData(
