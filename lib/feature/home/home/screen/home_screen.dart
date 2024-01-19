@@ -3,10 +3,7 @@ import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/feature/widget/news/new_product_page.dart';
 import 'package:alibi_shop/feature/widget/news/top_new.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
-import 'package:alibi_shop/generated/assets.dart';
-import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -95,7 +92,16 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               const Padding(
                 padding: EdgeInsets.symmetric(vertical: 16),
-                child: SelectableRow(),
+                child: SelectableRow(
+                  list: [
+                    "All",
+                    "Clothing",
+                    "Jacket",
+                    "Shirts",
+                    "Sweetshirts",
+                    "Knitwere"
+                  ],
+                ),
               ),
               GridView.builder(
                 itemCount: 2,
