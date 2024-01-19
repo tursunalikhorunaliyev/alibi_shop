@@ -1,4 +1,3 @@
-import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

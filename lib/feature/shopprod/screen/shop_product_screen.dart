@@ -161,7 +161,15 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                     style: AppFonts.bb2SemiBold,
                   ),
                   SizedBox(height: 8.h),
-                  const SelectableRow(isSize: true),
+                  const SelectableRow(
+                    isSize: true,
+                    list: [
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                    ],
+                  ),
                   SizedBox(height: 8.h),
                   InkWell(
                     onTap: () {

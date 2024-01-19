@@ -23,6 +23,10 @@ class _MyAppState extends State<MyApp> {
         return MaterialApp.router(
           routerConfig: router.router,
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            useMaterial3: false,
+            // ...
+          ),
         );
       },
     );

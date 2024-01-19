@@ -1,16 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 
 class SelectableRow extends StatefulWidget {
   final bool isSize;
   final Color onFocusContainerColor;
   final Color onFocusTextColor;
   final double paddingH;
+  final List<String> list;
   const SelectableRow({
     super.key,
     this.isSize = false,
     this.onFocusContainerColor = const Color(0xFF14181E),
     this.onFocusTextColor = Colors.white,
     this.paddingH = 24,
+    required this.list,
   });
 
   @override
@@ -24,7 +27,7 @@ class _SelectableRowState extends State<SelectableRow> {
     return SizedBox(
       height: widget.isSize ? 48 : 28,
       child: ListView.builder(
-        itemCount: widget.isSize ? listSize.length : list.length,
+        itemCount: widget.list.length,
         scrollDirection: Axis.horizontal,
         padding: widget.isSize
             ? null
@@ -57,7 +60,7 @@ class _SelectableRowState extends State<SelectableRow> {
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Text(
-                    widget.isSize ? listSize[index] : list[index],
+                    widget.list[index],
                     style: TextStyle(
                       color: selectIndex == index
                           ? widget.onFocusTextColor
@@ -73,15 +76,5 @@ class _SelectableRowState extends State<SelectableRow> {
     );
   }
 
-  List<String> list = [
-    "All",
-    "Clothing",
-    "Jacket",
-  ];
-  List<String> listSize = [
-    "S",
-    "M",
-    "L",
-    "XL",
-  ];
+  List<String> listSize = [];
 }

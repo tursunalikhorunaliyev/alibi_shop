@@ -1,5 +1,8 @@
+import 'dart:async';
+
 import 'package:alibi_shop/feature/widget/news/top_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class TopNews extends StatefulWidget {
@@ -11,11 +14,24 @@ class TopNews extends StatefulWidget {
 
 class _TopNewsState extends State<TopNews> {
   final controller = PageController();
+
+  double containerHeight = 0;
+  double postionRight = -400;
+  double postionLeft = 400;
+  @override
+  void initState() {
+    _containerTimer();
+    _positionTimer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      height: 480,
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 800),
+      height: containerHeight,
       width: double.infinity,
+      curve: Curves.fastLinearToSlowEaseIn,
       child: Stack(
         children: [
           ClipRRect(
@@ -29,7 +45,7 @@ class _TopNewsState extends State<TopNews> {
               itemBuilder: (context, index) {
                 return Stack(children: [
                   Image.asset(
-                    "assets/picture/topnew.jpg",
+                    "assets/picture/newcloth.jpg",
                     height: 480,
                     width: double.infinity,
                     fit: BoxFit.cover,
@@ -63,10 +79,15 @@ class _TopNewsState extends State<TopNews> {
               },
             ),
           ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 38),
+          AnimatedPositioned(
+            duration: const Duration(milliseconds: 800),
+            curve: Curves.fastLinearToSlowEaseIn,
+            top: 32,
+            left: postionLeft,
+            right: postionRight,
             child: TopBar(
-              backgoundColor: const Color(0xFFFEFEFE).withOpacity(0.32),
+              notifCount: 8,
+              backgoundColor: const Color(0xFFFEFEFE).withOpacity(0.15),
             ),
           ),
           Positioned(
@@ -88,6 +109,21 @@ class _TopNewsState extends State<TopNews> {
         ],
       ),
     );
+  }
+
+  void _containerTimer() {
+    Timer(const Duration(milliseconds: 20), () {
+      containerHeight += 480;
+      setState(() {});
+    });
+  }
+
+  void _positionTimer() {
+    Timer(const Duration(milliseconds: 300), () {
+      postionLeft -= 376;
+      postionRight += 424;
+      setState(() {});
+    });
   }
 }
 
