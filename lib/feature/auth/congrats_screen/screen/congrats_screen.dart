@@ -1,4 +1,4 @@
-import 'package:alibi_shop/feature/home/home/screen/home_screen.dart';
+import 'package:alibi_shop/feature/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/widget/button/auth_button.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/values/app_sizes.dart';

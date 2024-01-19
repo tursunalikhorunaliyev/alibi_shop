@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   itemBuilder: (context, index) {
                     return const Padding(
                       padding: EdgeInsets.only(right: 20),
-                      child: MainProductCard(isLittle: false),
+                      child: MainProductCard(isLittle: true),
                     );
                   },
                 ),
@@ -115,9 +115,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   childAspectRatio: 0.42,
                 ),
                 itemBuilder: (context, index) {
-                  return const MainProductCard(
-                    isLittle: true,
-                  );
+                  return const MainProductCard();
                 },
               ),
             ],

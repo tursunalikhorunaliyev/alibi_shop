@@ -5,8 +5,8 @@ import 'package:alibi_shop/feature/auth/phone_number/screen/phone_number_screen.
 import 'package:alibi_shop/feature/category/screen/category_screen.dart';
 import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
 import 'package:alibi_shop/feature/favourte/screen/favourte_screen.dart';
-import 'package:alibi_shop/feature/home/home.dart';
-import 'package:alibi_shop/feature/home/home/screen/home_screen.dart';
+import 'package:alibi_shop/feature/home/screen/home_screen.dart';
+import 'package:alibi_shop/feature/navigable/screen/home.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
 import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
 import 'package:alibi_shop/feature/test_bottom.dart';
