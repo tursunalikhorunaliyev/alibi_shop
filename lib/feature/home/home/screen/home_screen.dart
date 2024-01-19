@@ -23,115 +23,100 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      bottomNavigationBar: CurvedNavigationBar(
-        backgroundColor: Colors.transparent,
-        color: Colors.black,
-        height: 60,
-        buttonBackgroundColor: const Color(0xFF614FE0),
-        animationDuration: const Duration(milliseconds: 300),
-        items: [
-          SvgPicture.asset(Assets.iconsSetting1),
-          SvgPicture.asset(Assets.iconsSetting),
-          SvgPicture.asset(Assets.iconsSetting2),
-          SvgPicture.asset(Assets.iconsSetting1),
-          SvgPicture.asset(Assets.iconsUser),
-        ],
-      ),
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const TopNews(),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const SizedBox(height: 32),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: Text(
-                    "Top Products",
-                    style: TextStyle(
-                      fontSize: 18,
-                      fontWeight: FontWeight.bold,
-                      color: Color(0xFF14181E),
-                    ),
+      body: ListView(
+        shrinkWrap: true,
+        children: [
+          const TopNews(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 32),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  "Top Products",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF14181E),
                   ),
                 ),
-                const SizedBox(height: 16),
-                SizedBox(
-                  height: 262,
-                  child: ListView.builder(
-                    itemCount: 5,
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    shrinkWrap: true,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return const Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child: MainProductCard(isLittle: false),
-                      );
-                    },
-                  ),
-                ),
-                const SizedBox(height: 16),
-                Center(
-                  child: SmoothPageIndicator(
-                    controller: controller,
-                    count: 5,
-                    effect: const ExpandingDotsEffect(
-                      dotColor: Color(0xFFEAEBED),
-                      dotHeight: 6,
-                      dotWidth: 6,
-                      radius: 6,
-                      activeDotColor: Color(0xFF14181E),
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 32),
-                  child: SizedBox(
-                    height: 180,
-                    child: PageView.builder(
-                      controller: controller,
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return const Center(child: NewProductPage());
-                      },
-                    ),
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
-                  child: PartHeader(
-                    leftText: "Special for you",
-                    rightText: "See All",
-                    iconName: "arrowRight.svg",
-                  ),
-                ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
-                  child: SelectableRow(),
-                ),
-                GridView.builder(
-                  itemCount: 2,
-                  shrinkWrap: true,
-                  physics: const NeverScrollableScrollPhysics(),
+              ),
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 262,
+                child: ListView.builder(
+                  itemCount: 5,
                   padding: const EdgeInsets.symmetric(horizontal: 24),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2,
-                    crossAxisSpacing: 20,
-                    mainAxisSpacing: 20,
-                    childAspectRatio: 0.42,
-                  ),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return const MainProductCard(
-                      isLittle: true,
+                    return const Padding(
+                      padding: EdgeInsets.only(right: 20),
+                      child: MainProductCard(isLittle: false),
                     );
                   },
                 ),
-              ],
-            ),
-          ],
-        ),
+              ),
+              const SizedBox(height: 16),
+              Center(
+                child: SmoothPageIndicator(
+                  controller: controller,
+                  count: 5,
+                  effect: const ExpandingDotsEffect(
+                    dotColor: Color(0xFFEAEBED),
+                    dotHeight: 6,
+                    dotWidth: 6,
+                    radius: 6,
+                    activeDotColor: Color(0xFF14181E),
+                  ),
+                ),
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 32),
+                child: SizedBox(
+                  height: 180,
+                  child: PageView.builder(
+                    controller: controller,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return const Center(child: NewProductPage());
+                    },
+                  ),
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: PartHeader(
+                  leftText: "Special for you",
+                  rightText: "See All",
+                  iconName: "arrowRight.svg",
+                ),
+              ),
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child: SelectableRow(),
+              ),
+              GridView.builder(
+                itemCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: 0.42,
+                ),
+                itemBuilder: (context, index) {
+                  return const MainProductCard(
+                    isLittle: true,
+                  );
+                },
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }

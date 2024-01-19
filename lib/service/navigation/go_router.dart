@@ -4,11 +4,12 @@ import 'package:alibi_shop/feature/auth/congrats_screen/screen/congrats_screen.d
 import 'package:alibi_shop/feature/auth/phone_number/screen/phone_number_screen.dart';
 import 'package:alibi_shop/feature/category/screen/category_screen.dart';
 import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
+import 'package:alibi_shop/feature/home/home.dart';
 import 'package:alibi_shop/feature/home/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
 import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
 import 'package:alibi_shop/feature/test_bottom.dart';
-import 'package:alibi_shop/goe_test.dart';
+import 'package:alibi_shop/location_screen.dart';
 import 'package:alibi_shop/service/navigation/navigation_service.dart';
 import 'package:alibi_shop/service/transition/transitions.dart';
 import 'package:go_router/go_router.dart';
@@ -16,7 +17,7 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: GeoTest.routeName,
+    initialLocation: Home.routeName,
     routes: [
       ///main
       GoRoute(
@@ -90,10 +91,17 @@ class AppGoRouter {
         ),
       ),
       GoRoute(
-        path: GeoTest.routeName,
+        path: LocationScreen.routeName,
         pageBuilder: (context, state) => slideTransitionRight(
           state,
-          const GeoTest(),
+          const LocationScreen(),
+        ),
+      ),
+      GoRoute(
+        path: Home.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const Home(),
         ),
       ),
     ],
