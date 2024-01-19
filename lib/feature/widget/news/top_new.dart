@@ -112,14 +112,14 @@ class _TopNewsState extends State<TopNews> {
   }
 
   void _containerTimer() {
-    Timer(const Duration(milliseconds: 20), () {
+    Timer(const Duration(milliseconds: 800), () {
       containerHeight += 480;
       setState(() {});
     });
   }
 
   void _positionTimer() {
-    Timer(const Duration(milliseconds: 300), () {
+    Timer(const Duration(milliseconds: 900), () {
       postionLeft -= 376;
       postionRight += 424;
       setState(() {});
