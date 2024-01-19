@@ -47,6 +47,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                 children: [
                   const TopBar(
                     backgoundColor: Color(0xFFFEFEFE),
+                    notifCount: 0,
                   ),
                   const SizedBox(height: 16),
                   PartHeader(
@@ -57,6 +58,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                       showSlidingBottomSheet(
                         context,
                         builder: (context) => AppBottomSheet.sheetDialog(
+                          snappings: [0.4, 0.7, 1.0],
                           content: ListView.builder(
                             shrinkWrap: true,
                             primary: false,
@@ -117,6 +119,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                       showSlidingBottomSheet<void>(
                         context,
                         builder: (context) => AppBottomSheet.sheetDialog(
+                          snappings: [0.4, 0.7, 1.0],
                           content: Material(
                             child: Column(
                               mainAxisSize: MainAxisSize.min,

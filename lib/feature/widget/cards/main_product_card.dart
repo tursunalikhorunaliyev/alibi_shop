@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class MainProductCard extends StatelessWidget {
+class MainProductCard extends StatefulWidget {
   final bool isLittle;
   final bool isChanged;
   final bool isSmall;
@@ -13,11 +15,17 @@ class MainProductCard extends StatelessWidget {
   });
 
   @override
+  State<MainProductCard> createState() => _MainProductCardState();
+}
+
+class _MainProductCardState extends State<MainProductCard> {
+  bool isTap = false;
+  @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: isLittle
+      height: widget.isLittle
           ? 262
-          : isSmall
+          : widget.isSmall
               ? 208
               : 358,
       child: Column(
@@ -29,14 +37,14 @@ class MainProductCard extends StatelessWidget {
                 borderRadius: BorderRadius.circular(12),
                 child: Image.asset(
                   "assets/picture/nike.png",
-                  width: isLittle
+                  width: widget.isLittle
                       ? 140
-                      : isSmall
+                      : widget.isSmall
                           ? 140
                           : 180,
-                  height: isLittle
+                  height: widget.isLittle
                       ? 140
-                      : isSmall
+                      : widget.isSmall
                           ? 140
                           : 220,
                   fit: BoxFit.cover,
@@ -45,26 +53,36 @@ class MainProductCard extends StatelessWidget {
               Positioned(
                 right: 8,
                 top: 8,
-                child: Container(
-                  width: 32,
-                  height: 32,
-                  decoration: BoxDecoration(
-                    color: const Color(0xFF14181E),
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: SvgPicture.asset("assets/icons/heartwhite.svg"),
+                child: InkWell(
+                  onTap: () {
+                    isTap = !isTap;
+                    setState(() {});
+                  },
+                  child: Container(
+                    width: 32,
+                    height: 32,
+                    decoration: BoxDecoration(
+                      color: const Color(0xFF14181E),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: SvgPicture.asset(
+                        isTap
+                            ? "assets/icons/heart2.svg"
+                            : "assets/icons/heartwhite.svg",
+                      ),
+                    ),
                   ),
                 ),
               )
             ],
           ),
           SizedBox(
-            width: isSmall ? 140 : 180,
+            width: widget.isSmall || widget.isLittle ? 140 : 180,
             child: Text(
-              "VOLUMINOUS TOP LIMITED adwbww",
-              maxLines: isSmall ? 1 : 2,
+              "VOLUMINOUS TOP LIMITED adwbww avdwvadu wdabduwb",
+              maxLines: widget.isSmall ? 1 : 2,
               overflow: TextOverflow.ellipsis,
               style: const TextStyle(
                 color: Color(0xFF14181E),
@@ -100,14 +118,14 @@ class MainProductCard extends StatelessWidget {
               ),
             ],
           ),
-          isSmall ? const SizedBox() : const SizedBox(height: 12),
-          isSmall
+          widget.isSmall ? const SizedBox() : const SizedBox(height: 12),
+          widget.isSmall
               ? const SizedBox()
               : InkWell(
                   onTap: () {},
                   child: Container(
-                    width: isLittle ? 140 : 180,
-                    height: isLittle ? 36 : 50,
+                    width: widget.isLittle ? 140 : 180,
+                    height: widget.isLittle ? 36 : 50,
                     decoration: BoxDecoration(
                       color: const Color(0xFF14181E),
                       borderRadius: BorderRadius.circular(12),

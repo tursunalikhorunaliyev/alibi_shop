@@ -1,9 +1,11 @@
+import 'dart:async';
 import 'package:alibi_shop/feature/allproduct/widget/screen_controll.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class AllProductScreen extends StatefulWidget {
   static const String routeName = "/all_product_screen";
@@ -16,15 +18,31 @@ class AllProductScreen extends StatefulWidget {
 
 class _AllProductScreenState extends State<AllProductScreen> {
   bool changed = false;
+  double containerHeight = 0;
+  void _containerTimer() {
+    Timer(const Duration(milliseconds: 200), () {
+      containerHeight += 380;
+      setState(() {});
+    });
+  }
+
+  @override
+  void initState() {
+    _containerTimer();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
         child: Stack(
           children: [
-            Container(
+            AnimatedContainer(
+              duration: const Duration(milliseconds: 800),
+              curve: Curves.fastEaseInToSlowEaseOut,
               width: double.infinity,
-              height: 280,
+              height: containerHeight,
               decoration: const BoxDecoration(
                 color: Color(0xFFEDEEEF),
                 borderRadius: BorderRadius.only(
@@ -52,7 +70,22 @@ class _AllProductScreenState extends State<AllProductScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const SelectableRow(),
+                  const SelectableRow(
+                    list: [
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                    ],
+                  ),
                   const SizedBox(height: 16),
                   Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 24),

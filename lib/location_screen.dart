@@ -1,10 +1,19 @@
 import 'dart:async';
-import 'dart:developer';
 
+import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
+import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
+import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
+import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_holo_date_picker/flutter_holo_date_picker.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:geocoding/geocoding.dart';
+import 'package:go_router/go_router.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:location/location.dart' as location;
+import 'package:wtf_sliding_sheet/wtf_sliding_sheet.dart';
 
 class LocationScreen extends StatefulWidget {
   static const String routeName = "/geo_test_screen";
@@ -24,6 +33,7 @@ class _LocationScreenState extends State<LocationScreen> {
   );
 
   List<Marker> myMarkers = [];
+  late List<Placemark> placeMarks;
 
   @override
   void initState() {
@@ -47,9 +57,9 @@ class _LocationScreenState extends State<LocationScreen> {
         },
         markers: Set<Marker>.of(myMarkers),
         onTap: (argument) async {
-          List<Placemark> placeMarks = await placemarkFromCoordinates(
+          placeMarks = await placemarkFromCoordinates(
               argument.latitude, argument.longitude);
-          print(placeMarks);
+          print(placeMarks[0]);
           myMarkers.clear();
           myMarkers.add(
             Marker(
@@ -57,6 +67,7 @@ class _LocationScreenState extends State<LocationScreen> {
               position: LatLng(argument.latitude, argument.longitude),
             ),
           );
+          _showBottomSheet();
           setState(() {});
         },
         zoomControlsEnabled: false,
@@ -96,4 +107,185 @@ class _LocationScreenState extends State<LocationScreen> {
     controller.animateCamera(CameraUpdate.newCameraPosition(cameraPosition));
     setState(() {});
   }
+
+  void _showBottomSheet() {
+    showSlidingBottomSheet(
+      context,
+      builder: (context) {
+        return AppBottomSheet.sheetDialog(
+          snappings: [0.7],
+          content: Column(
+            mainAxisSize: MainAxisSize.min,
+            verticalDirection: VerticalDirection.down,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  const Text(
+                    "Detail Address",
+                    style: AppFonts.hh3Bold,
+                  ),
+                  const Spacer(),
+                  SvgPicture.asset("assets/icons/pritsel.svg")
+                ],
+              ),
+              const SizedBox(height: 16),
+              Row(
+                children: [
+                  Container(
+                    width: 48.w,
+                    height: 48.h,
+                    decoration: const BoxDecoration(
+                      shape: BoxShape.circle,
+                      color: Color(0xFFFAF9FD),
+                    ),
+                    child: Padding(
+                      padding: const EdgeInsets.all(14.0),
+                      child: SvgPicture.asset("assets/icons/location2.svg"),
+                    ),
+                  ),
+                  SizedBox(width: 16.w),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "${placeMarks[0].street}",
+                        style: AppFonts.bb2SemiBold,
+                      ),
+                      SizedBox(height: 4.h),
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width * 0.7,
+                        child: Text(
+                          "${placeMarks[0].administrativeArea} ${placeMarks[0].subLocality} ${placeMarks[0].thoroughfare}",
+                          style: AppFonts.bb2Medium.copyWith(
+                            color: const Color(0xFF999A9D),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(height: 16.h),
+              const Text(
+                "Save Address As",
+                style: AppFonts.hh3Bold,
+              ),
+              SizedBox(height: 16.h),
+              const SelectableRow(
+                onFocusContainerColor: Color(0xFFFAF9FD),
+                onFocusTextColor: Color(0xFF614FE0),
+                paddingH: 0,
+                list: ["Home", "Offices", "Field yard"],
+              ),
+              SizedBox(height: 16.h),
+              const Text(
+                "Time",
+                style: AppFonts.bb2Medium,
+              ),
+              SizedBox(height: 6.h),
+              TextField(
+                controller: txt,
+                decoration: InputDecoration(
+                  hintText: "Choose a time",
+                  hintStyle: AppFonts.bb1Regular.copyWith(
+                    color: const Color(0xFF59616C),
+                  ),
+                  filled: true,
+                  fillColor: const Color(0xFFFAFAFA),
+                  suffixIcon: Padding(
+                    padding: const EdgeInsets.all(10.0),
+                    child: InkWell(
+                      onTap: () async {
+                        final date = await DatePicker.showSimpleDatePicker(
+                          context,
+                          backgroundColor: const Color(0xFFFEFEFE),
+                          // initialDate: DateTime(2020),
+                          firstDate: DateTime(2020),
+                          lastDate: DateTime(2090),
+                          dateFormat: "dd-MMMM-yyyy",
+                          locale: DateTimePickerLocale.en_us,
+                          initialDate: DateTime.now(),
+                          looping: true,
+                          pickerMode: DateTimePickerMode.datetime,
+                        );
+                        var time = await showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                        );
+                        String day = date!.day.toString();
+                        String month = date.month.toString();
+                        String minute = time!.minute.toString();
+                        String hour = time.hour.toString();
+                        if (day.length == 1) {
+                          day = "0$day";
+                        }
+                        if (month.length == 1) {
+                          month = "0$month";
+                        }
+                        if (minute.length == 1) {
+                          minute = "0$minute";
+                        }
+                        if (hour.length == 1) {
+                          hour = "0$hour";
+                        }
+                        String dateTime =
+                            "$day-$month-${date.year}  $hour:$minute";
+                        txt.value = TextEditingValue(text: dateTime);
+                      },
+                      child: SvgPicture.asset(
+                        "assets/icons/calendaradd.svg",
+                        width: 24,
+                        height: 24,
+                      ),
+                    ),
+                  ),
+                  border: const OutlineInputBorder(
+                    borderSide: BorderSide.none,
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.h),
+              InkWell(
+                onTap: () {
+                  context.pushReplacement(ConfirmOrderScreen.routeName);
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  height: 50,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: const Color(0xFF14181E),
+                  ),
+                  child: Text(
+                    "Save",
+                    style: AppFonts.hh3SemiBold.copyWith(
+                      color: const Color(0xFFFEFEFE),
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(height: 18.h),
+              Center(
+                child: InkWell(
+                  onTap: () {
+                    context.pop();
+                  },
+                  child: const Text(
+                    "Close",
+                    style: AppFonts.hh3SemiBold,
+                  ),
+                ),
+              ),
+              SizedBox(height: 16.h),
+            ],
+          ),
+        );
+      },
+    );
+  }
+
+  var txt = TextEditingController();
 }

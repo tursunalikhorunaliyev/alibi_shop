@@ -21,6 +21,11 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final controller = PageController();
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       bottomNavigationBar: CurvedNavigationBar(
@@ -61,13 +66,13 @@ class _HomeScreenState extends State<HomeScreen> {
                   height: 262,
                   child: ListView.builder(
                     itemCount: 5,
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    padding: const EdgeInsets.symmetric(horizontal: 14),
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return const Padding(
-                        padding: EdgeInsets.only(right: 20),
-                        child: MainProductCard(isLittle: false),
+                        padding: EdgeInsets.symmetric(horizontal: 10),
+                        child: MainProductCard(isLittle: true),
                       );
                     },
                   ),
@@ -109,10 +114,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 const Padding(
                   padding: EdgeInsets.symmetric(vertical: 16),
-                  child: SelectableRow(),
+                  child: SelectableRow(
+                    list: [
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                      "S",
+                      "M",
+                      "L",
+                      "XL",
+                    ],
+                  ),
                 ),
                 GridView.builder(
-                  itemCount: 2,
+                  itemCount: 4,
                   shrinkWrap: true,
                   physics: const NeverScrollableScrollPhysics(),
                   padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -120,12 +136,10 @@ class _HomeScreenState extends State<HomeScreen> {
                     crossAxisCount: 2,
                     crossAxisSpacing: 20,
                     mainAxisSpacing: 20,
-                    childAspectRatio: 0.42,
+                    childAspectRatio: 0.46,
                   ),
                   itemBuilder: (context, index) {
-                    return const MainProductCard(
-                      isLittle: true,
-                    );
+                    return const MainProductCard();
                   },
                 ),
               ],

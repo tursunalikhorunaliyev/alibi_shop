@@ -24,6 +24,10 @@ class _MyAppState extends State<MyApp> {
           title: 'i8Speak',
           routerConfig: router.router,
           debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            useMaterial3: false,
+            // ...
+          ),
         );
       },
     );
