@@ -22,109 +22,107 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SingleChildScrollView(
-
-        child:
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            const TopNews(),
-            SizedBox(height: 32.h),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: Text(
-                "Top Products",
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF14181E),
+      body: ScrollConfiguration(
+        behavior: const ScrollBehavior().copyWith(overscroll: false),
+        child: SingleChildScrollView(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const TopNews(),
+              SizedBox(height: 32.h),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: Text(
+                  "Top Products",
+                  style: TextStyle(
+                    fontSize: 18,
+                    fontWeight: FontWeight.bold,
+                    color: Color(0xFF14181E),
+                  ),
                 ),
               ),
-            ),
-            const SizedBox(height: 16),
-            SizedBox(
-              height: 274.h,
-              child: ListView.builder(
-                itemCount: 5,
-                padding: EdgeInsets.symmetric(horizontal: 24.h),
-                shrinkWrap: true,
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(right: 20.w),
-                    child: const MainProductCard(isLittle: true),
-                  );
-                },
-              ),
-            ),
-            const SizedBox(height: 16),
-            Center(
-              child: SmoothPageIndicator(
-                controller: controller,
-                count: 5,
-                effect: const ExpandingDotsEffect(
-                  dotColor: Color(0xFFEAEBED),
-                  dotHeight: 6,
-                  dotWidth: 6,
-                  radius: 6,
-                  activeDotColor: Color(0xFF14181E),
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32),
-              child: SizedBox(
-                height: 180,
-                child: PageView.builder(
-                  controller: controller,
+              const SizedBox(height: 16),
+              SizedBox(
+                height: 274.h,
+                child: ListView.builder(
                   itemCount: 5,
+                  padding: EdgeInsets.symmetric(horizontal: 24.h),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return const Center(child: NewProductPage());
+                    return Padding(
+                      padding: EdgeInsets.only(right: 20.w),
+                      child: const MainProductCard(isLittle: true),
+                    );
                   },
                 ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(horizontal: 24),
-              child: PartHeader(
-                leftText: "Special for you",
-                rightText: "See All",
-                iconName: "arrowRight.svg",
+              const SizedBox(height: 16),
+              Center(
+                child: SmoothPageIndicator(
+                  controller: controller,
+                  count: 5,
+                  effect: const ExpandingDotsEffect(
+                    dotColor: Color(0xFFEAEBED),
+                    dotHeight: 6,
+                    dotWidth: 6,
+                    radius: 6,
+                    activeDotColor: Color(0xFF14181E),
+                  ),
+                ),
               ),
-            ),
-            const Padding(
-              padding: EdgeInsets.symmetric(vertical: 16),
-              child: SelectableRow(
-                list: [
-                  "All",
-                  "Clothing",
-                  "Jacket",
-                  "Shirts",
-                  "Sweetshirts",
-                  "Knitwere"
-                ],
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 32),
+                child: SizedBox(
+                  height: 180,
+                  child: PageView.builder(
+                    controller: controller,
+                    itemCount: 5,
+                    itemBuilder: (context, index) {
+                      return const Center(child: NewProductPage());
+                    },
+                  ),
+                ),
               ),
-            ),
-            GridView.builder(
-              itemCount: 2,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              padding: const EdgeInsets.symmetric(horizontal: 24),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20,
-                childAspectRatio: 0.42,
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: 24),
+                child: PartHeader(
+                  leftText: "Special for you",
+                  rightText: "See All",
+                  iconName: "arrowRight.svg",
+                ),
               ),
-              itemBuilder: (context, index) {
-                return const MainProductCard(
-                  isLittle: true,
-                );
-              },
-            ),
-          ],
+              const Padding(
+                padding: EdgeInsets.symmetric(vertical: 16),
+                child: SelectableRow(
+                  list: [
+                    "All",
+                    "Clothing",
+                    "Jacket",
+                    "Shirts",
+                    "Sweetshirts",
+                    "Knitwere"
+                  ],
+                ),
+              ),
+              GridView.builder(
+                itemCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                padding: const EdgeInsets.symmetric(horizontal: 24),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: 20,
+                  mainAxisSpacing: 20,
+                  childAspectRatio: 0.42,
+                ),
+                itemBuilder: (context, index) {
+                  return const MainProductCard();
+                },
+              ),
+            ],
+          ),
         ),
-
       ),
     );
   }

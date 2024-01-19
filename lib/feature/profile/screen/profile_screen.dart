@@ -54,6 +54,7 @@ class ProfileScreen extends StatelessWidget {
                     child: ListView.builder(
                       itemCount: 5,
                       scrollDirection: Axis.horizontal,
+                      physics: const BouncingScrollPhysics(),
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       itemBuilder: (context, index) {
                         return const PeymentCard();
