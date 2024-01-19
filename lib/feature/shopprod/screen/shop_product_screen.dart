@@ -19,6 +19,7 @@ class ShopProductScreen extends StatefulWidget {
 
 class _ShopProductScreenState extends State<ShopProductScreen> {
   final controller = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,10 +42,10 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   ),
                 ),
                 Positioned(
-                  top: 40,
-                  left: 24,
-                  right: 24,
-                  bottom: 40,
+                  top: 46.h,
+                  left: 24.w,
+                  right: 24.w,
+                  bottom: 40.h,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.end,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -53,8 +54,8 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Container(
-                            width: 44,
-                            height: 44,
+                            width: 44.w,
+                            height: 44.h,
                             decoration: const BoxDecoration(
                               color: Color(0xFFFEFEFE),
                               shape: BoxShape.circle,
@@ -63,18 +64,17 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                           ),
                           const Spacer(),
                           Container(
-                            height: 40,
+                            height: 40.h,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(36),
                               color: const Color(0xFFFEFEFE),
                             ),
                             child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 20),
+                              padding: EdgeInsets.symmetric(horizontal: 20.w),
                               child: Row(
                                 children: [
                                   SvgPicture.asset("assets/icons/send.svg"),
-                                  const SizedBox(width: 20),
+                                  SizedBox(width: 20.w),
                                   SvgPicture.asset("assets/icons/heart.svg"),
                                 ],
                               ),
@@ -94,18 +94,18 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                           activeDotColor: Color(0xFF14181E),
                         ),
                       ),
-                      const SizedBox(height: 44)
+                      SizedBox(height: 44.h)
                     ],
                   ),
                 ),
               ],
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24),
+              padding: EdgeInsets.symmetric(horizontal: 24.w),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const SizedBox(height: 32),
+                  SizedBox(height: 32.h),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -113,9 +113,9 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          const SizedBox(
-                            width: 200,
-                            child: Text(
+                          SizedBox(
+                            width: 200.w,
+                            child: const Text(
                               "Modern light clothes",
                               style: AppFonts.hh2SemiBold,
                             ),
@@ -142,9 +142,9 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                           color: const Color(0xFF14181E),
                         ),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(
-                            horizontal: 24,
-                            vertical: 16,
+                          padding:  EdgeInsets.symmetric(
+                            horizontal: 24.w,
+                            vertical: 16.h,
                           ),
                           child: Text(
                             "Add to Card",

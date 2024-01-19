@@ -1,12 +1,14 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class MainProductCard extends StatefulWidget {
   final bool isLittle;
   final bool isChanged;
   final bool isSmall;
+
   const MainProductCard({
     super.key,
     this.isLittle = false,
@@ -20,14 +22,15 @@ class MainProductCard extends StatefulWidget {
 
 class _MainProductCardState extends State<MainProductCard> {
   bool isTap = false;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
       height: widget.isLittle
-          ? 262
+          ? 262.h
           : widget.isSmall
-              ? 208
-              : 358,
+              ? 208.h
+              : 358.h,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -38,15 +41,15 @@ class _MainProductCardState extends State<MainProductCard> {
                 child: Image.asset(
                   "assets/picture/nike.png",
                   width: widget.isLittle
-                      ? 140
+                      ? 140.w
                       : widget.isSmall
-                          ? 140
-                          : 180,
+                          ? 140.w
+                          : 180.w,
                   height: widget.isLittle
-                      ? 140
+                      ? 140.h
                       : widget.isSmall
-                          ? 140
-                          : 220,
+                          ? 140.h
+                          : 220.h,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -59,8 +62,8 @@ class _MainProductCardState extends State<MainProductCard> {
                     setState(() {});
                   },
                   child: Container(
-                    width: 32,
-                    height: 32,
+                    width: 32.w,
+                    height: 32.h,
                     decoration: BoxDecoration(
                       color: const Color(0xFF14181E),
                       borderRadius: BorderRadius.circular(8),
@@ -78,6 +81,7 @@ class _MainProductCardState extends State<MainProductCard> {
               )
             ],
           ),
+          SizedBox(height: 16.h),
           SizedBox(
             width: widget.isSmall || widget.isLittle ? 140 : 180,
             child: Text(

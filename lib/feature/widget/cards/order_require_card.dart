@@ -64,7 +64,8 @@ class OrderRequireCard extends StatelessWidget {
                       ),
                       SizedBox(height: 4.h),
                       SizedBox(
-                        width: 230,
+                        width: (MediaQuery.of(context).size.width * 0.58).w,
+
                         child: Text(
                           isSmall
                               ? "Choose date and time "
@@ -76,6 +77,7 @@ class OrderRequireCard extends StatelessWidget {
                       ),
                     ],
                   ),
+                  const Spacer(),
                   SvgPicture.asset(
                     "assets/icons/arrowRight3.svg",
                   ),

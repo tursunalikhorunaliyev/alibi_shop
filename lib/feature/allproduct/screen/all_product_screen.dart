@@ -18,6 +18,7 @@ class AllProductScreen extends StatefulWidget {
 class _AllProductScreenState extends State<AllProductScreen> {
   bool changed = false;
   double containerHeight = 0;
+
   void _containerTimer() {
     Timer(const Duration(milliseconds: 200), () {
       containerHeight += 380;
@@ -53,7 +54,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
             SingleChildScrollView(
               child: Column(
                 children: [
-                  const SizedBox(height: 13),
+                  const SizedBox(height: 12),
                   const Padding(
                     padding: EdgeInsets.symmetric(horizontal: 24),
                     child: TopSearchWidget(),
@@ -71,18 +72,12 @@ class _AllProductScreenState extends State<AllProductScreen> {
                   const SizedBox(height: 16),
                   const SelectableRow(
                     list: [
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
+                      "All",
+                      "Clothing",
+                      "Jacket",
+                      "Shirts",
+                      "Sweetshirts",
+                      "Knitwere"
                     ],
                   ),
                   const SizedBox(height: 16),

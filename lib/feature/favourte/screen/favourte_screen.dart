@@ -18,6 +18,7 @@ class FavouriteScreen extends StatefulWidget {
 class FavouriteScreenState extends State<FavouriteScreen> {
   bool changed = false;
   double containerHeight = 0;
+
   void _containerTimer() {
     Timer(const Duration(milliseconds: 200), () {
       containerHeight += 380;
@@ -51,6 +52,7 @@ class FavouriteScreenState extends State<FavouriteScreen> {
               ),
             ),
             SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   const SizedBox(height: 13),
@@ -62,6 +64,7 @@ class FavouriteScreenState extends State<FavouriteScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: ScreenControll(
+                      text: "Favourte",
                       onChanged: (boolean) {
                         setState(() {});
                         changed = boolean;
@@ -69,52 +72,36 @@ class FavouriteScreenState extends State<FavouriteScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const SelectableRow(
-                    list: [
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
-                      "S",
-                      "M",
-                      "L",
-                      "XL",
-                    ],
-                  ),
-                  const SizedBox(height: 16),
                   Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: changed
-                          ? ListView.builder(
-                              itemCount: 10,
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => const Padding(
-                                padding: EdgeInsets.only(bottom: 20),
-                                child: SearchResultCard(),
-                              ),
-                            )
-                          : GridView.builder(
-                              itemCount: 10,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 20,
-                                mainAxisSpacing: 20,
-                                childAspectRatio: 0.42,
-                              ),
-                              itemBuilder: (context, index) {
-                                return MainProductCard(
-                                  isChanged: changed,
-                                );
-                              },
-                            )),
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: changed
+                        ? ListView.builder(
+                            itemCount: 10,
+                            physics: const NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            itemBuilder: (context, index) => const Padding(
+                              padding: EdgeInsets.only(bottom: 20),
+                              child: SearchResultCard(),
+                            ),
+                          )
+                        : GridView.builder(
+                            itemCount: 10,
+                            shrinkWrap: true,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              crossAxisSpacing: 20,
+                              mainAxisSpacing: 20,
+                              childAspectRatio: 0.46,
+                            ),
+                            itemBuilder: (context, index) {
+                              return MainProductCard(
+                                isChanged: changed,
+                              );
+                            },
+                          ),
+                  ),
                 ],
               ),
             ),
