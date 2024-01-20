@@ -13,6 +13,7 @@ _$AnimatedDataImpl _$$AnimatedDataImplFromJson(Map<String, dynamic> json) =>
       posRight: (json['pos_right'] as num).toDouble(),
       textOpacity: (json['text_opacity'] as num).toDouble(),
       listPad: (json['list_pad'] as num).toDouble(),
+      cardOpacity: (json['card_opacity'] as num).toDouble(),
     );
 
 Map<String, dynamic> _$$AnimatedDataImplToJson(_$AnimatedDataImpl instance) =>
@@ -22,4 +23,5 @@ Map<String, dynamic> _$$AnimatedDataImplToJson(_$AnimatedDataImpl instance) =>
       'pos_right': instance.posRight,
       'text_opacity': instance.textOpacity,
       'list_pad': instance.listPad,
+      'card_opacity': instance.cardOpacity,
     };

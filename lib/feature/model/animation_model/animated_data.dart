@@ -22,6 +22,7 @@ class AnimatedData with _$AnimatedData {
     @JsonKey(name: "pos_right") required double posRight,
     @JsonKey(name: "text_opacity") required double textOpacity,
     @JsonKey(name: "list_pad") required double listPad,
+    @JsonKey(name: "card_opacity") required double cardOpacity,
   }) = _AnimatedData;
 
   factory AnimatedData.fromJson(Map<String, dynamic> json) =>

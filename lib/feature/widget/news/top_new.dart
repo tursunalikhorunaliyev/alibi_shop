@@ -2,6 +2,7 @@ import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
 import 'package:alibi_shop/feature/widget/news/top_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class TopNews extends StatefulWidget {
@@ -76,7 +77,7 @@ class _TopNewsState extends State<TopNews> {
               AnimatedPositioned(
                 duration: const Duration(milliseconds: 800),
                 curve: Curves.fastLinearToSlowEaseIn,
-                top: 32,
+                top: 64.h,
                 left: state.maybeWhen(
                   orElse: () => 400,
                   animating: (data) => data.posLeft,

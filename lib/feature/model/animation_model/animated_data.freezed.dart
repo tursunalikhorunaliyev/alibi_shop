@@ -30,6 +30,8 @@ mixin _$AnimatedData {
   double get textOpacity => throw _privateConstructorUsedError;
   @JsonKey(name: "list_pad")
   double get listPad => throw _privateConstructorUsedError;
+  @JsonKey(name: "card_opacity")
+  double get cardOpacity => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -48,7 +50,8 @@ abstract class $AnimatedDataCopyWith<$Res> {
       @JsonKey(name: "pos_left") double posLeft,
       @JsonKey(name: "pos_right") double posRight,
       @JsonKey(name: "text_opacity") double textOpacity,
-      @JsonKey(name: "list_pad") double listPad});
+      @JsonKey(name: "list_pad") double listPad,
+      @JsonKey(name: "card_opacity") double cardOpacity});
 }
 
 /// @nodoc
@@ -69,6 +72,7 @@ class _$AnimatedDataCopyWithImpl<$Res, $Val extends AnimatedData>
     Object? posRight = null,
     Object? textOpacity = null,
     Object? listPad = null,
+    Object? cardOpacity = null,
   }) {
     return _then(_value.copyWith(
       topHeight: null == topHeight
@@ -91,6 +95,10 @@ class _$AnimatedDataCopyWithImpl<$Res, $Val extends AnimatedData>
           ? _value.listPad
           : listPad // ignore: cast_nullable_to_non_nullable
               as double,
+      cardOpacity: null == cardOpacity
+          ? _value.cardOpacity
+          : cardOpacity // ignore: cast_nullable_to_non_nullable
+              as double,
     ) as $Val);
   }
 }
@@ -108,7 +116,8 @@ abstract class _$$AnimatedDataImplCopyWith<$Res>
       @JsonKey(name: "pos_left") double posLeft,
       @JsonKey(name: "pos_right") double posRight,
       @JsonKey(name: "text_opacity") double textOpacity,
-      @JsonKey(name: "list_pad") double listPad});
+      @JsonKey(name: "list_pad") double listPad,
+      @JsonKey(name: "card_opacity") double cardOpacity});
 }
 
 /// @nodoc
@@ -127,6 +136,7 @@ class __$$AnimatedDataImplCopyWithImpl<$Res>
     Object? posRight = null,
     Object? textOpacity = null,
     Object? listPad = null,
+    Object? cardOpacity = null,
   }) {
     return _then(_$AnimatedDataImpl(
       topHeight: null == topHeight
@@ -149,6 +159,10 @@ class __$$AnimatedDataImplCopyWithImpl<$Res>
           ? _value.listPad
           : listPad // ignore: cast_nullable_to_non_nullable
               as double,
+      cardOpacity: null == cardOpacity
+          ? _value.cardOpacity
+          : cardOpacity // ignore: cast_nullable_to_non_nullable
+              as double,
     ));
   }
 }
@@ -161,7 +175,8 @@ class _$AnimatedDataImpl implements _AnimatedData {
       @JsonKey(name: "pos_left") required this.posLeft,
       @JsonKey(name: "pos_right") required this.posRight,
       @JsonKey(name: "text_opacity") required this.textOpacity,
-      @JsonKey(name: "list_pad") required this.listPad});
+      @JsonKey(name: "list_pad") required this.listPad,
+      @JsonKey(name: "card_opacity") required this.cardOpacity});
 
   factory _$AnimatedDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$AnimatedDataImplFromJson(json);
@@ -181,10 +196,13 @@ class _$AnimatedDataImpl implements _AnimatedData {
   @override
   @JsonKey(name: "list_pad")
   final double listPad;
+  @override
+  @JsonKey(name: "card_opacity")
+  final double cardOpacity;
 
   @override
   String toString() {
-    return 'AnimatedData(topHeight: $topHeight, posLeft: $posLeft, posRight: $posRight, textOpacity: $textOpacity, listPad: $listPad)';
+    return 'AnimatedData(topHeight: $topHeight, posLeft: $posLeft, posRight: $posRight, textOpacity: $textOpacity, listPad: $listPad, cardOpacity: $cardOpacity)';
   }
 
   @override
@@ -199,13 +217,15 @@ class _$AnimatedDataImpl implements _AnimatedData {
                 other.posRight == posRight) &&
             (identical(other.textOpacity, textOpacity) ||
                 other.textOpacity == textOpacity) &&
-            (identical(other.listPad, listPad) || other.listPad == listPad));
+            (identical(other.listPad, listPad) || other.listPad == listPad) &&
+            (identical(other.cardOpacity, cardOpacity) ||
+                other.cardOpacity == cardOpacity));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, topHeight, posLeft, posRight, textOpacity, listPad);
+  int get hashCode => Object.hash(runtimeType, topHeight, posLeft, posRight,
+      textOpacity, listPad, cardOpacity);
 
   @JsonKey(ignore: true)
   @override
@@ -227,7 +247,8 @@ abstract class _AnimatedData implements AnimatedData {
           @JsonKey(name: "pos_left") required final double posLeft,
           @JsonKey(name: "pos_right") required final double posRight,
           @JsonKey(name: "text_opacity") required final double textOpacity,
-          @JsonKey(name: "list_pad") required final double listPad}) =
+          @JsonKey(name: "list_pad") required final double listPad,
+          @JsonKey(name: "card_opacity") required final double cardOpacity}) =
       _$AnimatedDataImpl;
 
   factory _AnimatedData.fromJson(Map<String, dynamic> json) =
@@ -248,6 +269,9 @@ abstract class _AnimatedData implements AnimatedData {
   @override
   @JsonKey(name: "list_pad")
   double get listPad;
+  @override
+  @JsonKey(name: "card_opacity")
+  double get cardOpacity;
   @override
   @JsonKey(ignore: true)
   _$$AnimatedDataImplCopyWith<_$AnimatedDataImpl> get copyWith =>

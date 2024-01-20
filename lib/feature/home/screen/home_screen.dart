@@ -89,16 +89,27 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
               const SizedBox(height: 16),
               Center(
-                child: SmoothPageIndicator(
-                  controller: controller,
-                  count: 5,
-                  effect: const ExpandingDotsEffect(
-                    dotColor: Color(0xFFEAEBED),
-                    dotHeight: 6,
-                    dotWidth: 6,
-                    radius: 6,
-                    activeDotColor: Color(0xFF14181E),
-                  ),
+                child: BlocBuilder<AnimationCubit, AnimationState>(
+                  builder: (context, state) {
+                    return AnimatedOpacity(
+                      opacity: state.maybeWhen(
+                        orElse: () => 0,
+                        animating: (animatedData) => animatedData.cardOpacity,
+                      ),
+                      duration: const Duration(milliseconds: 500),
+                      child: SmoothPageIndicator(
+                        controller: controller,
+                        count: 5,
+                        effect: const ExpandingDotsEffect(
+                          dotColor: Color(0xFFEAEBED),
+                          dotHeight: 6,
+                          dotWidth: 6,
+                          radius: 6,
+                          activeDotColor: Color(0xFF14181E),
+                        ),
+                      ),
+                    );
+                  },
                 ),
               ),
               Padding(
