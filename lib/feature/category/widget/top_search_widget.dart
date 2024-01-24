@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class TopSearchWidget extends StatelessWidget {
-  const TopSearchWidget({super.key});
+  final ValueChanged<String>? onChange;
+  const TopSearchWidget({super.key, this.onChange});
 
   @override
   Widget build(BuildContext context) {
@@ -22,6 +23,7 @@ class TopSearchWidget extends StatelessWidget {
             const SizedBox(width: 12),
             Expanded(
               child: TextField(
+                onChanged: onChange,
                 style: const TextStyle(
                   fontSize: 14,
                   fontFamily: "Plus Jakarta Sans",
