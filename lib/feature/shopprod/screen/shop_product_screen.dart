@@ -1,3 +1,4 @@
+import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:alibi_shop/feature/shopprod/widget/selectable_color.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
@@ -328,7 +329,14 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   return Padding(
                     padding: const EdgeInsets.only(right: 20),
                     child: MainProductCard(
-                        isSmall: true, imageUrl: ImageUrls.sneakers[index]),
+                      isSmall: true,
+                      imageUrl: ImageUrls.sneakers[index],
+                      onClick: (GlobalKey widgetKey) async {
+                        await runAddToCartAnimation(widgetKey);
+                        await cartKey.currentState!.runCartAnimation(
+                            (++_cartQuantityItems).toString());
+                      },
+                    ),
                   );
                 },
               ),
@@ -338,4 +346,8 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
       ),
     );
   }
+
+  GlobalKey<CartIconKey> cartKey = GlobalKey<CartIconKey>();
+  late Function(GlobalKey) runAddToCartAnimation;
+  var _cartQuantityItems = 0;
 }

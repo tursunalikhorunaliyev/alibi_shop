@@ -33,7 +33,11 @@ class TopBar extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 SvgPicture.asset("assets/icons/Filter.svg"),
-                Image.asset("assets/icons/alibi.png", width: 95, height: 32),
+                Image.asset(
+                  "assets/icons/alibi.png",
+                  width: 95,
+                  height: 32,
+                ),
                 Stack(
                   children: [
                     SvgPicture.asset("assets/icons/noti.svg"),
