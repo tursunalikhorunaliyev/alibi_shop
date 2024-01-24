@@ -34,7 +34,12 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 bottomLeft: Radius.circular(32),
               ),
             ),
-          ).animate().moveY(begin: -380, end: 0),
+          ).animate().moveY(
+                begin: -380,
+                end: 0,
+                curve: Curves.fastLinearToSlowEaseIn,
+                duration: 500.ms,
+              ),
           ListView(
             physics: const BouncingScrollPhysics(),
             children: [
@@ -59,19 +64,17 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         const CategoryCard(
                           categoryName: "Sneakers",
                           imageLinks: ImageUrls.sneakers,
-                        ).animate(
-                            delay: const Duration(milliseconds: 500),
-                            effects: const [
-                              FadeEffect(
-                                duration: Duration(milliseconds: 500),
-                              ),
-                              MoveEffect(
-                                duration: Duration(milliseconds: 1000),
-                                begin: Offset(500, 0),
-                                end: Offset(0, 0),
-                                curve: Curves.fastLinearToSlowEaseIn,
-                              )
-                            ]),
+                        ).animate(effects: const [
+                          FadeEffect(
+                            duration: Duration(milliseconds: 500),
+                          ),
+                          MoveEffect(
+                            duration: Duration(milliseconds: 1000),
+                            begin: Offset(500, 0),
+                            end: Offset(0, 0),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                          )
+                        ]),
                         const CategoryCard(
                           categoryName: "Sweet Shirts",
                           imageLinks: ImageUrls.sweetShirts,
