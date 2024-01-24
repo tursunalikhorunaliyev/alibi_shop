@@ -11,12 +11,16 @@ class MainProductCard extends StatefulWidget {
   final bool isSmall;
   final String imageUrl;
 
-  const MainProductCard(
-      {super.key,
-      this.isLittle = false,
-      this.isChanged = false,
-      this.isSmall = false,
-      required this.imageUrl});
+  final void Function(GlobalKey) onClick;
+
+  const MainProductCard({
+    super.key,
+    this.isLittle = false,
+    this.isChanged = false,
+    this.isSmall = false,
+    required this.imageUrl,
+    required this.onClick,
+  });
 
   @override
   State<MainProductCard> createState() => _MainProductCardState();
@@ -24,6 +28,7 @@ class MainProductCard extends StatefulWidget {
 
 class _MainProductCardState extends State<MainProductCard> {
   bool isTap = false;
+  final GlobalKey widgetKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -42,21 +47,24 @@ class _MainProductCardState extends State<MainProductCard> {
           children: [
             Stack(
               children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(12),
-                  child: CachedNetworkImage(
-                    imageUrl: widget.imageUrl,
-                    width: widget.isLittle
-                        ? 140.w
-                        : widget.isSmall
-                            ? 140.w
-                            : 180.w,
-                    height: widget.isLittle
-                        ? 140.h
-                        : widget.isSmall
-                            ? 140.h
-                            : 220.h,
-                    fit: BoxFit.cover,
+                Container(
+                  key: widgetKey,
+                  child: ClipRRect(
+                    borderRadius: BorderRadius.circular(12),
+                    child: CachedNetworkImage(
+                      imageUrl: widget.imageUrl,
+                      width: widget.isLittle
+                          ? 140.w
+                          : widget.isSmall
+                              ? 140.w
+                              : 180.w,
+                      height: widget.isLittle
+                          ? 140.h
+                          : widget.isSmall
+                              ? 140.h
+                              : 220.h,
+                      fit: BoxFit.cover,
+                    ),
                   ),
                 ),
                 Positioned(
@@ -132,7 +140,7 @@ class _MainProductCardState extends State<MainProductCard> {
             widget.isSmall
                 ? const SizedBox()
                 : InkWell(
-                    onTap: () {},
+                    onTap: () => widget.onClick(widgetKey),
                     child: Container(
                       width: widget.isLittle ? 140 : 180,
                       height: widget.isLittle ? 36 : 50,

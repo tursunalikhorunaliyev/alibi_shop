@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:alibi_shop/feature/allproduct/widget/screen_controll.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
@@ -54,6 +55,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
               ),
             ),
             SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   const SizedBox(height: 12),
@@ -104,10 +106,16 @@ class _AllProductScreenState extends State<AllProductScreen> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 20,
                                 mainAxisSpacing: 20,
-                                childAspectRatio: 0.42,
+                                childAspectRatio: 0.48,
                               ),
                               itemBuilder: (context, index) {
                                 return MainProductCard(
+                                  onClick: (GlobalKey widgetKey) async {
+                                    await runAddToCartAnimation(widgetKey);
+                                    await cartKey.currentState!
+                                        .runCartAnimation(
+                                            (++_cartQuantityItems).toString());
+                                  },
                                   isChanged: changed,
                                   imageUrl: ImageUrls.sneakers[index],
                                 );
@@ -121,4 +129,8 @@ class _AllProductScreenState extends State<AllProductScreen> {
       ),
     );
   }
+
+  GlobalKey<CartIconKey> cartKey = GlobalKey<CartIconKey>();
+  late Function(GlobalKey) runAddToCartAnimation;
+  var _cartQuantityItems = 0;
 }

@@ -1,6 +1,7 @@
 import 'package:alibi_shop/service/dio/secure_storage.dart';
+import 'package:alibi_shop/service/locator/service_locator.dart';
 
-
-Future<void> init() async {
+init() async {
   await SecureStorage.initSharedPref();
+  setup();
 }

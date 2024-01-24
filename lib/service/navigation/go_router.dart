@@ -93,7 +93,7 @@ class AppGoRouter {
       ),
       GoRoute(
         path: AllProductScreen.routeName,
-        pageBuilder: (context, state) => slideTransitionRight(
+        pageBuilder: (context, state) => bottomTransition(
           state,
           const AllProductScreen(),
         ),
