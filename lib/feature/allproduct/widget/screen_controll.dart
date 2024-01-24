@@ -13,7 +13,7 @@ class ScreenControll extends StatefulWidget {
 }
 
 class _ScreenControllState extends State<ScreenControll> {
-  bool onTaped = false;
+  bool onTaped = true;
   @override
   Widget build(BuildContext context) {
     return Row(

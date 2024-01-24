@@ -89,12 +89,14 @@ class _AllProductScreenState extends State<AllProductScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: 24),
                       child: changed
                           ? ListView.builder(
-                              itemCount: 10,
+                              itemCount: ImageUrls.sneakers.length,
                               physics: const NeverScrollableScrollPhysics(),
                               shrinkWrap: true,
-                              itemBuilder: (context, index) => const Padding(
-                                padding: EdgeInsets.only(bottom: 20),
-                                child: SearchResultCard(),
+                              itemBuilder: (context, index) => Padding(
+                                padding: const EdgeInsets.only(bottom: 20),
+                                child: SearchResultCard(
+                                  imageUrl: ImageUrls.sneakers[index],
+                                ),
                               ),
                             )
                           : GridView.builder(

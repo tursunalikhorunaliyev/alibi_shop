@@ -95,7 +95,7 @@ class FavouriteScreenState extends State<FavouriteScreen> {
                               child: ListView.builder(
                                 physics: const BouncingScrollPhysics(),
                                 shrinkWrap: true,
-                                itemCount: 100,
+                                itemCount: ImageUrls.sneakers.length,
                                 itemBuilder: (BuildContext context, int index) {
                                   return Padding(
                                     padding: const EdgeInsets.only(bottom: 16),
@@ -103,11 +103,13 @@ class FavouriteScreenState extends State<FavouriteScreen> {
                                       position: index,
                                       duration:
                                           const Duration(milliseconds: 500),
-                                      child: const SlideAnimation(
+                                      child: SlideAnimation(
                                         verticalOffset: 50.0,
                                         child: ScaleAnimation(
                                           curve: Curves.easeInOutQuad,
-                                          child: SearchResultCard(),
+                                          child: SearchResultCard(
+                                            imageUrl: ImageUrls.sneakers[index],
+                                          ),
                                         ),
                                       ),
                                     ),

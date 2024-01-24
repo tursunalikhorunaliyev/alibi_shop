@@ -2,6 +2,7 @@ import 'package:alibi_shop/feature/category/widget/category_card.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_link.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
+import 'package:alibi_shop/values/imageurls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -25,7 +26,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
         children: [
           Container(
             width: double.infinity,
-            height: 20,
+            height: 380,
             decoration: const BoxDecoration(
               color: Color(0xFFEDEEEF),
               borderRadius: BorderRadius.only(
@@ -33,8 +34,9 @@ class _CategoryScreenState extends State<CategoryScreen> {
                 bottomLeft: Radius.circular(32),
               ),
             ),
-          ),
+          ).animate().moveY(begin: -380, end: 0),
           ListView(
+            physics: const BouncingScrollPhysics(),
             children: [
               SizedBox(height: 10.h),
               Padding(
@@ -54,19 +56,10 @@ class _CategoryScreenState extends State<CategoryScreen> {
               !isSearched
                   ? Column(
                       children: [
-                        const CategoryCard(categoryName: "Jacket")
-                            .animate(effects: const [
-                          FadeEffect(
-                            duration: Duration(milliseconds: 500),
-                          ),
-                          MoveEffect(
-                            duration: Duration(milliseconds: 1000),
-                            begin: Offset(500, 0),
-                            end: Offset(0, 0),
-                            curve: Curves.fastLinearToSlowEaseIn,
-                          )
-                        ]),
-                        const CategoryCard(categoryName: "Jacket").animate(
+                        const CategoryCard(
+                          categoryName: "Sneakers",
+                          imageLinks: ImageUrls.sneakers,
+                        ).animate(
                             delay: const Duration(milliseconds: 500),
                             effects: const [
                               FadeEffect(
@@ -79,7 +72,52 @@ class _CategoryScreenState extends State<CategoryScreen> {
                                 curve: Curves.fastLinearToSlowEaseIn,
                               )
                             ]),
-                        const CategoryCard(categoryName: "Jacket"),
+                        const CategoryCard(
+                          categoryName: "Sweet Shirts",
+                          imageLinks: ImageUrls.sweetShirts,
+                        ).animate(
+                            delay: const Duration(milliseconds: 500),
+                            effects: const [
+                              FadeEffect(
+                                duration: Duration(milliseconds: 500),
+                              ),
+                              MoveEffect(
+                                duration: Duration(milliseconds: 1000),
+                                begin: Offset(500, 0),
+                                end: Offset(0, 0),
+                                curve: Curves.fastLinearToSlowEaseIn,
+                              )
+                            ]),
+                        const CategoryCard(
+                          categoryName: "Jacket",
+                          imageLinks: ImageUrls.jackets,
+                        ).animate(effects: const [
+                          FadeEffect(
+                            duration: Duration(milliseconds: 500),
+                          ),
+                          MoveEffect(
+                            duration: Duration(milliseconds: 1000),
+                            begin: Offset(500, 0),
+                            end: Offset(0, 0),
+                            curve: Curves.fastLinearToSlowEaseIn,
+                          )
+                        ]),
+                        const CategoryCard(
+                          categoryName: "Shirts",
+                          imageLinks: ImageUrls.shirts,
+                        ).animate(
+                            delay: const Duration(milliseconds: 500),
+                            effects: const [
+                              FadeEffect(
+                                duration: Duration(milliseconds: 500),
+                              ),
+                              MoveEffect(
+                                duration: Duration(milliseconds: 1000),
+                                begin: Offset(500, 0),
+                                end: Offset(0, 0),
+                                curve: Curves.fastLinearToSlowEaseIn,
+                              )
+                            ]),
                       ],
                     )
                   : Expanded(
@@ -113,13 +151,15 @@ class _CategoryScreenState extends State<CategoryScreen> {
                               ),
                               const SizedBox(height: 20),
                               ListView.builder(
-                                itemCount: 5,
+                                itemCount: ImageUrls.jackets.length,
                                 shrinkWrap: true,
                                 physics: const NeverScrollableScrollPhysics(),
                                 itemBuilder: (context, index) {
-                                  return const Padding(
-                                    padding: EdgeInsets.only(bottom: 12),
-                                    child: SearchResultCard(),
+                                  return Padding(
+                                    padding: const EdgeInsets.only(bottom: 12),
+                                    child: SearchResultCard(
+                                      imageUrl: ImageUrls.jackets[index],
+                                    ),
                                   ).animate(
                                     delay: const Duration(milliseconds: 500),
                                     effects: [

@@ -1,10 +1,13 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CategoryCard extends StatefulWidget {
   final String categoryName;
+  final List<String> imageLinks;
 
-  const CategoryCard({super.key, required this.categoryName});
+  const CategoryCard(
+      {super.key, required this.categoryName, required this.imageLinks});
 
   @override
   State<CategoryCard> createState() => _CategoryCardState();
@@ -37,7 +40,7 @@ class _CategoryCardState extends State<CategoryCard> {
               controller: pageController,
               scrollDirection: Axis.horizontal,
               physics: const BouncingScrollPhysics(),
-              itemCount: list.length,
+              itemCount: widget.imageLinks.length,
               itemBuilder: (context, index) => Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
                 child: Column(
@@ -65,8 +68,8 @@ class _CategoryCardState extends State<CategoryCard> {
                               topLeft: Radius.circular(20),
                               topRight: Radius.circular(20),
                             ),
-                            child: Image.asset(
-                              "assets/picture/jacket.jpg",
+                            child: CachedNetworkImage(
+                              imageUrl: widget.imageLinks[index],
                               width: double.infinity,
                               height: 200,
                               fit: BoxFit.cover,
@@ -79,7 +82,9 @@ class _CategoryCardState extends State<CategoryCard> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  list[index],
+                                  index == 0
+                                      ? "STRAIGHT FIT SPRAY JEANS"
+                                      : "Black by Zara",
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 2,
                                   style: const TextStyle(
@@ -132,8 +137,3 @@ class _CategoryCardState extends State<CategoryCard> {
     );
   }
 }
-
-List<String> list = [
-  "Sesavfbdg wavdwa vdtgawvd",
-  "wdawbvdyt",
-];

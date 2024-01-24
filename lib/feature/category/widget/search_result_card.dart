@@ -1,14 +1,18 @@
 import 'package:alibi_shop/values/typography.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class SearchResultCard extends StatelessWidget {
-  const SearchResultCard({super.key});
+  final String imageUrl;
+  const SearchResultCard({super.key, required this.imageUrl});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: double.infinity,
-      height: 112,
+      height: 112.h,
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(12),
           color: Colors.white,
@@ -23,10 +27,13 @@ class SearchResultCard extends StatelessWidget {
         padding: const EdgeInsets.all(10),
         child: Row(
           children: [
-            Image.asset(
-              "assets/picture/nike.png",
-              width: 120,
-              fit: BoxFit.cover,
+            ClipRRect(
+              borderRadius: BorderRadius.circular(12),
+              child: CachedNetworkImage(
+                imageUrl: imageUrl,
+                width: 120,
+                fit: BoxFit.cover,
+              ),
             ),
             const SizedBox(width: 14),
             Column(
