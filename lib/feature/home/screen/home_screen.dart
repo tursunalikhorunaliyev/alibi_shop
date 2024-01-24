@@ -1,4 +1,5 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
+import 'package:alibi_shop/feature/allproduct/screen/all_product_screen.dart';
 import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
 import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
@@ -14,6 +15,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -149,12 +151,15 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
                   child: PartHeader(
                     leftText: "Special for you",
                     rightText: "See All",
                     iconName: "arrowRight.svg",
+                    onPressed: () {
+                      context.push(AllProductScreen.routeName);
+                    },
                   ),
                 ),
                 const Padding(

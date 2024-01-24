@@ -55,6 +55,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
               ),
             ),
             SingleChildScrollView(
+              physics: const BouncingScrollPhysics(),
               child: Column(
                 children: [
                   const SizedBox(height: 12),
@@ -105,7 +106,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
                                 crossAxisCount: 2,
                                 crossAxisSpacing: 20,
                                 mainAxisSpacing: 20,
-                                childAspectRatio: 0.42,
+                                childAspectRatio: 0.48,
                               ),
                               itemBuilder: (context, index) {
                                 return MainProductCard(
