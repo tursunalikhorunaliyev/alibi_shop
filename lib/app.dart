@@ -1,4 +1,6 @@
+import 'package:alibi_shop/feature/confirm_order/bloc/rekvizits/rekvizits_cubit.dart';
 import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
+import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
 import 'package:alibi_shop/service/navigation/go_router.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -20,6 +22,8 @@ class _MyAppState extends State<MyApp> {
     return MultiProvider(
         providers: [
           BlocProvider(create: (context) => AnimationCubit()),
+          BlocProvider(create: (context) => CategoryCubit()),
+          BlocProvider(create: (context) => RekvizitsCubit())
         ],
         child: ScreenUtilInit(
           minTextAdapt: true,

@@ -1,9 +1,11 @@
 import 'dart:async';
+
 import 'package:alibi_shop/feature/allproduct/widget/screen_controll.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
+import 'package:alibi_shop/values/imageurls.dart';
 import 'package:flutter/material.dart';
 
 class AllProductScreen extends StatefulWidget {
@@ -94,7 +96,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
                               ),
                             )
                           : GridView.builder(
-                              itemCount: 10,
+                              itemCount: 12,
                               shrinkWrap: true,
                               physics: const NeverScrollableScrollPhysics(),
                               gridDelegate:
@@ -107,6 +109,7 @@ class _AllProductScreenState extends State<AllProductScreen> {
                               itemBuilder: (context, index) {
                                 return MainProductCard(
                                   isChanged: changed,
+                                  imageUrl: ImageUrls.sneakers[index],
                                 );
                               },
                             )),

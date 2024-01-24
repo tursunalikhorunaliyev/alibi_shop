@@ -1,9 +1,9 @@
-import 'package:alibi_shop/feature/allproduct/screen/all_product_screen.dart';
+import 'package:alibi_shop/feature/category/screen/category_screen.dart';
 import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
+import 'package:alibi_shop/feature/favourte/screen/favourte_screen.dart';
 import 'package:alibi_shop/feature/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/navigable/bloc/navigable_index.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
-import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +27,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBody: true,
       bottomNavigationBar: BlocBuilder<NavigableIndex, int>(
         bloc: navigableCubit,
         builder: (context, state) {
@@ -38,11 +39,11 @@ class _HomeState extends State<Home> {
             buttonBackgroundColor: const Color(0xFF614FE0),
             animationDuration: const Duration(milliseconds: 300),
             items: [
-              SvgPicture.asset(Assets.iconsHome),
-              SvgPicture.asset(Assets.iconsSetting),
-              SvgPicture.asset(Assets.iconsSetting2),
-              SvgPicture.asset(Assets.iconsSetting1),
-              SvgPicture.asset(Assets.iconsUser),
+              navBarItem(Assets.iconsHome),
+              navBarItem(Assets.iconsSetting),
+              navBarItem(Assets.iconsSetting2),
+              navBarItem(Assets.iconsSetting1),
+              navBarItem(Assets.iconsUser),
             ],
             onTap: (value) {
               pageController.jumpToPage(value);
@@ -58,12 +59,19 @@ class _HomeState extends State<Home> {
         physics: const BouncingScrollPhysics(),
         children: const [
           HomeScreen(),
-          ShopProductScreen(),
+          CategoryScreen(),
           ConfirmOrderScreen(),
-          AllProductScreen(),
+          FavouriteScreen(),
           ProfileScreen()
         ],
       ),
+    );
+  }
+
+  Widget navBarItem(String iconPath) {
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: SvgPicture.asset(iconPath),
     );
   }
 }

@@ -35,7 +35,7 @@ class ProfileScreen extends StatelessWidget {
                       shape: BoxShape.circle,
                       image: DecorationImage(
                         image: AssetImage(
-                          "assets/picture/qancu.png",
+                          "assets/picture/qizaloq.png",
                         ),
                       ),
                     ),

@@ -1,12 +1,14 @@
+import 'package:alibi_shop/feature/confirm_order/bloc/bottomsheet/button_sheet_cubit.dart';
+import 'package:alibi_shop/feature/confirm_order/bloc/order_counter/order_counter.dart';
+import 'package:alibi_shop/feature/confirm_order/bloc/rekvizits/rekvizits_cubit.dart';
 import 'package:alibi_shop/feature/confirm_order/widget/bottom_order_card.dart';
 import 'package:alibi_shop/feature/confirm_order/widget/order_card.dart';
+import 'package:alibi_shop/feature/location/location_screen.dart';
 import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
 import 'package:alibi_shop/feature/widget/cards/order_require_card.dart';
 import 'package:alibi_shop/feature/widget/cards/total_payment.dart';
-import 'package:alibi_shop/feature/confirm_order/cubit/button_sheet_cubit.dart';
 import 'package:alibi_shop/feature/widget/news/top_bar.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
-import 'package:alibi_shop/location_screen.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -65,6 +67,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                         builder: (context) => AppBottomSheet.sheetDialog(
                           snappings: [0.4, 0.7, 1.0],
                           content: ListView.builder(
+                            padding: const EdgeInsets.symmetric(vertical: 12),
                             shrinkWrap: true,
                             primary: false,
                             physics: const NeverScrollableScrollPhysics(),
@@ -75,6 +78,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                               productColor: elements[index].productColor,
                               productSize: elements[index].productSize,
                               productPrice: elements[index].productPrice,
+                              orderCounter: OrderCounter(0),
                             ),
                           ),
                         ),
@@ -91,6 +95,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                       return Padding(
                         padding: EdgeInsets.only(bottom: 8.h),
                         child: OrderCard(
+                          orderCounter: OrderCounter(0),
                           imageLink: elements[index].imageLink,
                           productName: elements[index].productName,
                           productColor: elements[index].productColor,
@@ -150,6 +155,15 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                                           ontap: () {
                                             selectBtn = true;
                                             cubitButton.changeState(selectBtn);
+                                            RekvizitsCubit rekCubit =
+                                                context.read<RekvizitsCubit>();
+                                            RekvizitsState state =
+                                                rekCubit.state;
+                                            rekCubit.changeData(
+                                                state.street,
+                                                state.address,
+                                                state.datetime,
+                                                "Pay by card");
                                           },
                                           borderColor: state.isTapped == true
                                               ? const Color(0xFF614FE0)
@@ -162,6 +176,15 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                                           ontap: () {
                                             selectBtn = false;
                                             cubitButton.changeState(selectBtn);
+                                            RekvizitsCubit rekCubit =
+                                                context.read<RekvizitsCubit>();
+                                            RekvizitsState state =
+                                                rekCubit.state;
+                                            rekCubit.changeData(
+                                                state.street,
+                                                state.address,
+                                                state.datetime,
+                                                "Pay in cash");
                                           },
                                           borderColor: state.isTapped == false
                                               ? const Color(0xFF614FE0)
@@ -203,6 +226,7 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
                       ],
                     ),
                   ),
+                  SizedBox(height: 60.h)
                 ],
               ),
             ),
@@ -213,31 +237,32 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
   }
 
   bool selectBtn = false;
+
   List<OutFitModel> elements = [
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-length-photo-cute-little-260nw-2224013497.jpg",
+            "https://lyrashoes.com/wp-content/uploads/2023/04/Pair-of-white-sneakers-–-kopio.jpeg",
         productName: "Chrismass Outfit",
         productColor: Colors.red,
         productSize: "M",
         productPrice: 12.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-size-photo-champion-guy-260nw-1484315735.jpg",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1u-owi0BQPFgm-E--NpKRrPYXK565Twi1NtK-A-2mgreaHJZOXh1XDqMSjfgxEaYP5J4&usqp=CAU",
         productName: "Mens Shirt",
         productColor: Colors.green,
         productSize: "XX",
         productPrice: 43.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-length-body-size-view-260nw-1904693923.jpg",
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
         productName: "Royal Geek",
         productColor: Colors.pink,
         productSize: "S",
         productPrice: 55.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-length-photo-charming-attractive-600nw-1531460804.jpg",
+            "https://www.streetammo.dk/38666-large_default/air-max-270-react-eng-photon-dust-white.jpg",
         productName: "XRode Black",
         productColor: Colors.amber,
         productSize: "XL",
@@ -251,28 +276,42 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
         productPrice: 312.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-length-photo-cute-little-260nw-2224013497.jpg",
+            "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
         productName: "Chrismass Outfit",
         productColor: Colors.red,
         productSize: "M",
         productPrice: 12.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-size-photo-champion-guy-260nw-1484315735.jpg",
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
         productName: "Mens Shirt",
         productColor: Colors.green,
         productSize: "XX",
         productPrice: 43.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-length-body-size-view-260nw-1904693923.jpg",
+            "https://lyrashoes.com/wp-content/uploads/2023/04/Pair-of-white-sneakers-–-kopio.jpeg",
+        productName: "Chrismass Outfit",
+        productColor: Colors.red,
+        productSize: "M",
+        productPrice: 12.58),
+    OutFitModel(
+        imageLink:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1u-owi0BQPFgm-E--NpKRrPYXK565Twi1NtK-A-2mgreaHJZOXh1XDqMSjfgxEaYP5J4&usqp=CAU",
+        productName: "Mens Shirt",
+        productColor: Colors.green,
+        productSize: "XX",
+        productPrice: 43.58),
+    OutFitModel(
+        imageLink:
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
         productName: "Royal Geek",
         productColor: Colors.pink,
         productSize: "S",
         productPrice: 55.58),
     OutFitModel(
         imageLink:
-            "https://www.shutterstock.com/image-photo/full-length-photo-charming-attractive-600nw-1531460804.jpg",
+            "https://www.streetammo.dk/38666-large_default/air-max-270-react-eng-photon-dust-white.jpg",
         productName: "XRode Black",
         productColor: Colors.amber,
         productSize: "XL",
@@ -284,6 +323,20 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
         productColor: Colors.grey,
         productSize: "L",
         productPrice: 312.58),
+    OutFitModel(
+        imageLink:
+            "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+        productName: "Chrismass Outfit",
+        productColor: Colors.red,
+        productSize: "M",
+        productPrice: 12.58),
+    OutFitModel(
+        imageLink:
+            "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
+        productName: "Mens Shirt",
+        productColor: Colors.green,
+        productSize: "XX",
+        productPrice: 43.58),
   ];
 }
 

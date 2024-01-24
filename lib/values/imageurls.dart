@@ -1,0 +1,83 @@
+class ImageUrls {
+  ImageUrls._();
+  static const List<String> sneakers = [
+    "https://lyrashoes.com/wp-content/uploads/2023/04/Pair-of-white-sneakers-–-kopio.jpeg",
+    "https://media.istockphoto.com/id/1303978937/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?s=612x612&w=0&k=20&c=L725fuzFTnm6qEaqE7Urc5q6IR80EgYQEjBn_qtBIQg=",
+    "https://www.streetammo.dk/38666-large_default/air-max-270-react-eng-photon-dust-white.jpg",
+    "https://www.mensjournal.com/.image/t_share/MTk2MTM3MjM2NjkwMTE4MTQ5/sneakers.jpg",
+    "https://rukminim2.flixcart.com/image/450/500/xif0q/shoe/y/g/x/-original-imagg3aautmgyg7g.jpeg",
+    "https://i5.walmartimages.com/asr/a0878a2b-1bf2-4e9c-a5fc-bf22336cd771.315841da319c42a758726b5409a75980.jpeg",
+    "https://lyrashoes.com/wp-content/uploads/2023/04/Pair-of-white-sneakers-–-kopio.jpeg",
+    "https://media.istockphoto.com/id/1303978937/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?s=612x612&w=0&k=20&c=L725fuzFTnm6qEaqE7Urc5q6IR80EgYQEjBn_qtBIQg=",
+    "https://www.streetammo.dk/38666-large_default/air-max-270-react-eng-photon-dust-white.jpg",
+    "https://www.mensjournal.com/.image/t_share/MTk2MTM3MjM2NjkwMTE4MTQ5/sneakers.jpg",
+    "https://rukminim2.flixcart.com/image/450/500/xif0q/shoe/y/g/x/-original-imagg3aautmgyg7g.jpeg",
+    "https://i5.walmartimages.com/asr/a0878a2b-1bf2-4e9c-a5fc-bf22336cd771.315841da319c42a758726b5409a75980.jpeg"
+  ];
+  static const List<String> shirts = [
+    "https://img.freepik.com/free-photo/blue-t-shirt_23-2147730486.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1u-owi0BQPFgm-E--NpKRrPYXK565Twi1NtK-A-2mgreaHJZOXh1XDqMSjfgxEaYP5J4&usqp=CAU",
+    "https://img.freepik.com/premium-photo/basic-white-tshirt-grey-concrete-background-mock-up-branding-tshirt-with-pocket_505557-7254.jpg",
+    "https://img.freepik.com/premium-photo/fashionable-look-with-white-empty-tshirt-light-blue-background-generative-ai-illustration_145713-1226.jpg",
+    "https://img.freepik.com/premium-photo/white-tshirt-mockup-blue-background-generative-ai_840989-688.jpg",
+    "https://i.pinimg.com/736x/f4/bf/40/f4bf409a441b421a025ad7d6a6eb91fe.jpg",
+    "https://i.etsystatic.com/31744078/r/il/6a4fd3/4201426649/il_570xN.4201426649_e32h.jpg",
+    "https://m.media-amazon.com/images/I/A1vJUKBjc2L._CLa%7C2140%2C2000%7C71aCLLKbWaL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png",
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fHww",
+    "https://img.freepik.com/free-photo/blue-t-shirt_23-2147730486.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1u-owi0BQPFgm-E--NpKRrPYXK565Twi1NtK-A-2mgreaHJZOXh1XDqMSjfgxEaYP5J4&usqp=CAU",
+    "https://img.freepik.com/premium-photo/basic-white-tshirt-grey-concrete-background-mock-up-branding-tshirt-with-pocket_505557-7254.jpg",
+    "https://img.freepik.com/premium-photo/fashionable-look-with-white-empty-tshirt-light-blue-background-generative-ai-illustration_145713-1226.jpg",
+    "https://img.freepik.com/premium-photo/white-tshirt-mockup-blue-background-generative-ai_840989-688.jpg",
+    "https://i.pinimg.com/736x/f4/bf/40/f4bf409a441b421a025ad7d6a6eb91fe.jpg",
+    "https://i.etsystatic.com/31744078/r/il/6a4fd3/4201426649/il_570xN.4201426649_e32h.jpg",
+    "https://m.media-amazon.com/images/I/A1vJUKBjc2L._CLa%7C2140%2C2000%7C71aCLLKbWaL.png%7C0%2C0%2C2140%2C2000%2B0.0%2C0.0%2C2140.0%2C2000.0_AC_SX466_.png",
+    "https://images.unsplash.com/photo-1581655353564-df123a1eb820?q=80&w=1000&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dCUyMHNoaXJ0JTIwbW9ja3VwfGVufDB8fDB8fHww"
+  ];
+  static const List<String> jackets = [
+    "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
+    "https://m.media-amazon.com/images/I/510LfW2mw6L._AC_SX425_.jpg",
+    "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
+    "https://customjackets.co.uk/cdn/shop/files/DSC_0113_2048x.jpg?v=1685698536",
+    "https://img-lcwaikiki.mncdn.com/mnresize/1200/1600/pim/productimages/20231/6150819/v1/l_20231-s30667z8-qvw-98-76-97-189_a3.jpg",
+    "https://img01.ztat.net/article/spp-media-p1/d432109959ee4f5d98d8b0d4e0b49117/2ec751f8976346cf9622a1aebc4216c3.jpg?imwidth=1800&filter=packshot",
+    "https://img01.ztat.net/article/spp-media-p1/bf97c060917248c3a6588afb09892ba6/446b7139ffe54daa9dff86cc7194adea.jpg?imwidth=762&filter=packshot",
+    "https://m.media-amazon.com/images/I/41id6HLxcRL._AC_SY1000_.jpg",
+    "https://m.media-amazon.com/images/I/510LfW2mw6L._AC_SX425_.jpg",
+    "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
+    "https://customjackets.co.uk/cdn/shop/files/DSC_0113_2048x.jpg?v=1685698536",
+    "https://img-lcwaikiki.mncdn.com/mnresize/1200/1600/pim/productimages/20231/6150819/v1/l_20231-s30667z8-qvw-98-76-97-189_a3.jpg",
+    "https://img01.ztat.net/article/spp-media-p1/d432109959ee4f5d98d8b0d4e0b49117/2ec751f8976346cf9622a1aebc4216c3.jpg?imwidth=1800&filter=packshot",
+    "https://img01.ztat.net/article/spp-media-p1/bf97c060917248c3a6588afb09892ba6/446b7139ffe54daa9dff86cc7194adea.jpg?imwidth=762&filter=packshot",
+    "https://m.media-amazon.com/images/I/41id6HLxcRL._AC_SY1000_.jpg",
+    "https://m.media-amazon.com/images/I/510LfW2mw6L._AC_SX425_.jpg"
+  ];
+  static const List<String> sweetShirts = [
+    "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+    "https://www.reviewsports.com.pk/wp-content/uploads/2023/01/Sky-Blue-Hoodie-Front.png",
+    "https://img.ltwebstatic.com/images3_pi/2023/08/24/93/16928600885f915b5cf979e1841536e0cad12b64c2_thumbnail_720x.jpg",
+    "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+    "https://www.reviewsports.com.pk/wp-content/uploads/2023/01/Sky-Blue-Hoodie-Front.png",
+    "https://img.ltwebstatic.com/images3_pi/2023/08/24/93/16928600885f915b5cf979e1841536e0cad12b64c2_thumbnail_720x.jpg",
+    "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+    "https://img.ltwebstatic.com/images3_pi/2023/08/24/93/16928600885f915b5cf979e1841536e0cad12b64c2_thumbnail_720x.jpg",
+    "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+    "https://www.reviewsports.com.pk/wp-content/uploads/2023/01/Sky-Blue-Hoodie-Front.png",
+    "https://img.ltwebstatic.com/images3_pi/2023/08/24/93/16928600885f915b5cf979e1841536e0cad12b64c2_thumbnail_720x.jpg",
+    "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+    "https://www.reviewsports.com.pk/wp-content/uploads/2023/01/Sky-Blue-Hoodie-Front.png",
+    "https://img.ltwebstatic.com/images3_pi/2023/08/24/93/16928600885f915b5cf979e1841536e0cad12b64c2_thumbnail_720x.jpg"
+  ];
+  static const List<String> all = [
+    "https://lyrashoes.com/wp-content/uploads/2023/04/Pair-of-white-sneakers-–-kopio.jpeg",
+    "https://www.reviewsports.com.pk/wp-content/uploads/2023/01/Sky-Blue-Hoodie-Front.png",
+    "https://media.istockphoto.com/id/1303978937/photo/white-sneaker-on-a-blue-gradient-background-mens-fashion-sport-shoe-sneakers-lifestyle.jpg?s=612x612&w=0&k=20&c=L725fuzFTnm6qEaqE7Urc5q6IR80EgYQEjBn_qtBIQg=",
+    "https://www.streetammo.dk/38666-large_default/air-max-270-react-eng-photon-dust-white.jpg",
+    "https://img.freepik.com/free-photo/muscular-silhouette-exercising-spooky-black-background-generated-by-ai_188544-40049.jpg",
+    "https://m.media-amazon.com/images/W/MEDIAX_792452-T2/images/I/7166epqFwZL._AC_UY1000_.jpg",
+    "https://customjackets.co.uk/cdn/shop/files/DSC_0113_2048x.jpg?v=1685698536",
+    "https://img.freepik.com/free-photo/blue-t-shirt_23-2147730486.jpg",
+    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT1u-owi0BQPFgm-E--NpKRrPYXK565Twi1NtK-A-2mgreaHJZOXh1XDqMSjfgxEaYP5J4&usqp=CAU",
+    "https://img.freepik.com/premium-photo/basic-white-tshirt-grey-concrete-background-mock-up-branding-tshirt-with-pocket_505557-7254.jpg",
+  ];
+}

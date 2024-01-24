@@ -12,12 +12,13 @@ class AnimationCubit extends Cubit<AnimationState> {
       : super(
           const AnimationState.animating(
             AnimatedData(
-                topHeight: 0,
-                posLeft: 400,
-                posRight: -200,
-                textOpacity: 0,
-                listPad: 400,
-                cardOpacity: 0),
+              topHeight: 0,
+              posLeft: 400,
+              posRight: -200,
+              textOpacity: 0,
+              listPad: 400,
+              cardOpacity: 0,
+            ),
           ),
         );
 

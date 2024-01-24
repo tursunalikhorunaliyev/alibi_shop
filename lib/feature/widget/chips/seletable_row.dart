@@ -1,5 +1,6 @@
+import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SelectableRow extends StatefulWidget {
   final bool isSize;
@@ -38,6 +39,9 @@ class _SelectableRowState extends State<SelectableRow> {
             child: InkWell(
               onTap: () {
                 selectIndex = index;
+                context
+                    .read<CategoryCubit>()
+                    .changeCategory(widget.list[index]);
                 setState(() {});
               },
               borderRadius: BorderRadius.circular(12),

@@ -1,12 +1,16 @@
 import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
+import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/feature/widget/news/new_product_page.dart';
 import 'package:alibi_shop/feature/widget/news/top_new.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
+import 'package:alibi_shop/values/imageurls.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -61,7 +65,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
               const SizedBox(height: 16),
               SizedBox(
-                  height: 274.h,
+                  height: 284.h,
                   child: BlocBuilder<AnimationCubit, AnimationState>(
                     builder: (context, state) {
                       return AnimatedPadding(
@@ -73,14 +77,17 @@ class _HomeScreenState extends State<HomeScreen> {
                         )),
                         duration: const Duration(milliseconds: 1000),
                         child: ListView.builder(
-                          itemCount: 5,
+                          itemCount: ImageUrls.sneakers.length,
                           padding: EdgeInsets.only(left: 24.h),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
                             return Padding(
                               padding: EdgeInsets.only(right: 20.w),
-                              child: const MainProductCard(isLittle: true),
+                              child: MainProductCard(
+                                isLittle: true,
+                                imageUrl: ImageUrls.sneakers[index],
+                              ),
                             );
                           },
                         ),
@@ -89,27 +96,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   )),
               const SizedBox(height: 16),
               Center(
-                child: BlocBuilder<AnimationCubit, AnimationState>(
-                  builder: (context, state) {
-                    return AnimatedOpacity(
-                      opacity: state.maybeWhen(
-                        orElse: () => 0,
-                        animating: (animatedData) => animatedData.cardOpacity,
-                      ),
-                      duration: const Duration(milliseconds: 500),
-                      child: SmoothPageIndicator(
-                        controller: controller,
-                        count: 5,
-                        effect: const ExpandingDotsEffect(
-                          dotColor: Color(0xFFEAEBED),
-                          dotHeight: 6,
-                          dotWidth: 6,
-                          radius: 6,
-                          activeDotColor: Color(0xFF14181E),
-                        ),
-                      ),
-                    );
-                  },
+                child: SmoothPageIndicator(
+                  controller: controller,
+                  count: 5,
+                  effect: const ExpandingDotsEffect(
+                    dotColor: Color(0xFFEAEBED),
+                    dotHeight: 6,
+                    dotWidth: 6,
+                    radius: 6,
+                    activeDotColor: Color(0xFF14181E),
+                  ),
                 ),
               ),
               Padding(
@@ -146,21 +142,61 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
               ),
-              GridView.builder(
-                itemCount: 2,
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                padding: const EdgeInsets.symmetric(horizontal: 24),
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2,
-                  crossAxisSpacing: 20,
-                  mainAxisSpacing: 20,
-                  childAspectRatio: 0.42,
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: BlocBuilder<CategoryCubit, CategoryState>(
+                  builder: (context, state) {
+                    return AnimationLimiter(
+                      key: UniqueKey(),
+                      child: MasonryGridView.builder(
+                        shrinkWrap: true,
+                        padding: const EdgeInsets.only(bottom: 10),
+                        physics: const NeverScrollableScrollPhysics(),
+                        addAutomaticKeepAlives: true,
+                        itemCount: state.data.length,
+                        crossAxisSpacing: 20,
+                        mainAxisSpacing: 10,
+                        gridDelegate:
+                            const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 2,
+                        ),
+                        itemBuilder: (context, index) {
+                          return AnimationConfiguration.staggeredGrid(
+                            delay: const Duration(milliseconds: 300),
+                            columnCount: 2,
+                            position: index,
+                            duration: const Duration(milliseconds: 400),
+                            child: ScaleAnimation(
+                              child: FadeInAnimation(
+                                child: MainProductCard(
+                                  imageUrl: state.data[index],
+                                ),
+                              ),
+                            ),
+                          );
+                        },
+                      ),
+                    );
+                  },
                 ),
-                itemBuilder: (context, index) {
-                  return const MainProductCard();
-                },
               ),
+              // GridView.builder(
+              //   itemCount: 12,
+              //   shrinkWrap: true,
+              //   physics: const NeverScrollableScrollPhysics(),
+              //   padding: const EdgeInsets.symmetric(horizontal: 24),
+              //   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              //     crossAxisCount: 2,
+              //     crossAxisSpacing: 10,
+              //     mainAxisSpacing: 10,
+              //     childAspectRatio: 0.46,
+              //   ),
+              //   itemBuilder: (context, index) {
+              //     return MainProductCard(
+              //       imageUrl: ImageUrls.imageUrls[index],
+              //     );
+              //   },
+              // ),
             ],
           ),
         ),

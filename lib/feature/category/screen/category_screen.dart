@@ -1,6 +1,4 @@
 import 'package:alibi_shop/feature/category/widget/category_card.dart';
-import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
-import 'package:alibi_shop/feature/category/widget/search_result_link.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -27,7 +25,7 @@ class CategoryScreen extends StatelessWidget {
               ),
             ),
           ),
-          Column(
+          ListView(
             children: [
               SizedBox(height: 20.h),
               const Padding(
@@ -35,7 +33,10 @@ class CategoryScreen extends StatelessWidget {
                 child: TopSearchWidget(),
               ),
               const CategoryCard(categoryName: "Jacket"),
-              Expanded(
+              const CategoryCard(categoryName: "Jacket"),
+              const CategoryCard(categoryName: "Jacket"),
+              const CategoryCard(categoryName: "Jacket"),
+              /*Expanded(
                 child: SingleChildScrollView(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -60,7 +61,7 @@ class CategoryScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-              )
+              )*/
             ],
           ),
         ],

@@ -1,12 +1,13 @@
 import 'package:alibi_shop/feature/shopprod/widget/selectable_color.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
+import 'package:alibi_shop/values/imageurls.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 import 'package:readmore/readmore.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ShopProductScreen extends StatefulWidget {
   static const String routeName = "/shop_product_screen";
@@ -24,6 +25,7 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SingleChildScrollView(
+        physics: const BouncingScrollPhysics(),
         child: Column(
           children: [
             Stack(
@@ -142,7 +144,7 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                           color: const Color(0xFF14181E),
                         ),
                         child: Padding(
-                          padding:  EdgeInsets.symmetric(
+                          padding: EdgeInsets.symmetric(
                             horizontal: 24.w,
                             vertical: 16.h,
                           ),
@@ -319,13 +321,14 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
             SizedBox(
               height: 208,
               child: ListView.builder(
-                itemCount: 7,
+                itemCount: ImageUrls.sneakers.length,
                 scrollDirection: Axis.horizontal,
                 padding: const EdgeInsets.symmetric(horizontal: 24),
                 itemBuilder: (context, index) {
-                  return const Padding(
-                    padding: EdgeInsets.only(right: 20),
-                    child: MainProductCard(isSmall: true),
+                  return Padding(
+                    padding: const EdgeInsets.only(right: 20),
+                    child: MainProductCard(
+                        isSmall: true, imageUrl: ImageUrls.sneakers[index]),
                   );
                 },
               ),

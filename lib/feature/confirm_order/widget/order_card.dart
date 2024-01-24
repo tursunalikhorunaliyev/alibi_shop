@@ -1,6 +1,9 @@
+import 'package:alibi_shop/feature/confirm_order/bloc/order_counter/order_counter.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/values/typography.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:flutter_svg/svg.dart';
@@ -11,13 +14,15 @@ class OrderCard extends StatelessWidget {
   final Color productColor;
   final String productSize;
   final double productPrice;
+  final OrderCounter orderCounter;
   const OrderCard(
       {Key? key,
       required this.imageLink,
       required this.productName,
       required this.productColor,
       required this.productSize,
-      required this.productPrice})
+      required this.productPrice,
+      required this.orderCounter})
       : super(key: key);
 
   @override
@@ -55,8 +60,8 @@ class OrderCard extends StatelessWidget {
               height: 120,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(12),
-                child: Image.network(
-                  imageLink,
+                child: CachedNetworkImage(
+                  imageUrl: imageLink,
                   fit: BoxFit.cover,
                 ),
               ),
@@ -141,17 +146,24 @@ class OrderCard extends StatelessWidget {
                                       color: Colors.transparent,
                                       child: InkWell(
                                         borderRadius: BorderRadius.circular(10),
+                                        onTap: () => orderCounter.decrease(),
                                         child:
                                             SvgPicture.asset(Assets.iconsMinus),
                                       ),
                                     ),
-                                    const Text(
-                                      "1",
-                                      style: AppFonts.bb1Medium,
+                                    BlocBuilder<OrderCounter, int>(
+                                      bloc: orderCounter,
+                                      builder: (context, state) {
+                                        return Text(
+                                          state.toString(),
+                                          style: AppFonts.bb1Medium,
+                                        );
+                                      },
                                     ),
                                     Material(
                                       color: Colors.transparent,
                                       child: InkWell(
+                                        onTap: () => orderCounter.increase(),
                                         borderRadius: BorderRadius.circular(10),
                                         child:
                                             SvgPicture.asset(Assets.iconsPlus),

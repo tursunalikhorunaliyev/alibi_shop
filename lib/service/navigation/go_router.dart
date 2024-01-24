@@ -6,11 +6,11 @@ import 'package:alibi_shop/feature/category/screen/category_screen.dart';
 import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
 import 'package:alibi_shop/feature/favourte/screen/favourte_screen.dart';
 import 'package:alibi_shop/feature/home/screen/home_screen.dart';
+import 'package:alibi_shop/feature/location/location_screen.dart';
 import 'package:alibi_shop/feature/navigable/screen/home.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
 import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
 import 'package:alibi_shop/feature/test_bottom.dart';
-import 'package:alibi_shop/location_screen.dart';
 import 'package:alibi_shop/service/navigation/navigation_service.dart';
 import 'package:alibi_shop/service/transition/transitions.dart';
 import 'package:go_router/go_router.dart';
@@ -21,6 +21,13 @@ class AppGoRouter {
     initialLocation: Home.routeName,
     routes: [
       ///main
+      GoRoute(
+        path: Home.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const Home(),
+        ),
+      ),
       GoRoute(
         path: PhoneNumberScreen.routeName,
         pageBuilder: (context, state) => slideTransitionRight(

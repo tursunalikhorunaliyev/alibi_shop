@@ -1,10 +1,13 @@
 import 'dart:async';
+
 import 'package:alibi_shop/feature/allproduct/widget/screen_controll.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
 import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
-import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
+import 'package:alibi_shop/values/imageurls.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 class FavouriteScreen extends StatefulWidget {
   static const String routeName = "/favourte_screen";
@@ -16,7 +19,7 @@ class FavouriteScreen extends StatefulWidget {
 }
 
 class FavouriteScreenState extends State<FavouriteScreen> {
-  bool changed = false;
+  bool changed = true;
   double containerHeight = 0;
 
   void _containerTimer() {
@@ -75,31 +78,60 @@ class FavouriteScreenState extends State<FavouriteScreen> {
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: changed
-                        ? ListView.builder(
-                            itemCount: 10,
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemBuilder: (context, index) => const Padding(
-                              padding: EdgeInsets.only(bottom: 20),
-                              child: SearchResultCard(),
+                        ? AnimationLimiter(
+                            key: UniqueKey(),
+                            child: ListView.builder(
+                              physics: const BouncingScrollPhysics(),
+                              shrinkWrap: true,
+                              itemCount: 100,
+                              itemBuilder: (BuildContext context, int index) {
+                                return Padding(
+                                  padding: const EdgeInsets.only(bottom: 16),
+                                  child: AnimationConfiguration.staggeredList(
+                                    position: index,
+                                    duration: const Duration(milliseconds: 500),
+                                    child: const SlideAnimation(
+                                      verticalOffset: 50.0,
+                                      child: ScaleAnimation(
+                                        curve: Curves.easeInOutQuad,
+                                        child: SearchResultCard(),
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
                             ),
                           )
-                        : GridView.builder(
-                            itemCount: 10,
-                            shrinkWrap: true,
-                            physics: const NeverScrollableScrollPhysics(),
-                            gridDelegate:
-                                const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2,
+                        : AnimationLimiter(
+                            key: UniqueKey(),
+                            child: MasonryGridView.builder(
+                              shrinkWrap: true,
+                              padding: const EdgeInsets.only(bottom: 10),
+                              physics: const BouncingScrollPhysics(),
+                              addAutomaticKeepAlives: true,
+                              itemCount: 10,
                               crossAxisSpacing: 20,
                               mainAxisSpacing: 20,
-                              childAspectRatio: 0.46,
+                              gridDelegate:
+                                  const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 2,
+                              ),
+                              itemBuilder: (context, index) {
+                                return AnimationConfiguration.staggeredGrid(
+                                  delay: const Duration(milliseconds: 400),
+                                  columnCount: 12,
+                                  position: index,
+                                  duration: const Duration(milliseconds: 600),
+                                  child: ScaleAnimation(
+                                    child: FadeInAnimation(
+                                        child: MainProductCard(
+                                      isChanged: changed,
+                                      imageUrl: ImageUrls.sneakers[index],
+                                    )),
+                                  ),
+                                );
+                              },
                             ),
-                            itemBuilder: (context, index) {
-                              return MainProductCard(
-                                isChanged: changed,
-                              );
-                            },
                           ),
                   ),
                 ],

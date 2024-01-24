@@ -5,8 +5,13 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class AuthButton extends StatelessWidget {
   final String title;
   final VoidCallback onTap;
+  final Color backgroundColor;
 
-  const AuthButton({Key? key, required this.onTap, required this.title})
+  const AuthButton(
+      {Key? key,
+      required this.onTap,
+      required this.title,
+      this.backgroundColor = const Color(0xFF614FE0)})
       : super(key: key);
 
   @override
@@ -22,7 +27,7 @@ class AuthButton extends StatelessWidget {
               borderRadius: BorderRadius.circular(12),
             ),
           ),
-          backgroundColor: MaterialStateProperty.all(const Color(0xFF614FE0)),
+          backgroundColor: MaterialStateProperty.all(backgroundColor),
           elevation: MaterialStateProperty.all(0),
         ),
         child: Text(
