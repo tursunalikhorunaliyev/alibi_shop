@@ -34,7 +34,7 @@ class TopBar extends StatelessWidget {
               children: [
                 SvgPicture.asset("assets/icons/Filter.svg"),
                 Image.asset(
-                  "assets/icons/alibi.png",
+                  "assets/picture/alibi.png",
                   width: 95,
                   height: 32,
                 ),
