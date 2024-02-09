@@ -1,3 +1,4 @@
+import 'package:alibi_shop/feature/widget/dialog/showdialog.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
@@ -55,16 +56,33 @@ class _MainSearchState extends State<MainSearch> {
           ),
         ),
         const SizedBox(width: 16),
-        Container(
-          width: 48,
-          height: 48,
-          decoration: BoxDecoration(
-            color: const Color(0xFF14181E),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(12),
-            child: SvgPicture.asset(Assets.iconsFilter),
+        InkWell(
+          onTap: () {
+            showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) => const Padding(
+                padding: EdgeInsets.only(
+                  top: 200,
+                  bottom: 50,
+                  left: 26,
+                  right: 26,
+                ),
+                child: ShowDialog(),
+              ),
+            );
+          },
+          child: Container(
+            width: 48,
+            height: 48,
+            decoration: BoxDecoration(
+              color: const Color(0xFF14181E),
+              borderRadius: BorderRadius.circular(12),
+            ),
+            child: Padding(
+              padding: const EdgeInsets.all(12),
+              child: SvgPicture.asset(Assets.iconsFilter),
+            ),
           ),
         )
       ],
