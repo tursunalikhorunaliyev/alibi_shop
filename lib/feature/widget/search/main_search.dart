@@ -1,4 +1,5 @@
 import 'package:alibi_shop/generated/assets.dart';
+import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -24,6 +25,10 @@ class _MainSearchState extends State<MainSearch> {
             ),
             cursorColor: Colors.black,
             decoration: InputDecoration(
+              hintText: "Обыскать одежду. . .",
+              hintStyle: AppFonts.bb2Medium.copyWith(
+                color: const Color(0xFFBFC2C6),
+              ),
               contentPadding: const EdgeInsets.symmetric(vertical: 10),
               prefixIcon: Padding(
                 padding: const EdgeInsets.symmetric(

@@ -8,6 +8,8 @@ import 'package:alibi_shop/feature/widget/cards/alibi_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
 import 'package:alibi_shop/feature/widget/search/main_search.dart';
 import 'package:alibi_shop/generated/assets.dart';
+import 'package:alibi_shop/service/locator/service_locator.dart';
+import 'package:alibi_shop/service/navigation/add_to_cart.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -169,6 +171,23 @@ class _AllProductScreenState extends State<AllProductScreen> {
                                       child: ScaleAnimation(
                                         child: FadeInAnimation(
                                             child: AlibiProductCard(
+                                          onClick: (GlobalKey widgetKey) async {
+                                            await locator
+                                                .get<AddToCart>()
+                                                .runAddToCartAnimation(
+                                                    widgetKey);
+                                            await locator
+                                                .get<AddToCart>()
+                                                .cartKey
+                                                .currentState!
+                                                .runCartAnimation(
+                                                  (
+                                                    ++locator
+                                                        .get<AddToCart>()
+                                                        .cartQuantityItems,
+                                                  ).toString(),
+                                                );
+                                          },
                                           cardHeight: 260.h,
                                           imageHeight: 180.h,
                                           /*onClick: (GlobalKey widgetKey) async {

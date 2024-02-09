@@ -1,4 +1,5 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
+import 'package:alibi_shop/feature/category/screen/category_screen.dart';
 import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
 import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
 import 'package:alibi_shop/feature/home/parts/banner_part.dart';
@@ -18,6 +19,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -65,7 +67,16 @@ class _HomeScreenState extends State<HomeScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(Assets.iconsHamburger),
+                      Material(
+                        color: Colors.transparent,
+                        child: InkWell(
+                          borderRadius: BorderRadius.circular(12),
+                          onTap: () {
+                            context.push(CategoryScreen.routeName);
+                          },
+                          child: SvgPicture.asset(Assets.iconsHamburger),
+                        ),
+                      ),
                       Image.asset(Assets.pictureAlibi),
                       SvgPicture.asset(Assets.iconsNoti),
                     ],
@@ -156,7 +167,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                   child: AlibiProductCard(
                                     cardHeight: 260.h,
                                     imageHeight: 180.h,
-                                    /*onClick: (GlobalKey widgetKey) async {
+                                    onClick: (GlobalKey widgetKey) async {
                                       await locator
                                           .get<AddToCart>()
                                           .runAddToCartAnimation(widgetKey);
@@ -171,7 +182,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   .cartQuantityItems,
                                             ).toString(),
                                           );
-                                    },*/
+                                    },
                                     imageUrl: state.data[index],
                                   ),
                                 ),

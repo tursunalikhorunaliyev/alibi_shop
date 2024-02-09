@@ -8,17 +8,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
-class AlibiProductCard extends StatelessWidget {
+class AlibiProductCard extends StatefulWidget {
   final String imageUrl;
   final double cardHeight;
   final double imageHeight;
+
+  final void Function(GlobalKey) onClick;
 
   const AlibiProductCard({
     Key? key,
     required this.imageUrl,
     required this.cardHeight,
     required this.imageHeight,
+    required this.onClick,
   }) : super(key: key);
+
+  @override
+  State<AlibiProductCard> createState() => _AlibiProductCardState();
+}
+
+class _AlibiProductCardState extends State<AlibiProductCard> {
+  bool isTap = false;
+  final GlobalKey widgetKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +41,7 @@ class AlibiProductCard extends StatelessWidget {
         ),
         child: Container(
           width: 164.w,
-          height: cardHeight,
+          height: widget.cardHeight,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(12),
@@ -39,14 +50,14 @@ class AlibiProductCard extends StatelessWidget {
             children: [
               SizedBox(
                 width: double.infinity,
-                height: imageHeight,
+                height: widget.imageHeight,
                 child: ClipRRect(
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(12),
                     topRight: Radius.circular(12),
                   ),
                   child: CachedNetworkImage(
-                    imageUrl: imageUrl,
+                    imageUrl: widget.imageUrl,
                     fit: BoxFit.cover,
                   ),
                 ),
@@ -89,7 +100,7 @@ class AlibiProductCard extends StatelessWidget {
                           color: Colors.transparent,
                           child: InkWell(
                             borderRadius: BorderRadius.circular(8),
-                            onTap: () {},
+                            onTap: () => widget.onClick(widgetKey),
                             child: Container(
                               padding: const EdgeInsets.all(8),
                               decoration: ShapeDecoration(

@@ -5,19 +5,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-class BannerPart extends StatefulWidget {
+class BannerPart extends StatelessWidget {
   final PageController pageController;
   const BannerPart({Key? key, required this.pageController}) : super(key: key);
 
   @override
-  State<BannerPart> createState() => _BannerPartState();
-}
-
-class _BannerPartState extends State<BannerPart> {
-  @override
   Widget build(BuildContext context) {
     return CarouselSlider(
       options: CarouselOptions(
+        onPageChanged: (index, reason) {
+          pageController.animateToPage(
+            index,
+            duration: 500.ms,
+            curve: Curves.fastLinearToSlowEaseIn,
+          );
+        },
         height: 180.h,
         aspectRatio: 16 / 9,
         viewportFraction: 0.9,
@@ -31,13 +33,6 @@ class _BannerPartState extends State<BannerPart> {
         enlargeCenterPage: true,
         enlargeFactor: 0.2,
         scrollDirection: Axis.horizontal,
-        onPageChanged: (index, reason) {
-          widget.pageController.animateToPage(
-            index,
-            duration: 500.ms,
-            curve: Curves.fastLinearToSlowEaseIn,
-          );
-        },
       ),
       items: List.generate(
         5,
