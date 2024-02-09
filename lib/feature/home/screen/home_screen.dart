@@ -32,8 +32,6 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  final controller = PageController();
-
   @override
   void initState() {
     context.read<AnimationCubit>().startAnimation();
@@ -97,10 +95,9 @@ class _HomeScreenState extends State<HomeScreen> {
                 const SizedBox(height: 16),
                 const TopProductsPart(),
                 const SizedBox(height: 17),
-
                 Center(
                   child: SmoothPageIndicator(
-                    controller: controller,
+                    controller: locator.get<PageController>(),
                     count: 5,
                     effect: const ExpandingDotsEffect(
                       dotColor: Color(0xFFEAEBED),
@@ -112,7 +109,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                 ),
                 SizedBox(height: 16.h),
-                BannerPart(pageController: controller),
+                BannerPart(pageController: locator.get<PageController>()),
                 SizedBox(height: 16.h),
                 const Padding(
                   padding: EdgeInsets.symmetric(
