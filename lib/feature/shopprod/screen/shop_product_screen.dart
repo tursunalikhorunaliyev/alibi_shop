@@ -165,6 +165,8 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   ),
                   SizedBox(height: 8.h),
                   const SelectableRow(
+                    chipListHeight: 48,
+                    chipBorderColor: Color(0xFFEDEDED),
                     isSize: true,
                     list: [
                       "S",

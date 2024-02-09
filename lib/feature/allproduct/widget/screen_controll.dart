@@ -1,3 +1,4 @@
+import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -19,14 +20,7 @@ class _ScreenControllState extends State<ScreenControll> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          widget.text,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF14181E),
-          ),
-        ),
+        Text(widget.text, style: AppFonts.hh3Bold),
         Row(
           children: [
             InkWell(

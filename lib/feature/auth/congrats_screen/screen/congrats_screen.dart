@@ -1,4 +1,4 @@
-import 'package:alibi_shop/feature/home/screen/home_screen.dart';
+import 'package:alibi_shop/feature/navigable/screen/home.dart';
 import 'package:alibi_shop/feature/widget/button/auth_button.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/values/app_sizes.dart';
@@ -44,7 +44,7 @@ class CongratsScreen extends StatelessWidget {
             SizedBox(height: 28.h),
             AuthButton(
               onTap: () {
-                context.push(HomeScreen.routeName);
+                context.push(Home.routeName);
               },
               title: "Get Started",
             )

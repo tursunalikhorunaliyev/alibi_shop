@@ -182,11 +182,13 @@ class _LocationScreenState extends State<LocationScreen> {
                 style: AppFonts.hh3Bold,
               ),
               SizedBox(height: 16.h),
-              const SelectableRow(
-                onFocusContainerColor: Color(0xFFFAF9FD),
-                onFocusTextColor: Color(0xFF614FE0),
+              SelectableRow(
+                chipListHeight: 36.h,
+                chipBorderColor: const Color(0xFF9FA4AA),
+                onFocusContainerColor: const Color(0xFFFAF9FD),
+                onFocusTextColor: const Color(0xFF614FE0),
                 paddingH: 0,
-                list: ["Home", "Offices", "Field yard"],
+                list: const ["Home", "Offices", "Field yard"],
               ),
               SizedBox(height: 16.h),
               const Text(

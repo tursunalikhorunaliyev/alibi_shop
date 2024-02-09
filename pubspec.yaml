@@ -65,6 +65,7 @@ dependencies:
   flutter_staggered_grid_view: ^0.7.0
   cached_network_image: ^3.3.1
   flutter_animate: ^4.4.0
+  carousel_slider: ^4.2.1
 
   add_to_cart_animation: ^2.0.3
   get_it: ^7.6.7
@@ -95,7 +96,7 @@ flutter:
   # the material Icons class.
   uses-material-design: true
   assets:
-    - assets/fonts/pjs/
+    - assets/fonts/roboto/
     - assets/icons/
     - assets/picture/
 
@@ -116,36 +117,18 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: PlusJakartaSans
+    - family: Roboto
       fonts:
-        - asset: assets/fonts/pjs/PlusJakartaSans-ExtraBold.ttf
-          weight: 800
-        - asset: assets/fonts/pjs/PlusJakartaSans-Bold.ttf
+        - asset: assets/fonts/roboto/Roboto-Black.ttf
+          weight: 900
+        - asset: assets/fonts/roboto/Roboto-Bold.ttf
           weight: 700
-        - asset: assets/fonts/pjs/PlusJakartaSans-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/pjs/PlusJakartaSans-Medium.ttf
+        - asset: assets/fonts/roboto/Roboto-Medium.ttf
           weight: 500
-        - asset: assets/fonts/pjs/PlusJakartaSans-Regular.ttf
+        - asset: assets/fonts/roboto/Roboto-Regular.ttf
           weight: 400
-        - asset: assets/fonts/pjs/PlusJakartaSans-Light.ttf
-          weight: 300
-        - asset: assets/fonts/pjs/PlusJakartaSans-ExtraLight.ttf
-          weight: 200
-    - family: PlusJakartaSansItalic
-      fonts:
-        - asset: assets/fonts/pjs/PlusJakartaSans-ExtraBoldItalic.ttf
-          weight: 800
-        - asset: assets/fonts/pjs/PlusJakartaSans-BoldItalic.ttf
-          weight: 700
-        - asset: assets/fonts/pjs/PlusJakartaSans-SemiBoldItalic.ttf
-          weight: 600
-        - asset: assets/fonts/pjs/PlusJakartaSans-MediumItalic.ttf
-          weight: 500
-        - asset: assets/fonts/pjs/PlusJakartaSans-LightItalic.ttf
-          weight: 300
-        - asset: assets/fonts/pjs/PlusJakartaSans-ExtraLightItalic.ttf
-          weight: 200
+        - asset: assets/fonts/roboto/Roboto-Thin.ttf
+          weight: 100
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages

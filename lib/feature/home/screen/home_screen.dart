@@ -1,21 +1,23 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
-import 'package:alibi_shop/feature/allproduct/screen/all_product_screen.dart';
 import 'package:alibi_shop/feature/home/bloc/animation/animation_cubit.dart';
 import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
-import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
+import 'package:alibi_shop/feature/home/parts/banner_part.dart';
+import 'package:alibi_shop/feature/home/parts/category_part.dart';
+import 'package:alibi_shop/feature/home/parts/top_products_part.dart';
+import 'package:alibi_shop/feature/widget/cards/alibi_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
-import 'package:alibi_shop/feature/widget/news/new_product_page.dart';
-import 'package:alibi_shop/feature/widget/news/top_new.dart';
 import 'package:alibi_shop/feature/widget/part_header.dart';
+import 'package:alibi_shop/feature/widget/search/main_search.dart';
+import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/service/locator/service_locator.dart';
 import 'package:alibi_shop/service/navigation/add_to_cart.dart';
-import 'package:alibi_shop/values/imageurls.dart';
+import 'package:alibi_shop/values/app_sizes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -51,80 +53,40 @@ class _HomeScreenState extends State<HomeScreen> {
         body: ScrollConfiguration(
           behavior: const ScrollBehavior().copyWith(overscroll: false),
           child: SingleChildScrollView(
+            physics: const BouncingScrollPhysics(),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const TopNews(),
-                SizedBox(height: 32.h),
+                const SizedBox(height: 34),
                 Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24),
-                    child: BlocBuilder<AnimationCubit, AnimationState>(
-                      builder: (context, state) {
-                        return AnimatedOpacity(
-                          opacity: state.maybeWhen(
-                            orElse: () => 1,
-                            animating: (data) => data.textOpacity,
-                          ),
-                          duration: const Duration(milliseconds: 500),
-                          child: const Text(
-                            "Top Products",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                              color: Color(0xFF14181E),
-                            ),
-                          ),
-                        );
-                      },
-                    )),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSizes.horizontal,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      SvgPicture.asset(Assets.iconsHamburger),
+                      Image.asset(Assets.pictureAlibi),
+                      SvgPicture.asset(Assets.iconsNoti),
+                    ],
+                  ),
+                ),
+                SizedBox(height: 10.h),
+                const Padding(
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSizes.horizontal,
+                  ),
+                  child: MainSearch(),
+                ),
+                SizedBox(height: 14.h),
+                const SizedBox(
+                  height: 148,
+                  child: CategoryPart(),
+                ),
                 const SizedBox(height: 16),
-                SizedBox(
-                    height: 284.h,
-                    child: BlocBuilder<AnimationCubit, AnimationState>(
-                      builder: (context, state) {
-                        return AnimatedPadding(
-                          curve: Curves.fastLinearToSlowEaseIn,
-                          padding: EdgeInsets.only(
-                              left: state.maybeWhen(
-                            orElse: () => 0,
-                            animating: (data) => data.listPad,
-                          )),
-                          duration: const Duration(milliseconds: 1000),
-                          child: ListView.builder(
-                            itemCount: ImageUrls.sneakers.length,
-                            padding: EdgeInsets.only(left: 24.h),
-                            shrinkWrap: true,
-                            scrollDirection: Axis.horizontal,
-                            itemBuilder: (context, index) {
-                              return Padding(
-                                padding: EdgeInsets.only(right: 20.w),
-                                child: MainProductCard(
-                                  onClick: (GlobalKey widgetKey) async {
-                                    await locator
-                                        .get<AddToCart>()
-                                        .runAddToCartAnimation(widgetKey);
-                                    await locator
-                                        .get<AddToCart>()
-                                        .cartKey
-                                        .currentState!
-                                        .runCartAnimation(
-                                          (
-                                            ++locator
-                                                .get<AddToCart>()
-                                                .cartQuantityItems,
-                                          ).toString(),
-                                        );
-                                  },
-                                  isLittle: true,
-                                  imageUrl: ImageUrls.sneakers[index],
-                                ),
-                              );
-                            },
-                          ),
-                        );
-                      },
-                    )),
-                const SizedBox(height: 16),
+                const TopProductsPart(),
+                const SizedBox(height: 17),
+
                 Center(
                   child: SmoothPageIndicator(
                     controller: controller,
@@ -138,40 +100,30 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                   ),
                 ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 32),
-                  child: SizedBox(
-                    height: 180,
-                    child: PageView.builder(
-                      controller: controller,
-                      itemCount: 5,
-                      itemBuilder: (context, index) {
-                        return const Center(child: NewProductPage());
-                      },
-                    ),
-                  ),
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: PartHeader(
-                    leftText: "Special for you",
-                    rightText: "See All",
-                    iconName: "arrowRight.svg",
-                    onPressed: () {
-                      context.push(AllProductScreen.routeName);
-                    },
-                  ),
-                ),
+                SizedBox(height: 16.h),
+                BannerPart(pageController: controller),
+                SizedBox(height: 16.h),
                 const Padding(
-                  padding: EdgeInsets.symmetric(vertical: 16),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: AppSizes.horizontal,
+                  ),
+                  child: PartHeader(
+                    leftText: "Специально для вас",
+                    rightText: "Посмотреть все",
+                    iconName: Assets.assetsIconsArrowRight,
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   child: SelectableRow(
-                    list: [
-                      "All",
-                      "Clothing",
-                      "Jacket",
-                      "Shirts",
-                      "Sweetshirts",
-                      "Knitwere"
+                    chipListHeight: 26.h,
+                    chipBorderColor: const Color(0XFFDDDDE0),
+                    list: const [
+                      "Все",
+                      "Одежда",
+                      "Куртка",
+                      "Рубашки",
+                      "Толстовки и трикотаж",
                     ],
                   ),
                 ),
@@ -186,9 +138,9 @@ class _HomeScreenState extends State<HomeScreen> {
                           padding: const EdgeInsets.only(bottom: 10),
                           physics: const NeverScrollableScrollPhysics(),
                           addAutomaticKeepAlives: true,
-                          itemCount: state.data.length,
                           crossAxisSpacing: 20,
-                          mainAxisSpacing: 10,
+                          mainAxisSpacing: 20,
+                          itemCount: state.data.length,
                           gridDelegate:
                               const SliverSimpleGridDelegateWithFixedCrossAxisCount(
                             crossAxisCount: 2,
@@ -201,8 +153,10 @@ class _HomeScreenState extends State<HomeScreen> {
                               duration: const Duration(milliseconds: 400),
                               child: ScaleAnimation(
                                 child: FadeInAnimation(
-                                  child: MainProductCard(
-                                    onClick: (GlobalKey widgetKey) async {
+                                  child: AlibiProductCard(
+                                    cardHeight: 260.h,
+                                    imageHeight: 180.h,
+                                    /*onClick: (GlobalKey widgetKey) async {
                                       await locator
                                           .get<AddToCart>()
                                           .runAddToCartAnimation(widgetKey);
@@ -217,7 +171,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                                   .cartQuantityItems,
                                             ).toString(),
                                           );
-                                    },
+                                    },*/
                                     imageUrl: state.data[index],
                                   ),
                                 ),
@@ -246,6 +200,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 //     );
                 //   },
                 // ),
+                SizedBox(height: 100.h)
               ],
             ),
           ),

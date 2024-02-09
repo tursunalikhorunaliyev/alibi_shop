@@ -1,3 +1,4 @@
+import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -20,31 +21,22 @@ class PartHeader extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Text(
-          leftText,
-          style: const TextStyle(
-            fontSize: 18,
-            fontWeight: FontWeight.bold,
-            color: Color(0xFF14181E),
-          ),
-        ),
+        Text(leftText, style: AppFonts.hh3SemiBold),
         InkWell(
           onTap: onPressed,
           child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Text(
                 rightText,
-                style: const TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.bold,
-                  color: Color(0xFF614FE0),
+                style: AppFonts.bb1Medium.copyWith(
+                  color: const Color(0xFF614FE0),
                 ),
               ),
               const SizedBox(width: 6),
-              SvgPicture.asset(
-                "assets/icons/$iconName",
-                width: 16,
-                height: 16,
+              Padding(
+                padding: const EdgeInsets.only(top: 4),
+                child: SvgPicture.asset(iconName),
               ),
             ],
           ),

@@ -1,5 +1,5 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
-import 'package:alibi_shop/feature/category/screen/category_screen.dart';
+import 'package:alibi_shop/feature/allproduct/screen/all_product_screen.dart';
 import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
 import 'package:alibi_shop/feature/favourte/screen/favourte_screen.dart';
 import 'package:alibi_shop/feature/home/screen/home_screen.dart';
@@ -9,9 +9,7 @@ import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/service/locator/service_locator.dart';
 import 'package:alibi_shop/service/navigation/add_to_cart.dart';
 import 'package:curved_navigation_bar/curved_navigation_bar.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -96,7 +94,7 @@ class _HomeState extends State<Home> {
           physics: const BouncingScrollPhysics(),
           children: const [
             HomeScreen(),
-            CategoryScreen(),
+            AllProductScreen(),
             ConfirmOrderScreen(),
             FavouriteScreen(),
             ProfileScreen()

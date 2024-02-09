@@ -7,7 +7,10 @@ class SelectableRow extends StatefulWidget {
   final Color onFocusContainerColor;
   final Color onFocusTextColor;
   final double paddingH;
+  final double chipListHeight;
+  final Color chipBorderColor;
   final List<String> list;
+
   const SelectableRow({
     super.key,
     this.isSize = false,
@@ -15,6 +18,8 @@ class SelectableRow extends StatefulWidget {
     this.onFocusTextColor = Colors.white,
     this.paddingH = 24,
     required this.list,
+    required this.chipListHeight,
+    required this.chipBorderColor,
   });
 
   @override
@@ -23,10 +28,11 @@ class SelectableRow extends StatefulWidget {
 
 class _SelectableRowState extends State<SelectableRow> {
   int selectIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: widget.isSize ? 48 : 28,
+      height: widget.chipListHeight,
       child: ListView.builder(
         itemCount: widget.list.length,
         scrollDirection: Axis.horizontal,
@@ -58,11 +64,13 @@ class _SelectableRowState extends State<SelectableRow> {
                     width: 1,
                     color: selectIndex == index
                         ? Colors.transparent
-                        : const Color(0xFFF3F3F6),
+                        : widget.chipBorderColor,
                   ),
                 ),
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 20,
+                  ),
                   child: Text(
                     widget.list[index],
                     style: TextStyle(

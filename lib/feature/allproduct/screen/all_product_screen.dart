@@ -3,11 +3,17 @@ import 'dart:async';
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
 import 'package:alibi_shop/feature/allproduct/widget/screen_controll.dart';
 import 'package:alibi_shop/feature/category/widget/search_result_card.dart';
-import 'package:alibi_shop/feature/category/widget/top_search_widget.dart';
-import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
+import 'package:alibi_shop/feature/home/bloc/category/category_cubit.dart';
+import 'package:alibi_shop/feature/widget/cards/alibi_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
-import 'package:alibi_shop/values/imageurls.dart';
+import 'package:alibi_shop/feature/widget/search/main_search.dart';
+import 'package:alibi_shop/generated/assets.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AllProductScreen extends StatefulWidget {
   static const String routeName = "/all_product_screen";
@@ -19,7 +25,7 @@ class AllProductScreen extends StatefulWidget {
 }
 
 class _AllProductScreenState extends State<AllProductScreen> {
-  bool changed = false;
+  bool changed = true;
   double containerHeight = 0;
 
   void _containerTimer() {
@@ -59,14 +65,32 @@ class _AllProductScreenState extends State<AllProductScreen> {
               child: Column(
                 children: [
                   const SizedBox(height: 12),
-                  const Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 24),
-                    child: TopSearchWidget(),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 24),
+                    child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 12,
+                          horizontal: 20,
+                        ),
+                        decoration: ShapeDecoration(
+                          color: Colors.white,
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20),
+                          ),
+                        ),
+                        child: Row(
+                          children: [
+                            SvgPicture.asset(Assets.iconsSearchBack),
+                            SizedBox(width: 12.w),
+                            const Expanded(child: MainSearch()),
+                          ],
+                        )),
                   ),
                   const SizedBox(height: 32),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 24),
                     child: ScreenControll(
+                      text: "Специально для вас",
                       onChanged: (boolean) {
                         setState(() {});
                         changed = boolean;
@@ -74,55 +98,103 @@ class _AllProductScreenState extends State<AllProductScreen> {
                     ),
                   ),
                   const SizedBox(height: 16),
-                  const SelectableRow(
-                    list: [
-                      "All",
-                      "Clothing",
-                      "Jacket",
-                      "Shirts",
-                      "Sweetshirts",
-                      "Knitwere"
+                  SelectableRow(
+                    chipListHeight: 36.h,
+                    chipBorderColor: const Color(0xFF9FA4AA),
+                    list: const [
+                      "Все",
+                      "Одежда",
+                      "Куртка",
+                      "Рубашки",
+                      "Толстовки и трикотаж",
                     ],
                   ),
                   const SizedBox(height: 16),
-                  Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
-                      child: changed
-                          ? ListView.builder(
-                              itemCount: ImageUrls.sneakers.length,
-                              physics: const NeverScrollableScrollPhysics(),
-                              shrinkWrap: true,
-                              itemBuilder: (context, index) => Padding(
-                                padding: const EdgeInsets.only(bottom: 20),
-                                child: SearchResultCard(
-                                  imageUrl: ImageUrls.sneakers[index],
+                  BlocBuilder<CategoryCubit, CategoryState>(
+                    builder: (context, state) {
+                      return Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 24),
+                        child: changed
+                            ? AnimationLimiter(
+                                key: UniqueKey(),
+                                child: ListView.builder(
+                                  physics: const BouncingScrollPhysics(),
+                                  shrinkWrap: true,
+                                  itemCount: state.data.length,
+                                  itemBuilder:
+                                      (BuildContext context, int index) {
+                                    return Padding(
+                                      padding:
+                                          const EdgeInsets.only(bottom: 16),
+                                      child:
+                                          AnimationConfiguration.staggeredList(
+                                        position: index,
+                                        duration:
+                                            const Duration(milliseconds: 500),
+                                        child: SlideAnimation(
+                                          verticalOffset: 50.0,
+                                          child: ScaleAnimation(
+                                            curve: Curves.easeInOutQuad,
+                                            child: SearchResultCard(
+                                              imageUrl: state.data[index],
+                                            ),
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              )
+                            : AnimationLimiter(
+                                key: UniqueKey(),
+                                child: MasonryGridView.builder(
+                                  shrinkWrap: true,
+                                  padding: const EdgeInsets.only(bottom: 10),
+                                  physics: const BouncingScrollPhysics(),
+                                  addAutomaticKeepAlives: true,
+                                  itemCount: 10,
+                                  crossAxisSpacing: 20,
+                                  mainAxisSpacing: 20,
+                                  gridDelegate:
+                                      const SliverSimpleGridDelegateWithFixedCrossAxisCount(
+                                    crossAxisCount: 2,
+                                  ),
+                                  itemBuilder: (context, index) {
+                                    return AnimationConfiguration.staggeredGrid(
+                                      delay: const Duration(milliseconds: 400),
+                                      columnCount: 12,
+                                      position: index,
+                                      duration:
+                                          const Duration(milliseconds: 600),
+                                      child: ScaleAnimation(
+                                        child: FadeInAnimation(
+                                            child: AlibiProductCard(
+                                          cardHeight: 260.h,
+                                          imageHeight: 180.h,
+                                          /*onClick: (GlobalKey widgetKey) async {
+                                        await locator
+                                            .get<AddToCart>()
+                                            .runAddToCartAnimation(widgetKey);
+                                        await locator
+                                            .get<AddToCart>()
+                                            .cartKey
+                                            .currentState!
+                                            .runCartAnimation((++locator
+                                                    .get<AddToCart>()
+                                                    .cartQuantityItems)
+                                                .toString());
+                                      },
+                                      isChanged: changed,*/
+                                          imageUrl: state.data[index],
+                                        )),
+                                      ),
+                                    );
+                                  },
                                 ),
                               ),
-                            )
-                          : GridView.builder(
-                              itemCount: 12,
-                              shrinkWrap: true,
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2,
-                                crossAxisSpacing: 20,
-                                mainAxisSpacing: 20,
-                                childAspectRatio: 0.48,
-                              ),
-                              itemBuilder: (context, index) {
-                                return MainProductCard(
-                                  onClick: (GlobalKey widgetKey) async {
-                                    await runAddToCartAnimation(widgetKey);
-                                    await cartKey.currentState!
-                                        .runCartAnimation(
-                                            (++_cartQuantityItems).toString());
-                                  },
-                                  isChanged: changed,
-                                  imageUrl: ImageUrls.sneakers[index],
-                                );
-                              },
-                            )),
+                      );
+                    },
+                  ),
                 ],
               ),
             ),
