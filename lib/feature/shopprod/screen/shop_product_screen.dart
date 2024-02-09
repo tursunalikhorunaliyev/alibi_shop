@@ -1,4 +1,7 @@
 import 'package:add_to_cart_animation/add_to_cart_animation.dart';
+import 'package:alibi_shop/feature/navigable/bloc/navigable_index.dart';
+import 'package:alibi_shop/feature/shopprod/widget/item_index.dart';
+import 'package:alibi_shop/feature/shopprod/widget/readmore.dart';
 import 'package:alibi_shop/feature/shopprod/widget/selectable_color.dart';
 import 'package:alibi_shop/feature/widget/cards/main_product_card.dart';
 import 'package:alibi_shop/feature/widget/chips/seletable_row.dart';
@@ -7,7 +10,6 @@ import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:readmore/readmore.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class ShopProductScreen extends StatefulWidget {
@@ -109,6 +111,11 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   SizedBox(height: 32.h),
+                  const Text(
+                    "Modern light clothes",
+                    style: AppFonts.hh2SemiBold,
+                  ),
+                  SizedBox(height: 20.h),
                   Row(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -116,51 +123,27 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                       Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          SizedBox(
-                            width: 200.w,
-                            child: const Text(
-                              "Modern light clothes",
-                              style: AppFonts.hh2SemiBold,
+                          Text(
+                            "1 670 000 UZS",
+                            style: AppFonts.bb1Regular.copyWith(
+                              decoration: TextDecoration.lineThrough,
                             ),
                           ),
-                          RichText(
-                            text: TextSpan(children: [
-                              TextSpan(
-                                text: "\$190.99",
-                                style: AppFonts.bb1Regular.copyWith(
-                                  decoration: TextDecoration.lineThrough,
-                                ),
-                              ),
-                              const TextSpan(
-                                text: "  \$100.99",
-                                style: AppFonts.bb1Semibold,
-                              ),
-                            ]),
+                          SizedBox(height: 5.h),
+                          Text(
+                            "1 100 000 UZS",
+                            style: AppFonts.bb1Semibold.copyWith(
+                              color: const Color(0xFF614FE0),
+                            ),
                           ),
                         ],
                       ),
-                      Container(
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          color: const Color(0xFF14181E),
-                        ),
-                        child: Padding(
-                          padding: EdgeInsets.symmetric(
-                            horizontal: 24.w,
-                            vertical: 16.h,
-                          ),
-                          child: Text(
-                            "Add to Card",
-                            style: AppFonts.bb1Semibold
-                                .copyWith(color: const Color(0xFFFEFEFE)),
-                          ),
-                        ),
-                      ),
+                      const ItemIndex(),
                     ],
                   ),
                   const SizedBox(height: 24),
                   const Text(
-                    "Choose Size",
+                    "Выберите размер",
                     style: AppFonts.bb2SemiBold,
                   ),
                   SizedBox(height: 8.h),
@@ -244,7 +227,7 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                   ),
                   SizedBox(height: 16.h),
                   const Text(
-                    "Color",
+                    "Цвет",
                     style: AppFonts.bb2SemiBold,
                   ),
                   const SizedBox(height: 8),
@@ -277,7 +260,7 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                             ),
                           ),
                           TextSpan(
-                            text: " (7.932 reviews)",
+                            text: " (7.932 обзоры)",
                             style: TextStyle(
                               fontSize: 12,
                               fontWeight: FontWeight.w400,
@@ -288,21 +271,7 @@ class _ShopProductScreenState extends State<ShopProductScreen> {
                       ),
                     ],
                   ),
-                  SizedBox(
-                    width: MediaQuery.of(context).size.width * 0.8,
-                    child: ReadMoreText(
-                      "Its simple and elegant shape makes it perfect for those of you who like you who want minimalist clothesperfect for those of you who like you who want minimalist clothes ",
-                      trimLines: 2,
-                      style: AppFonts.bb2Regular.copyWith(
-                        color: const Color(0xFF747B84),
-                      ),
-                      colorClickableText: const Color(0xFF14181E),
-                      moreStyle: AppFonts.bb2Regular,
-                      trimMode: TrimMode.Line,
-                      trimCollapsedText: 'Read more',
-                      trimExpandedText: ' Less',
-                    ),
-                  ),
+                  const Readmore(),
                   Padding(
                     padding: const EdgeInsets.only(top: 24, bottom: 32),
                     child: Container(
