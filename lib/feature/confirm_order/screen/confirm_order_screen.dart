@@ -6,9 +6,8 @@ import 'package:alibi_shop/feature/confirm_order/widget/order_card.dart';
 import 'package:alibi_shop/feature/location/location_screen.dart';
 import 'package:alibi_shop/feature/widget/bottom_sheets/app_bottom_sheet.dart';
 import 'package:alibi_shop/feature/widget/cards/order_require_card.dart';
+import 'package:alibi_shop/feature/widget/cards/top_card.dart';
 import 'package:alibi_shop/feature/widget/cards/total_payment.dart';
-import 'package:alibi_shop/feature/widget/news/top_bar.dart';
-import 'package:alibi_shop/feature/widget/part_header.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -52,39 +51,8 @@ class _ConfirmOrderScreenState extends State<ConfirmOrderScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 12.h),
-                  const TopBar(
-                    backgoundColor: Color(0xFFFEFEFE),
-                    notifCount: 0,
-                  ),
+                  const TopCard(),
                   SizedBox(height: 32.h),
-                  PartHeader(
-                    leftText: "Summary",
-                    rightText: "See details",
-                    iconName: "arrowRight2.svg",
-                    onPressed: () {
-                      showSlidingBottomSheet(
-                        context,
-                        builder: (context) => AppBottomSheet.sheetDialog(
-                          snappings: [0.4, 0.7, 1.0],
-                          content: ListView.builder(
-                            padding: const EdgeInsets.symmetric(vertical: 12),
-                            shrinkWrap: true,
-                            primary: false,
-                            physics: const NeverScrollableScrollPhysics(),
-                            itemCount: elements.length,
-                            itemBuilder: (context, index) => OrderCard(
-                              imageLink: elements[index].imageLink,
-                              productName: elements[index].productName,
-                              productColor: elements[index].productColor,
-                              productSize: elements[index].productSize,
-                              productPrice: elements[index].productPrice,
-                              orderCounter: OrderCounter(0),
-                            ),
-                          ),
-                        ),
-                      );
-                    },
-                  ),
                   SizedBox(height: 16.h),
                   ListView.builder(
                     itemCount: 3,

@@ -95,8 +95,8 @@ class AppFonts {
     fontFamily: AppFontFamilies.roboto,
   );
   static const overlineRegular = TextStyle(
-    fontSize: 10,
-    height: 12 / 10,
+    fontSize: 12,
+    height: 14 / 12,
     fontWeight: FontWeight.w400,
     color: Color(0xFF14181E),
     fontFamily: AppFontFamilies.roboto,

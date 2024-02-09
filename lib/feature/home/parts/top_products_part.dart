@@ -1,4 +1,6 @@
 import 'package:alibi_shop/feature/widget/cards/alibi_product_card.dart';
+import 'package:alibi_shop/service/locator/service_locator.dart';
+import 'package:alibi_shop/service/navigation/add_to_cart.dart';
 import 'package:alibi_shop/values/app_sizes.dart';
 import 'package:alibi_shop/values/imageurls.dart';
 import 'package:alibi_shop/values/typography.dart';
@@ -34,6 +36,19 @@ class TopProductsPart extends StatelessWidget {
               return Padding(
                 padding: const EdgeInsets.only(left: 20),
                 child: AlibiProductCard(
+                  onClick: (GlobalKey widgetKey) async {
+                    await locator
+                        .get<AddToCart>()
+                        .runAddToCartAnimation(widgetKey);
+                    await locator
+                        .get<AddToCart>()
+                        .cartKey
+                        .currentState!
+                        .runCartAnimation(
+                          (++locator.get<AddToCart>().cartQuantityItems,)
+                              .toString(),
+                        );
+                  },
                   cardHeight: 236.h,
                   imageHeight: 164.h,
                   imageUrl: ImageUrls.sweetShirts[index],

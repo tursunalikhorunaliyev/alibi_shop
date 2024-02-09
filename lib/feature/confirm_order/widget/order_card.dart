@@ -15,15 +15,15 @@ class OrderCard extends StatelessWidget {
   final String productSize;
   final double productPrice;
   final OrderCounter orderCounter;
-  const OrderCard(
-      {Key? key,
-      required this.imageLink,
-      required this.productName,
-      required this.productColor,
-      required this.productSize,
-      required this.productPrice,
-      required this.orderCounter})
-      : super(key: key);
+  const OrderCard({
+    Key? key,
+    required this.imageLink,
+    required this.productName,
+    required this.productColor,
+    required this.productSize,
+    required this.productPrice,
+    required this.orderCounter,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
