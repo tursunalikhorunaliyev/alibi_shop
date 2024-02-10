@@ -1,8 +1,14 @@
+import 'package:alibi_shop/feature/allproduct/screen/all_product_screen.dart';
+import 'package:alibi_shop/feature/category/screen/category_screen.dart';
+import 'package:alibi_shop/feature/confirm_order/screen/confirm_order_screen.dart';
+import 'package:alibi_shop/feature/navigable/screen/home.dart';
+import 'package:alibi_shop/feature/search/screen/search_screen.dart';
 import 'package:alibi_shop/feature/widget/dialog/showdialog.dart';
 import 'package:alibi_shop/generated/assets.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class MainSearch extends StatefulWidget {
   final ValueChanged<String>? onChange;
@@ -19,6 +25,9 @@ class _MainSearchState extends State<MainSearch> {
       children: [
         Expanded(
           child: TextField(
+            onTap: () {
+              context.push(SearchScreen.routeName);
+            },
             onChanged: widget.onChange,
             style: const TextStyle(
               fontSize: 14,

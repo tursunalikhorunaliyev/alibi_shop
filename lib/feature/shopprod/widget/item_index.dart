@@ -4,7 +4,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
 class ItemIndex extends StatefulWidget {
-  const ItemIndex({super.key});
+  final Function(int index) onChangedIndex;
+  const ItemIndex({super.key, required this.onChangedIndex});
 
   @override
   State<ItemIndex> createState() => _ItemIndexState();
@@ -30,6 +31,7 @@ class _ItemIndexState extends State<ItemIndex> {
           borderRadius: BorderRadius.circular(20),
           onTap: () {
             dicrement();
+            widget.onChangedIndex.call(itemIndex);
             setState(() {});
           },
           child: Container(
@@ -65,6 +67,7 @@ class _ItemIndexState extends State<ItemIndex> {
           borderRadius: BorderRadius.circular(20),
           onTap: () {
             increment();
+            widget.onChangedIndex.call(itemIndex);
             setState(() {});
           },
           child: Container(

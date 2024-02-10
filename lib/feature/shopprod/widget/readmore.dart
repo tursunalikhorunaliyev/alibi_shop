@@ -1,4 +1,5 @@
 import 'package:alibi_shop/feature/navigable/bloc/navigable_index.dart';
+import 'package:alibi_shop/feature/shopprod/widget/select_type.dart';
 import 'package:alibi_shop/values/typography.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_animate/flutter_animate.dart';
@@ -14,9 +15,9 @@ class Readmore extends StatefulWidget {
 }
 
 class _ReadmoreState extends State<Readmore> {
-  int onPro = 0;
   final navigableCubit = NavigableIndex(0);
   final controller = PageController();
+
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -24,69 +25,11 @@ class _ReadmoreState extends State<Readmore> {
       children: [
         SizedBox(
           width: 200,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      onPro = 0;
-                      controller.animateToPage(onPro,
-                          duration: 400.ms, curve: Curves.easeIn);
-                      setState(() {});
-                    },
-                    child: const Text(
-                      "О продукте",
-                      style: AppFonts.bb2Medium,
-                    ),
-                  ),
-                  onPro == 0
-                      ? Container(
-                          width: 78,
-                          height: 1,
-                          color: const Color(0xFF14181E),
-                        )
-                      : const SizedBox(
-                          height: 1,
-                          width: 78,
-                        ),
-                ],
-              ),
-              Container(
-                width: 1,
-                height: 24,
-                color: const Color(0xFF878787),
-              ),
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      onPro = 1;
-                      controller.animateToPage(onPro,
-                          duration: 400.ms, curve: Curves.easeIn);
-                      setState(() {});
-                    },
-                    child: const Text(
-                      "О доставке",
-                      style: AppFonts.bb2Medium,
-                    ),
-                  ),
-                  onPro == 1
-                      ? Container(
-                          width: 78,
-                          height: 1,
-                          color: const Color(0xFF14181E),
-                        )
-                      : const SizedBox(
-                          height: 1,
-                          width: 78,
-                        ),
-                ],
-              ),
-            ],
+          child: SelectType(
+            onChangedIndex: (index) {},
+            controller: controller,
+            leftText: "О продукте",
+            rightText: "О доставке",
           ),
         ),
         const SizedBox(height: 16),
@@ -94,10 +37,7 @@ class _ReadmoreState extends State<Readmore> {
           height: 50,
           child: PageView(
             controller: controller,
-            onPageChanged: (value) {
-              onPro = value;
-              setState(() {});
-            },
+            onPageChanged: (value) {},
             pageSnapping: true,
             children: [
               SizedBox(

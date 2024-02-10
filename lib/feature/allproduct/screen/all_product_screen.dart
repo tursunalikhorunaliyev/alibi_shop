@@ -16,6 +16,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:go_router/go_router.dart';
 
 class AllProductScreen extends StatefulWidget {
   static const String routeName = "/all_product_screen";
@@ -82,7 +83,12 @@ class _AllProductScreenState extends State<AllProductScreen> {
                         ),
                         child: Row(
                           children: [
-                            SvgPicture.asset(Assets.iconsSearchBack),
+                            InkWell(
+                                onTap: () {
+                                  context.pop();
+                                },
+                                child:
+                                    SvgPicture.asset(Assets.iconsSearchBack)),
                             SizedBox(width: 12.w),
                             const Expanded(child: MainSearch()),
                           ],
@@ -225,5 +231,5 @@ class _AllProductScreenState extends State<AllProductScreen> {
 
   GlobalKey<CartIconKey> cartKey = GlobalKey<CartIconKey>();
   late Function(GlobalKey) runAddToCartAnimation;
-  var _cartQuantityItems = 0;
+  final _cartQuantityItems = 0;
 }

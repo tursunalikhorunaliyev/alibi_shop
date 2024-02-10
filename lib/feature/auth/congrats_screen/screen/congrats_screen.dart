@@ -44,7 +44,12 @@ class CongratsScreen extends StatelessWidget {
             SizedBox(height: 28.h),
             AuthButton(
               onTap: () {
-                context.push(Home.routeName);
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => const Home(),
+                  ),
+                );
               },
               title: "Get Started",
             )

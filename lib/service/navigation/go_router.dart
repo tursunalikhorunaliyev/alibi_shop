@@ -9,7 +9,10 @@ import 'package:alibi_shop/feature/home/screen/home_screen.dart';
 import 'package:alibi_shop/feature/location/location_screen.dart';
 import 'package:alibi_shop/feature/navigable/screen/home.dart';
 import 'package:alibi_shop/feature/profile/screen/profile_screen.dart';
+import 'package:alibi_shop/feature/search/screen/search_screen.dart';
 import 'package:alibi_shop/feature/shopprod/screen/shop_product_screen.dart';
+import 'package:alibi_shop/feature/singin/screen/sing_in_screen.dart';
+import 'package:alibi_shop/feature/singup/screen/sing_up_screen.dart';
 import 'package:alibi_shop/feature/test_bottom.dart';
 import 'package:alibi_shop/service/navigation/navigation_service.dart';
 import 'package:alibi_shop/service/transition/transitions.dart';
@@ -18,7 +21,13 @@ import 'package:go_router/go_router.dart';
 class AppGoRouter {
   final router = GoRouter(
     navigatorKey: NavigationService.navigatorKey,
-    initialLocation: ShopProductScreen.routeName,
+    initialLocation: SingInScreen.routeName,
+    //CongratsScreen
+    //CheckCodeScreen
+    //Phonenumber
+    //chekcode
+    //Congrats
+
     routes: [
       ///main
       GoRoute(
@@ -26,6 +35,20 @@ class AppGoRouter {
         pageBuilder: (context, state) => slideTransitionRight(
           state,
           const Home(),
+        ),
+      ),
+      GoRoute(
+        path: SingInScreen.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const SingInScreen(),
+        ),
+      ),
+      GoRoute(
+        path: SingUpScreen.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const SingUpScreen(),
         ),
       ),
       GoRoute(
@@ -54,6 +77,13 @@ class AppGoRouter {
         pageBuilder: (context, state) => slideTransitionRight(
           state,
           const ShopProductScreen(),
+        ),
+      ),
+      GoRoute(
+        path: SearchScreen.routeName,
+        pageBuilder: (context, state) => slideTransitionRight(
+          state,
+          const SearchScreen(),
         ),
       ),
       GoRoute(

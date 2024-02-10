@@ -45,10 +45,24 @@ class OrderCard extends StatelessWidget {
         ],
       ),
       child: Container(
-        height: 140.h,
+        height: 150.h,
         padding: const EdgeInsets.all(10),
         decoration: ShapeDecoration(
           color: const Color(0xFFFEFEFE),
+          shadows: [
+            BoxShadow(
+              blurRadius: 16,
+              offset: const Offset(0, 12),
+              spreadRadius: -4,
+              color: const Color(0xFF101828).withOpacity(0.2),
+            ),
+            BoxShadow(
+              blurRadius: 6,
+              offset: const Offset(0, 4),
+              spreadRadius: -2,
+              color: const Color(0xFF101828).withOpacity(0.03),
+            ),
+          ],
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(12),
           ),
@@ -73,12 +87,12 @@ class OrderCard extends StatelessWidget {
                   Expanded(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
                           productName,
                           style: AppFonts.hh3SemiBold,
                         ),
-                        SizedBox(height: 6.h),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: [
@@ -115,66 +129,56 @@ class OrderCard extends StatelessWidget {
                             ),
                           ],
                         ),
-                        SizedBox(height: 23.h),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.end,
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              "\$$productPrice",
-                              style: AppFonts.hh3Bold,
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 8,
+                            vertical: 2,
+                          ),
+                          decoration: ShapeDecoration(
+                            color: const Color(0xFFEAEBED),
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(30),
                             ),
-                            Container(
-                              padding: const EdgeInsets.symmetric(
-                                horizontal: 8,
-                                vertical: 2,
-                              ),
-                              decoration: ShapeDecoration(
-                                color: const Color(0xFFEAEBED),
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(30),
+                          ),
+                          child: SizedBox(
+                            height: 24.h,
+                            width: 84.h,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    borderRadius: BorderRadius.circular(10),
+                                    onTap: () => orderCounter.decrease(),
+                                    child: SvgPicture.asset(Assets.iconsMinus),
+                                  ),
                                 ),
-                              ),
-                              child: SizedBox(
-                                height: 32.h,
-                                width: 100.h,
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: InkWell(
-                                        borderRadius: BorderRadius.circular(10),
-                                        onTap: () => orderCounter.decrease(),
-                                        child:
-                                            SvgPicture.asset(Assets.iconsMinus),
-                                      ),
-                                    ),
-                                    BlocBuilder<OrderCounter, int>(
-                                      bloc: orderCounter,
-                                      builder: (context, state) {
-                                        return Text(
-                                          state.toString(),
-                                          style: AppFonts.bb1Medium,
-                                        );
-                                      },
-                                    ),
-                                    Material(
-                                      color: Colors.transparent,
-                                      child: InkWell(
-                                        onTap: () => orderCounter.increase(),
-                                        borderRadius: BorderRadius.circular(10),
-                                        child:
-                                            SvgPicture.asset(Assets.iconsPlus),
-                                      ),
-                                    )
-                                  ],
+                                BlocBuilder<OrderCounter, int>(
+                                  bloc: orderCounter,
+                                  builder: (context, state) {
+                                    return Text(
+                                      state.toString(),
+                                      style: AppFonts.bb1Medium,
+                                    );
+                                  },
                                 ),
-                              ),
-                            )
-                          ],
-                        )
+                                Material(
+                                  color: Colors.transparent,
+                                  child: InkWell(
+                                    onTap: () => orderCounter.increase(),
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: SvgPicture.asset(Assets.iconsPlus),
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        ),
+                        Text(
+                          "${productPrice.toInt()} UZS",
+                          style: AppFonts.hh3Bold,
+                        ),
                       ],
                     ),
                   )

@@ -1,4 +1,5 @@
 import 'package:alibi_shop/feature/auth/check_code/screen/check_code_screen.dart';
+import 'package:alibi_shop/feature/singin/screen/sing_in_screen.dart';
 import 'package:alibi_shop/feature/widget/button/auth_button.dart';
 import 'package:alibi_shop/feature/widget/textfield/auth_field.dart';
 import 'package:alibi_shop/generated/assets.dart';
@@ -44,49 +45,11 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
               ),
               SizedBox(height: 28.h),
               AuthField(
+                textInputType: TextInputType.number,
                 leadingIcon: Assets.iconsPhone,
                 floatingText: "Phone Number",
                 hintText: "+998 (__) ___ - __-__",
                 maskTextInputFormatter: InputMasks.phoneInputMask,
-              ),
-              SizedBox(height: 16.h),
-              const AuthField(
-                floatingText: "Name",
-                hintText: "Your Name",
-              ),
-              SizedBox(height: 16.h),
-              const AuthField(
-                floatingText: "Password",
-                hintText: "Password",
-                trailingIcon: Assets.iconsHide,
-                isPasswordField: true,
-              ),
-              SizedBox(height: 16.h),
-              const AuthField(
-                floatingText: "Retype password",
-                hintText: "Retype password",
-                trailingIcon: Assets.iconsHide,
-                isPasswordField: true,
-              ),
-              SizedBox(height: 16.h),
-              Row(
-                children: [
-                  Text(
-                    "If you didn’t receive a code?",
-                    style: AppFonts.bb1Medium.copyWith(
-                      color: const Color(0xFF999A9D),
-                    ),
-                  ),
-                  InkWell(
-                    onTap: () {},
-                    child: Text(
-                      "Sign In",
-                      style: AppFonts.bb1Medium.copyWith(
-                        color: const Color(0xFF614FE0),
-                      ),
-                    ),
-                  )
-                ],
               ),
               SizedBox(height: 28.h),
               AuthButton(
@@ -102,3 +65,4 @@ class _PhoneNumberScreenState extends State<PhoneNumberScreen> {
     );
   }
 }
+//numer chiqadigan 

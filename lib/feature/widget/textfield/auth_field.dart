@@ -13,6 +13,7 @@ class AuthField extends StatefulWidget {
   final bool isPasswordField;
   final MaskTextInputFormatter? maskTextInputFormatter;
   final VoidCallback? trailingAction;
+  final TextInputType? textInputType;
 
   const AuthField({
     Key? key,
@@ -23,6 +24,7 @@ class AuthField extends StatefulWidget {
     this.isPasswordField = false,
     this.maskTextInputFormatter,
     this.trailingAction,
+    this.textInputType,
   }) : super(key: key);
 
   @override
@@ -45,7 +47,7 @@ class _AuthFieldState extends State<AuthField> {
       children: [
         Text(
           widget.floatingText,
-          style: AppFonts.bb1Regular,
+          style: AppFonts.bb2Medium,
         ),
         SizedBox(height: 6.h),
         Container(
@@ -78,6 +80,7 @@ class _AuthFieldState extends State<AuthField> {
                           ? []
                           : [widget.maskTextInputFormatter!],
                       obscureText: showPass,
+                      keyboardType: widget.textInputType,
                       decoration: InputDecoration(
                         hintText: widget.hintText,
                         hintStyle: AppFonts.bb1Regular.copyWith(

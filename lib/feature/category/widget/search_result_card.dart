@@ -53,13 +53,13 @@ class SearchResultCard extends StatelessWidget {
                 RichText(
                   text: TextSpan(children: [
                     TextSpan(
-                      text: "\$495.00  ",
-                      style: AppFonts.bb1Regular.copyWith(
+                      text: "495,000 UZS  ",
+                      style: AppFonts.bb2Regular.copyWith(
                         color: const Color(0xFFC4C5C9),
                       ),
                     ),
                     TextSpan(
-                      text: "\$173.25",
+                      text: "200,000 UZS",
                       style: AppFonts.hh3SemiBold
                           .copyWith(color: const Color(0xFF614FE0)),
                     ),
